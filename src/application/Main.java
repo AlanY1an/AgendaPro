@@ -1,10 +1,14 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import application.Login;
+import application.LoginController;
 import application.DemoPage;
+
 
 public class Main extends Application {
 	
@@ -19,19 +23,16 @@ public class Main extends Application {
     }
 
     public void showLoginView() {
-        // 创建 MainView 对象
-        Login mainView = new Login(this);
-        Scene scene = new Scene(mainView.getView(), 400, 300);
-       
+    	Login loginView = new Login(this);
+        primaryStage.setScene(loginView.getScene());
         primaryStage.setTitle("Agendapro");
-        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public void showSecondaryView() {
         // 创建 SecondaryView 对象
     	DemoPage secondaryView = new DemoPage(this);
-        Scene scene = new Scene(secondaryView.getView(), 400, 300);
+        Scene scene = new Scene(secondaryView.getView(), 600, 400);
         
         primaryStage.setTitle("Demo View");
         primaryStage.setScene(scene);

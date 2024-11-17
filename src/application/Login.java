@@ -1,43 +1,42 @@
 package application;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Text;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import java.io.IOException;
 
 public class Login {
 	
-	private FlowPane pane;
 	private Main mainApp;
+	private Scene scene;
 	
 	public Login(Main mainApp) {
         this.mainApp = mainApp;
-        initialize();
-        
+        initialize();       
     }
 	
 	private void initialize() {
-		pane = new FlowPane();
-		pane.setPadding(new Insets(11,12,13,14));
-		pane.setHgap(5);
-		pane.setVgap(5);
+        try {
+            // Load the FXML file for Login
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
 
-		pane.getChildren().addAll(new Label("User Name: "), new TextField());
-		pane.getChildren().addAll(new Label("Password: "), new TextField());
-		
-        Button switchButton = new Button("Switch to Secondary View");
+            // Get the controller and set the main application reference
+            LoginController controller = loader.getController();
+            controller.setMainApp(mainApp);
 
-        // 按钮点击事件，切换到 SecondaryView
-        switchButton.setOnAction(e -> mainApp.showSecondaryView());
+            // Set the scene for the Login view
+            scene = new Scene(root, 600, 400);
 
-        pane.getChildren().add(switchButton);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public FlowPane getView() {
-        return pane;
+
+	public Scene getScene() {
+        return scene;
     }
 
 }

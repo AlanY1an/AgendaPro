@@ -23,7 +23,7 @@ public class PomodoroView {
 
         ComboBox<String> taskTypeComboBox = new ComboBox<>();
         taskTypeComboBox.getItems().addAll("Study", "Work", "Exercise");
-        taskTypeComboBox.setPromptText("Task类型");
+        taskTypeComboBox.setPromptText("Task Type");
 
         TextField taskInput = new TextField();
         taskInput.setPromptText("Task");

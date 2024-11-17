@@ -67,6 +67,15 @@ public class Main extends Application {
             startButton.setDisable(false); 
         });
         
+        pomodoroButton.setOnAction(e -> {
+            if (timeline != null) {
+                timeline.stop();
+            }
+
+            timeRemaining = WORK_TIME;
+            timerText.setText(formatTime(timeRemaining));
+            startButton.setDisable(false);
+        });
 
         ComboBox<String> taskTypeComboBox = new ComboBox<>();
         taskTypeComboBox.getItems().addAll("Study", "Work", "Exercise");

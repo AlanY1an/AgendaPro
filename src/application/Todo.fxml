@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="185.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="AgendaPro" textAlignment="CENTER">
+               <font>
+                  <Font name="Skia" size="24.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" cycleMethod="REPEAT" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.21052631735801697" green="0.16764132678508759" blue="0.16764132678508759" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.5394737124443054" green="0.5070053339004517" blue="0.5070053339004517" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+               <VBox.margin>
+                  <Insets left="36.0" right="36.0" top="19.0" />
+               </VBox.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="TEXT_ONLY" mnemonicParsing="false" text="DashBoard" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <VBox.margin>
+                  <Insets left="53.5" top="35.0" />
+               </VBox.margin>
+            </Button>
+            <Button accessibleRole="MENU_ITEM" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="64.0" layoutY="93.0" mnemonicParsing="false" text="Calendar" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="59.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button accessibleRole="MENU_ITEM" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="69.0" layoutY="129.0" mnemonicParsing="false" text="Task" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="70.8" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button accessibleRole="MENU_ITEM" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="10.0" layoutY="155.0" mnemonicParsing="false" text="Achievements" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets left="45.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

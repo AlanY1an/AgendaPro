@@ -32,10 +32,9 @@ public class Main extends Application {
     public void showSecondaryView() {
         // 创建 SecondaryView 对象
     	DemoPage secondaryView = new DemoPage(this);
-        Scene scene = new Scene(secondaryView.getView(), 600, 400);
-        
-        primaryStage.setTitle("Demo View");
-        primaryStage.setScene(scene);
+    	primaryStage.setScene(secondaryView.getScene());
+        primaryStage.setTitle("Agendapro");
+        primaryStage.show();
     }
 
 	public static void main(String[] args) {

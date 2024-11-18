@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PomodoroController">
+   <children>
+      <Button fx:id="pomodoroButton" layoutX="188.0" layoutY="74.0" prefHeight="26.0" prefWidth="84.0" text="Pomodoro" />
+      <Button fx:id="breakButton" layoutX="334.0" layoutY="74.0" prefHeight="26.0" prefWidth="84.0" text="Break" />
+      <TextField fx:id="timerText" alignment="CENTER" layoutX="92.0" layoutY="135.0" text="25:00">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="taskTypeComboBox" layoutX="249.0" layoutY="223.0" promptText="Task Type" />
+      <Button fx:id="startButton" layoutX="254.0" layoutY="316.0" prefHeight="26.0" prefWidth="94.0" text="Start" />
+      <TextField fx:id="taskInput" layoutX="216.0" layoutY="267.0" text="Task" />
+   </children>
+</AnchorPane>

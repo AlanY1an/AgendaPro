@@ -17,7 +17,7 @@
       <AnchorPane maxHeight="81.0" minHeight="55.0" prefHeight="61.0" style="-fx-background-color: #F9FAFB; -fx-border-color: #eaebed;" BorderPane.alignment="CENTER">
          <children>
             <!-- 日期 -->
-            <Text fx:id="dateText" layoutX="21.0" layoutY="39.62100028991699" text="January 2022" textAlignment="CENTER" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="12.0">
+            <Text fx:id="dateText" layoutX="21.0" layoutY="40" text="January 2022" textAlignment="CENTER" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="AppleGothic Regular" size="20.0" />
                </font>
@@ -29,7 +29,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #ffffff;" text=" Today ">
+                  <Button fx:id="todayButton" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text=" Today ">
                      <font>
                         <Font size="15.0" />
                      </font>

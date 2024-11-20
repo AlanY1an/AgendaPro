@@ -1,16 +1,43 @@
 package model;
 
-public class Event {
-    private String title;
-    private String description;
-    private String date;
-    private String time;
+import java.time.LocalDate;
 
-    public Event(String title, String description, String date, String time) {
+public class Event {
+
+    public static final String[] CATEGORIES = { "Work", "Study", "Exercise", "Entertainment" };
+
+    private int id; // 事件ID
+    private String title; // 标题
+    private String category; // 分类：Work, Study, Exercise, Entertainment
+    private String description; // 描述
+    private LocalDate date; // 日期
+
+    // Constructor for creating a CalendarEvent
+    public Event(int id, String title, String category, String description, LocalDate date) {
+        this.id = id;
         this.title = title;
+        this.category = isValidCategory(category) ? category : "Work"; // 默认分类为 Work
         this.description = description;
         this.date = date;
-        this.time = time;
+    }
+
+    // 验证分类是否合法
+    private boolean isValidCategory(String category) {
+        for (String validCategory : CATEGORIES) {
+            if (validCategory.equalsIgnoreCase(category)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Getter 和 Setter
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -21,6 +48,16 @@ public class Event {
         this.title = title;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        if (isValidCategory(category)) {
+            this.category = category;
+        }
+    }
+
     public String getDescription() {
         return description;
     }
@@ -29,29 +66,28 @@ public class Event {
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
+    // 检查事件是否发生在指定日期
+    public boolean isOnDate(LocalDate localDate) {
+        return date.equals(localDate);
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
+    // 打印事件信息
     @Override
     public String toString() {
-        return "Event{" +
-                "title='" + title + '\'' +
+        return "CalendarEvent{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", date=" + date +
                 '}';
     }
 }

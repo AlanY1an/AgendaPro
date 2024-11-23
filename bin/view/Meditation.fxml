@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MeditationController">
+    <children>
+        <!-- 呼吸指示圆 -->
+        <Circle fx:id="breathIndicator" centerX="300.0" centerY="200.0" fill="white" radius="5.0" />
+        
+        <!-- 状态标签 -->
+        <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="276.0" style="-fx-font-size: 18;" text="Ready to start" textFill="#030000" />
+        
+        <!-- 控制按钮 -->
+        <Button fx:id="startButton" layoutX="200.0" layoutY="320.0" onAction="#startMeditation" style="-fx-background-color: #0A84FF; -fx-text-fill: white;" text="Start" />
+        <Button fx:id="resetButton" layoutX="350.0" layoutY="320.0" onAction="#resetMeditation" style="-fx-background-color: #FF453A; -fx-text-fill: white;" text="Reset" />
+      <Label layoutX="247.0" layoutY="57.0" text="Meditation">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

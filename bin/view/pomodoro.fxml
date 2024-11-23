@@ -18,5 +18,6 @@
       <ComboBox fx:id="taskTypeComboBox" layoutX="249.0" layoutY="223.0" promptText="Task Type" />
       <Button fx:id="startButton" layoutX="254.0" layoutY="316.0" prefHeight="26.0" prefWidth="94.0" text="Start" />
       <TextField fx:id="taskInput" layoutX="216.0" layoutY="267.0" text="Task" />
+      <Button layoutX="468.0" layoutY="342.0" mnemonicParsing="false" onAction="#goToMeditation" text="Go to meditaion" />
    </children>
 </AnchorPane>

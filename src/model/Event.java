@@ -1,16 +1,18 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
-public class Event {
+public abstract class Event {
 
     public static final String[] CATEGORIES = { "Work", "Study", "Exercise", "Entertainment" };
-
     private int id; // 事件ID
     private String title; // 标题
     private String category; // 分类：Work, Study, Exercise, Entertainment
     private String description; // 描述
     private LocalDate date; // 日期
+    private boolean finished; 
+    private User user1;
 
     // Constructor for creating a CalendarEvent
     public Event(int id, String title, String category, String description, LocalDate date) {
@@ -20,7 +22,9 @@ public class Event {
         this.description = description;
         this.date = date;
     }
-
+    
+    
+    
     // 验证分类是否合法
     private boolean isValidCategory(String category) {
         for (String validCategory : CATEGORIES) {
@@ -39,10 +43,13 @@ public class Event {
     public void setId(int id) {
         this.id = id;
     }
+     
+    // Abstract methods to be implemented by subclasses
+    public abstract void updateEvent(String eventName, Date startTime, Date endTime, String eventTag);
 
-    public String getTitle() {
-        return title;
-    }
+    public abstract Event getEvent();
+
+    // Common methods for all subclasses
 
     public void setTitle(String title) {
         this.title = title;
@@ -90,4 +97,16 @@ public class Event {
                 ", date=" + date +
                 '}';
     }
+
+	public boolean isFinished() {
+		return finished;
+	}
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
+	}
+	
+	public User getUser() {
+		return user1;
+	}
 }

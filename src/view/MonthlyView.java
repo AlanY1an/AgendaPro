@@ -38,15 +38,21 @@ public class MonthlyView extends GridPane {
     private void configureGrid() {
         for (int i = 0; i < NUM_COLS; i++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setPercentWidth(100.0 / NUM_COLS);
+            col.setHgrow(Priority.ALWAYS); // 列水平增长
+            col.setMinWidth(0); // 最小宽度
+            col.prefWidthProperty().bind(this.widthProperty().divide(NUM_COLS)); // 动态绑定宽度
             this.getColumnConstraints().add(col);
         }
+
         for (int i = 0; i < NUM_ROWS; i++) {
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(100.0 / NUM_ROWS);
+            row.setVgrow(Priority.ALWAYS); // 行垂直增长
+            row.setMinHeight(0); // 最小高度
+            row.prefHeightProperty().bind(this.heightProperty().divide(NUM_ROWS)); // 动态绑定高度
             this.getRowConstraints().add(row);
         }
     }
+
 
     /**
      * add the day of the week

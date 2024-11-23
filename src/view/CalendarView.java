@@ -47,7 +47,7 @@ public class CalendarView {
     @FXML
     private Button todayButton;
     
-    private boolean isMonthlyView = true; // control cur view
+    private boolean isMonthlyView = true;
 
 
     private LocalDate selectedDate;
@@ -73,13 +73,25 @@ public class CalendarView {
         addEventButton.setOnAction(e -> handleAddEvent());
         todayButton.setOnAction(e -> {
             selectedDate = LocalDate.now();
-            switchToMonthlyView(); 
+            if(isMonthlyView) {
+            	switchToMonthlyView(); 
+            }
+            else {
+            	switchToWeeklyView();
+            }
         });
     }
 
     private void navigateDate(int offset) {
-        selectedDate = selectedDate.plusMonths(offset);
-        switchToMonthlyView();
+        if (isMonthlyView) {
+            // 如果是月视图，按月导航
+            selectedDate = selectedDate.plusMonths(offset);
+            switchToMonthlyView();
+        } else {
+            // 如果是周视图，按周导航
+            selectedDate = selectedDate.plusWeeks(offset);
+            switchToWeeklyView();
+        }
     }
 
     private void updateDateText() {
@@ -87,26 +99,46 @@ public class CalendarView {
     }
 
     private void switchToWeeklyView() {
-    	isMonthlyView = false;
+        isMonthlyView = false;
         viewMenu.setText("Weekly View");
         updateDateText();
 
         WeeklyView weeklyView = new WeeklyView(selectedDate, eventController);
+
+        // 绑定宽高到 centerPane
         weeklyView.prefWidthProperty().bind(centerPane.widthProperty());
         weeklyView.prefHeightProperty().bind(centerPane.heightProperty());
+        weeklyView.maxWidthProperty().bind(centerPane.widthProperty());
+        weeklyView.maxHeightProperty().bind(centerPane.heightProperty());
+
+        // 确保对齐
+        AnchorPane.setTopAnchor(weeklyView, 0.0);
+        AnchorPane.setBottomAnchor(weeklyView, 0.0);
+        AnchorPane.setLeftAnchor(weeklyView, 0.0);
+        AnchorPane.setRightAnchor(weeklyView, 0.0);
 
         centerPane.getChildren().clear();
         centerPane.getChildren().add(weeklyView);
     }
 
     private void switchToMonthlyView() {
-    	isMonthlyView = true;
+        isMonthlyView = true;
         viewMenu.setText("Monthly View");
         updateDateText();
 
         MonthlyView monthlyView = new MonthlyView(selectedDate, eventController);
+
+        // 绑定宽高到 centerPane
         monthlyView.prefWidthProperty().bind(centerPane.widthProperty());
         monthlyView.prefHeightProperty().bind(centerPane.heightProperty());
+        monthlyView.maxWidthProperty().bind(centerPane.widthProperty());
+        monthlyView.maxHeightProperty().bind(centerPane.heightProperty());
+
+        // 确保对齐
+        AnchorPane.setTopAnchor(monthlyView, 0.0);
+        AnchorPane.setBottomAnchor(monthlyView, 0.0);
+        AnchorPane.setLeftAnchor(monthlyView, 0.0);
+        AnchorPane.setRightAnchor(monthlyView, 0.0);
 
         centerPane.getChildren().clear();
         centerPane.getChildren().add(monthlyView);
@@ -137,6 +169,8 @@ public class CalendarView {
             e.printStackTrace();
         }
     }
+    
+    
     private void refreshCurrentView() {
         if (isMonthlyView) {
             switchToMonthlyView();

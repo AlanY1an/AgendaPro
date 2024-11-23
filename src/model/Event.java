@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Event {
+public abstract class Event {
 
     public static final String[] CATEGORIES = { "Work", "Study", "Exercise", "Entertainment" };
     private int id; // 事件ID

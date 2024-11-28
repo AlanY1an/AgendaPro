@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="15.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddEventDialogController">
+<VBox spacing="15.0" prefWidth="300.0" prefHeight="400.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddEventDialogController">
    <padding>
       <Insets top="20" right="20" bottom="20" left="20" />
    </padding>

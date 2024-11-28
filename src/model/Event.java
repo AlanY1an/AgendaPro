@@ -45,12 +45,12 @@ public abstract class Event {
     }
      
     // Abstract methods to be implemented by subclasses
-    public abstract void updateEvent(String eventName, Date startTime, Date endTime, String eventTag);
-
-    public abstract Event getEvent();
 
     // Common methods for all subclasses
-
+    public String getTitle() {
+        return title;
+    }
+    
     public void setTitle(String title) {
         this.title = title;
     }

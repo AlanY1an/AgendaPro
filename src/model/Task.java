@@ -6,14 +6,12 @@ import java.util.Date;
 public class Task {
     private String taskName;
     private Date dueDate;
-    private Reminder reminder;
     private boolean finished;
 
     // Constructor
-    public Task(String taskName, Date dueDate, Reminder reminder) {
+    public Task(String taskName, Date dueDate) {
         this.taskName = taskName;
         this.dueDate = dueDate;
-        this.reminder = reminder;
         this.finished = false; // Default to not finished
     }
 

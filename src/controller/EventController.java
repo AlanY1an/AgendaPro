@@ -36,4 +36,38 @@ public class EventController {
     public ObservableList<Event> getAllEvents() {
         return FXCollections.unmodifiableObservableList(eventList);
     }
+    
+    public ObservableList<Event> getMeditationEvents() {
+        ObservableList<Event> meditationEvents = FXCollections.observableArrayList();
+        for (Event event : eventList) {
+            if ("Meditation".equals(event.getCategory())) {
+                meditationEvents.add(event);
+            }
+        }
+        return meditationEvents;
+    }
+    
+    public ObservableList<Event> getMeditationEventsOnDate(LocalDate date) {
+        ObservableList<Event> meditationEvents = FXCollections.observableArrayList();
+        for (Event event : eventList) {
+            if ("Meditation".equals(event.getCategory()) && event.getDate().equals(date)) {
+                meditationEvents.add(event);
+            }
+        }
+        return meditationEvents;
+    }
+    
+    public int getTotalMeditationMinutes() {
+        return eventList.stream()
+            .filter(event -> "Meditation".equals(event.getCategory()))
+            .mapToInt(Event::getMeditationMinutes)
+            .sum();
+    }
+
+    public int getTotalMeditationMinutesOnDate(LocalDate date) {
+        return eventList.stream()
+            .filter(event -> "Meditation".equals(event.getCategory()) && event.getDate().equals(date))
+            .mapToInt(Event::getMeditationMinutes)
+            .sum();
+    }
 }

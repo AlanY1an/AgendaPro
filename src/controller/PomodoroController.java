@@ -14,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -113,7 +112,8 @@ public class PomodoroController {
                         category,
                         "Focus session",
                         today,
-                        duration
+                        duration,
+                        0
                     );
                     eventController.addEvent(newEvent);
                     System.out.println("Event Added: " + newEvent);

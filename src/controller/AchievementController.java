@@ -4,9 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import model.Achievements;
-import javafx.fxml.FXML;
-import javafx.scene.layout.Pane;
-import javafx.beans.binding.Bindings;
 
 public class AchievementController {
 

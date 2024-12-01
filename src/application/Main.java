@@ -22,6 +22,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // 主布局
+        	
             root = new BorderPane();
 
             // 左侧菜单栏

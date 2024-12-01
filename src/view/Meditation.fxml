@@ -8,24 +8,24 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MeditationController">
    <children>
-      <Label contentDisplay="CENTER" layoutX="336.0" layoutY="68.0" prefHeight="47.0" prefWidth="162.0" text="Meditation" textAlignment="CENTER" textFill="#05c61b">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="68.0" prefHeight="47.0" prefWidth="800.0" text="Meditation" textAlignment="CENTER" textFill="#05c61b">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
       
-      <Pane fx:id="mainPane" layoutX="325.0" layoutY="154.0" prefHeight="200.0" prefWidth="176.0" />
+      <Pane fx:id="mainPane" layoutX="312.0" layoutY="149.0" prefHeight="200.0" prefWidth="176.0" />
       
-      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="363.0" layoutY="383.0" prefHeight="30.0" prefWidth="100.0" textAlignment="CENTER" textFill="#0ed076">
+      <Label fx:id="timerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="354.0" layoutY="372.0" prefHeight="30.0" prefWidth="100.0" textAlignment="CENTER" textFill="#0ed076">
          <font>
             <Font size="20.0" />
          </font></Label>
       
-      <Button fx:id="tenMinButton" layoutX="200.0" layoutY="469.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="10 Minutes" />
-      <Button fx:id="thirtyMinButton" layoutX="374.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="30 Minutes" />
-      <Button fx:id="oneHourButton" layoutX="546.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="1 Hour" />
+      <Button fx:id="tenMinButton" layoutX="181.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="10 Minutes" />
+      <Button fx:id="thirtyMinButton" layoutX="357.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="30 Minutes" />
+      <Button fx:id="oneHourButton" layoutX="533.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="1 Hour" />
       
-            <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="418.0" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18;" text="Ready to start" textAlignment="CENTER" textFill="#06971e">
+            <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="407.0" prefHeight="30.0" prefWidth="800.0" style="-fx-font-size: 18;" text="Ready to start" textAlignment="CENTER" textFill="#06971e">
          <font>
             <Font size="22.0" />
          </font></Label>

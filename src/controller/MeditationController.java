@@ -40,16 +40,16 @@ public class MeditationController {
 	        "Hold Your Breath"
 	    };
 
-	    private final double INITIAL_RADIUS = 30;
-	    private final double MIN_RADIUS = 20;
-	    private final double MAX_RADIUS = 60;
+	    private final double INITIAL_RADIUS = 45; 
+	    private final double MIN_RADIUS = 30;      
+	    private final double MAX_RADIUS = 95;
 	    private int currentStage = 0;
 	    private final int PETAL_COUNT = 12;
 
-	    private final Color LIGHT_CENTER = Color.web("#7FFFD4", 0.9);
-	    private final Color LIGHT_EDGE = Color.web("#48D1CC", 0.7);
-	    private final Color DARK_CENTER = Color.web("#40B4B0", 0.9);
-	    private final Color DARK_EDGE = Color.web("#20A4A0", 0.7);
+	    private final Color LIGHT_CENTER = Color.web("#7FFFD4", 0.9);  // 保持不变
+	    private final Color LIGHT_EDGE = Color.web("#48D1CC", 0.7);    // 保持不变
+	    private final Color DARK_CENTER = Color.web("#60C4C0", 0.9);   // 从#40B4B0改为#60C4C0，使其更亮
+	    private final Color DARK_EDGE = Color.web("#40B4B0", 0.7); 
 
 	    @FXML
 	    public void initialize() {
@@ -66,26 +66,26 @@ public class MeditationController {
 	        
 	        for (int i = 0; i < PETAL_COUNT; i++) {
 	            double angle = (360.0 / PETAL_COUNT) * i;
+	        
+	        for (int j = 0; j < 3; j++) {
+	            Circle petal = new Circle(
+	                INITIAL_RADIUS * 0.37 * (j + 1),  // 调整为0.37，与新的初始半径相配合
+	                createGradient(LIGHT_CENTER.deriveColor(0, 1, 1, 0.3),
+	                             LIGHT_EDGE.deriveColor(0, 1, 1, 0.2))
+	            );
 	            
-	            for (int j = 0; j < 3; j++) {
-	                Circle petal = new Circle(
-	                    INITIAL_RADIUS * 0.3 * (j + 1),
-	                    createGradient(LIGHT_CENTER.deriveColor(0, 1, 1, 0.3),
-	                                 LIGHT_EDGE.deriveColor(0, 1, 1, 0.2))
-	                );
-	                
-	                double offset = INITIAL_RADIUS * 0.7;
-	                petal.setTranslateX(Math.cos(Math.toRadians(angle)) * offset);
-	                petal.setTranslateY(Math.sin(Math.toRadians(angle)) * offset);
-	                petal.setEffect(new GaussianBlur(5));
-	                
-	                flowerPattern.getChildren().add(petal);
-	            }
+	            double offset = INITIAL_RADIUS * 1.1;  // 调整为1.1，让花瓣分布更合适
+	            petal.setTranslateX(Math.cos(Math.toRadians(angle)) * offset);
+	            petal.setTranslateY(Math.sin(Math.toRadians(angle)) * offset);
+	            petal.setEffect(new GaussianBlur(7));  // 调整为7，与新的大小相称
+	            
+	            flowerPattern.getChildren().add(petal);
 	        }
+	    }
 
 	        Circle mainCircle = new Circle(INITIAL_RADIUS);
 	        mainCircle.setFill(createGradient(LIGHT_CENTER, LIGHT_EDGE));
-	        mainCircle.setEffect(new GaussianBlur(2));
+	        mainCircle.setEffect(new GaussianBlur(3));
 	        flowerPattern.getChildren().add(mainCircle);
 
 	        flowerPattern.translateXProperty().bind(mainPane.widthProperty().divide(2));
@@ -185,9 +185,9 @@ public class MeditationController {
 	            final double progressCopy = progress;
 	            
 	            KeyFrame frame = new KeyFrame(
-	                Duration.seconds(time),
-	                event -> updateFlowerPattern(1.5 - progressCopy * 0.5, progressCopy)
-	            );
+	            	    Duration.seconds(time),
+	            	    event -> updateFlowerPattern(1.0 + progressCopy * 0.7, progressCopy)  // 调整为0.7
+	            	);
 	            frames.add(frame);
 	        }
 	        frames.add(new KeyFrame(Duration.seconds(timeOffset), event -> updateStage(2)));
@@ -196,8 +196,8 @@ public class MeditationController {
 	        frames.add(new KeyFrame(
 	            Duration.seconds(timeOffset),
 	            event -> {
-	                updateStage(3); 
-	                updateFlowerPattern(1.0, 0.0);
+	                updateStage(1);
+	                updateFlowerPattern(1.7, 1.0);  // 调整为1.7
 	            }
 	        ));
 	        

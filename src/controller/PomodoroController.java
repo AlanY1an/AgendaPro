@@ -31,26 +31,6 @@ public class PomodoroController {
     private int timeRemaining;
     private EventController eventController = new EventController(); 
     
-    @FXML
-    private void goToMeditation() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Meditation.fxml"));
-            Parent meditationRoot = loader.load();
-
-            // 获取 MeditationController（如果需要与其交互）
-            MeditationController meditationController = loader.getController();
-
-            // 设置新场景
-            Scene meditationScene = new Scene(meditationRoot);
-            Stage currentStage = (Stage) startButton.getScene().getWindow();
-            currentStage.setTitle("Meditation");
-            currentStage.setScene(meditationScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed to load Meditation view.");
-        }
-    }
-
     public void initialize() {
     	
     	taskTypeComboBox.getItems().addAll(

@@ -2,22 +2,27 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PomodoroController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PomodoroController">
    <children>
-      <Button fx:id="pomodoroButton" layoutX="188.0" layoutY="74.0" prefHeight="26.0" prefWidth="84.0" text="Pomodoro" />
-      <Button fx:id="breakButton" layoutX="334.0" layoutY="74.0" prefHeight="26.0" prefWidth="84.0" text="Break" />
-      <TextField fx:id="timerText" alignment="CENTER" layoutX="92.0" layoutY="135.0" text="25:00">
+      <Button fx:id="pomodoroButton" layoutX="274.0" layoutY="165.0" prefHeight="26.0" prefWidth="84.0" text="Pomodoro" />
+      <Button fx:id="breakButton" layoutX="473.0" layoutY="164.0" prefHeight="26.0" prefWidth="84.0" text="Break" />
+      <TextField fx:id="timerText" alignment="CENTER" layoutX="155.0" layoutY="233.0" prefHeight="110.0" prefWidth="524.0" text="25:00">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="taskTypeComboBox" layoutX="365.0" layoutY="370.0" promptText="Task Type" />
+      <Button fx:id="startButton" layoutX="371.0" layoutY="487.0" prefHeight="26.0" prefWidth="94.0" text="Start" />
+      <TextField fx:id="taskInput" layoutX="303.0" layoutY="419.0" prefHeight="37.0" prefWidth="225.0" text="Task" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="285.0" layoutY="92.0" prefHeight="42.0" prefWidth="263.0" text="Pomodoto Timer" textAlignment="CENTER" textFill="#08d367">
          <font>
             <Font size="34.0" />
          </font>
-      </TextField>
-      <ComboBox fx:id="taskTypeComboBox" layoutX="249.0" layoutY="223.0" promptText="Task Type" />
-      <Button fx:id="startButton" layoutX="254.0" layoutY="316.0" prefHeight="26.0" prefWidth="94.0" text="Start" />
-      <TextField fx:id="taskInput" layoutX="216.0" layoutY="267.0" text="Task" />
-      <Button layoutX="468.0" layoutY="342.0" mnemonicParsing="false" onAction="#goToMeditation" text="Go to meditaion" />
+      </Label>
    </children>
 </AnchorPane>

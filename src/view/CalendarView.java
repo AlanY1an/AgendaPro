@@ -12,6 +12,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.Event;
+import javafx.collections.ListChangeListener;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -52,6 +54,10 @@ public class CalendarView {
 
     private LocalDate selectedDate;
     private EventController eventController;
+    
+    private MonthlyView monthlyView;
+    private WeeklyView weeklyView;
+
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy", Locale.ENGLISH);
 
@@ -63,7 +69,10 @@ public class CalendarView {
     public void initialize() {
         selectedDate = LocalDate.now();
         updateDateText();
-
+        
+        monthlyView = new MonthlyView(selectedDate, eventController);
+        weeklyView = new WeeklyView(selectedDate, eventController);
+        
         switchToMonthlyView();
 
         prevButton.setOnAction(e -> navigateDate(-1));
@@ -84,11 +93,9 @@ public class CalendarView {
 
     private void navigateDate(int offset) {
         if (isMonthlyView) {
-            // 如果是月视图，按月导航
             selectedDate = selectedDate.plusMonths(offset);
             switchToMonthlyView();
         } else {
-            // 如果是周视图，按周导航
             selectedDate = selectedDate.plusWeeks(offset);
             switchToWeeklyView();
         }
@@ -103,15 +110,13 @@ public class CalendarView {
         viewMenu.setText("Weekly View");
         updateDateText();
 
-        WeeklyView weeklyView = new WeeklyView(selectedDate, eventController);
+        weeklyView.setDate(selectedDate);
 
-        // 绑定宽高到 centerPane
         weeklyView.prefWidthProperty().bind(centerPane.widthProperty());
         weeklyView.prefHeightProperty().bind(centerPane.heightProperty());
         weeklyView.maxWidthProperty().bind(centerPane.widthProperty());
         weeklyView.maxHeightProperty().bind(centerPane.heightProperty());
 
-        // 确保对齐
         AnchorPane.setTopAnchor(weeklyView, 0.0);
         AnchorPane.setBottomAnchor(weeklyView, 0.0);
         AnchorPane.setLeftAnchor(weeklyView, 0.0);
@@ -128,6 +133,8 @@ public class CalendarView {
 
         MonthlyView monthlyView = new MonthlyView(selectedDate, eventController);
 
+        monthlyView.setDate(selectedDate); // 更新月视图的日期
+        
         // 绑定宽高到 centerPane
         monthlyView.prefWidthProperty().bind(centerPane.widthProperty());
         monthlyView.prefHeightProperty().bind(centerPane.heightProperty());
@@ -154,12 +161,6 @@ public class CalendarView {
 
             AddEventDialogController controller = loader.getController();
             controller.setEventController(eventController);
-            
-            // Refresh the view
-            controller.setCallback(() -> {
-                System.out.println("Event added. Refreshing View...");
-                refreshCurrentView();
-            });
 
             Stage stage = new Stage();
             stage.setTitle("Add Event");
@@ -170,13 +171,6 @@ public class CalendarView {
         }
     }
     
-    
-    private void refreshCurrentView() {
-        if (isMonthlyView) {
-            switchToMonthlyView();
-        } else {
-            switchToWeeklyView();
-        }
-    }
+   
 
 }

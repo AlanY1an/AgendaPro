@@ -1,5 +1,7 @@
 package model;
 
+import controller.EventController;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -7,33 +9,34 @@ import java.util.Date;
 
 public class Achievements {
     private User user;
-    private ArrayList<Event> eventlist;
+    private EventController eventController;
     private ArrayList<Task> tasklist;
 
     // Constructor
-    public Achievements(User user, ArrayList<Event> eventlist, ArrayList<Task> tasklist) {
+    public Achievements(User user, EventController eventController, ArrayList<Task> tasklist) {
         this.user = user;
-        this.eventlist = eventlist;
+        this.eventController = eventController;
         this.tasklist = tasklist;
     }
+
     public Achievements(User user) {
         this.user = user;
-        this.eventlist = new ArrayList<>();;
-        this.tasklist = new ArrayList<>();;
+        this.eventController = new EventController();
+        this.tasklist = new ArrayList<>();
     }
 
     // 1. Count all finished events on current date
     public long countFinishedEventsOnCurrentDate() {
         LocalDate today = LocalDate.now();
-        return eventlist.stream()
-                .filter(event -> event.isFinished() && event.isOnDate(today))
+        return eventController.getEventsOnDate(today).stream()
+                .filter(Event::isFinished)
                 .count();
     }
 
     // 2. Count all finished events in the last 7 days
     public long countFinishedEventsInLast7Days() {
         LocalDate today = LocalDate.now();
-        return eventlist.stream()
+        return eventController.getAllEvents().stream()
                 .filter(event -> event.isFinished() && isInLastNDays(event.getDate(), 7))
                 .count();
     }
@@ -41,7 +44,7 @@ public class Achievements {
     // 3. Count all finished events in the last 30 days
     public long countFinishedEventsInLast30Days() {
         LocalDate today = LocalDate.now();
-        return eventlist.stream()
+        return eventController.getAllEvents().stream()
                 .filter(event -> event.isFinished() && isInLastNDays(event.getDate(), 30))
                 .count();
     }
@@ -56,7 +59,6 @@ public class Achievements {
 
     // 5. Count all finished tasks in the last 7 days
     public long countFinishedTasksInLast7Days() {
-        LocalDate today = LocalDate.now();
         return tasklist.stream()
                 .filter(task -> task.isFinished() && isInLastNDays(toLocalDate(task.getDueDate()), 7))
                 .count();
@@ -64,7 +66,6 @@ public class Achievements {
 
     // 6. Count all finished tasks in the last 30 days
     public long countFinishedTasksInLast30Days() {
-        LocalDate today = LocalDate.now();
         return tasklist.stream()
                 .filter(task -> task.isFinished() && isInLastNDays(toLocalDate(task.getDueDate()), 30))
                 .count();
@@ -85,14 +86,16 @@ public class Achievements {
         LocalDate taskDate = toLocalDate(dueDate);
         return taskDate.equals(localDate);
     }
-	public void addEvent(Event event) {
-		// TODO Auto-generated method stub
-		eventlist.add(event);
-	}
-	public long countFinishedEventsInCategory(String string) {
-		// TODO Auto-generated method stub
-		return eventlist.stream()
-                .filter(event -> event.isFinished() && event.getCategory().equalsIgnoreCase(string))
+
+    // Add a new event
+    public void addEvent(Event event) {
+        eventController.addEvent(event);
+    }
+
+    // Count all finished events in a specific category
+    public long countFinishedEventsInCategory(String category) {
+        return eventController.getAllEvents().stream()
+                .filter(event -> event.isFinished() && event.getCategory().equalsIgnoreCase(category))
                 .count();
-	}
+    }
 }

@@ -28,11 +28,12 @@ public class AddEventDialogController {
 
     private EventController eventController;
 
-    private EventAddedCallback callback;
-
-    public void setCallback(EventAddedCallback callback) {
-        this.callback = callback; // 设置回调
-    }
+//    private EventAddedCallback callback;
+//
+//    public void setCallback(EventAddedCallback callback) {
+////    	Take that lambda and create anonymous object
+//        this.callback = callback; 
+//    }
     
     @FXML
     public void initialize() {
@@ -69,11 +70,6 @@ public class AddEventDialogController {
 
         System.out.println("Event added: " + newEvent);
         
-        
-        // use callback to refereshed the monthly view:
-        if (callback != null) {
-            callback.onEventAdded();
-        }
 
         closeWindow();
     }

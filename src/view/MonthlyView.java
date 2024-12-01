@@ -1,6 +1,7 @@
 package view;
 
 import controller.EventController;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
@@ -30,8 +31,20 @@ public class MonthlyView extends GridPane {
         configureGrid();
         addWeekHeaders();
         populateMonth();
+        
+        eventController.getAllEvents().addListener((ListChangeListener<Event>) change -> {
+            while (change.next()) {
+                populateMonth(); // 刷新月视图
+            }
+        });
     }
 
+    public void setDate(LocalDate newDate) {
+        this.selectedDate = newDate;
+        populateMonth(); // 重新填充月视图
+    }
+
+    
     /**
      * define the rows and columns
      */
@@ -74,8 +87,12 @@ public class MonthlyView extends GridPane {
      * Fill the date of the Month
      */
     private void populateMonth() {
-        this.getChildren().removeIf(node -> GridPane.getRowIndex(node) != null && GridPane.getRowIndex(node) > 0);
+        // 清除所有内容，包括第 0 行的星期标题
+        this.getChildren().clear();
 
+        // 重新添加星期标题
+        addWeekHeaders();
+        
         YearMonth yearMonth = YearMonth.from(selectedDate);
         LocalDate firstDayOfMonth = yearMonth.atDay(1);
         DayOfWeek firstDayOfWeek = firstDayOfMonth.getDayOfWeek();

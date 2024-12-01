@@ -79,8 +79,8 @@ public class Main extends Application {
         HBox task = createMenuItem("Task", "/resources/icons/task.png", null);
 
         // Tools 分类的菜单项
-        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", null);
-        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", null);
+        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", "/view/Meditation.fxml");
+        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", "/view/Pomodoro.fxml");
 
         // 将分类和菜单项添加到侧边栏
         sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);

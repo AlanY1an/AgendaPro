@@ -13,6 +13,9 @@ public class Event {
     private LocalDate date; // 日期
     private boolean finished; 
     private User user1;
+    private int duration;
+    private int meditationMinutes; 
+
 
     // Constructor for creating a CalendarEvent
     public Event(int id, String title, String category, String description, LocalDate date) {
@@ -21,6 +24,16 @@ public class Event {
         this.category = isValidCategory(category) ? category : "Work"; // 默认分类为 Work
         this.description = description;
         this.date = date;
+    }
+    
+    public Event(int id, String title, String category, String description, LocalDate date, int duration, int meditationMinutes) {
+        this.id = id;
+        this.title = title;
+        this.category = isValidCategory(category) ? category : "Work"; // 默认分类为 Work
+        this.description = description;
+        this.date = date;
+        this.duration = duration;
+        this.meditationMinutes = meditationMinutes;
     }
     
     

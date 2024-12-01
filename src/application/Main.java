@@ -76,7 +76,7 @@ public class Main extends Application {
         HBox dashboard = createMenuItem("DashBoard", "/resources/icons/dashboard.png", null);
         HBox calendar = createMenuItem("Calendar", "/resources/icons/calendar.png", "/view/CalendarView.fxml");
         HBox achievement = createMenuItem("Achievement", "/resources/icons/achievement.png", "/view/Achievement.fxml");
-        HBox task = createMenuItem("Task", "/resources/icons/task.png", null);
+        HBox task = createMenuItem("Task", "/resources/icons/task.png", "/view/ToToTask.fxml");
 
         // Tools 分类的菜单项
         HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", null);

@@ -36,6 +36,13 @@ public class Event {
         this.meditationMinutes = meditationMinutes;
     }
     
+    public Event(int i, String string, LocalDate now, boolean b) {
+		// TODO Auto-generated constructor stub
+    	 this.id = i;
+    	 this.category=string;
+    	 this.date=now;
+    	 this.finished=b;
+	}
     
     
     // 验证分类是否合法

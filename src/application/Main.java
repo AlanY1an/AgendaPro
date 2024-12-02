@@ -1,5 +1,8 @@
 package application;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+
 import controller.AchievementController;
 import controller.DashboardController;
 import controller.EventController;
@@ -22,13 +25,17 @@ public class Main extends Application {
 
     private BorderPane root; // 主布局容器
     private EventController eventController;
-    
+    private Achievements ac;
+
     @Override
     public void start(Stage primaryStage) {
         try {
         	
         	eventController = new EventController();
-        	
+        	ac=new Achievements(eventController);
+            // 主布局
+        	initiateData(ac);
+            root = new BorderPane();
             // 主布局
             root = new BorderPane();
 
@@ -165,6 +172,9 @@ public class Main extends Application {
                     if (param == CalendarView.class) {
                         return new CalendarView(eventController);
                     }
+                    if (param == AchievementController.class) {
+                        return new AchievementController(ac);
+                    } 
                     return null; // 默认行为
                 });
             }
@@ -178,6 +188,24 @@ public class Main extends Application {
         }
     }
 
+    private void initiateData(Achievements ac) {
+		// TODO Auto-generated method stub
+		ac.getEventController().addEvent(new Event(1, "Study", LocalDate.now(), true));
+        ac.getEventController().addEvent(new Event(2, "Work", LocalDate.now().minusDays(1), true));
+        ac.getEventController().addEvent(new Event(3, "Exercise", LocalDate.now().minusDays(35), true));
+
+        // Add default tasks
+        ac.addTask(new Task("Complete Homework", convertToDate(LocalDate.now().minusDays(1)), true));
+        ac.addTask(new Task("Attend Meeting", convertToDate(LocalDate.now().minusDays(5)), true));
+        ac.addTask(new Task("Go Jogging", convertToDate(LocalDate.now().minusDays(40)), true));
+	}
+
+
+	private Date convertToDate(LocalDate localDate) {
+		// TODO Auto-generated method stub
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+    
     public static void main(String[] args) {
         launch(args);
     }

@@ -15,7 +15,14 @@ public class Task {
         this.finished = false; // Default to not finished
     }
 
-    public Date getDueDate() {
+    public Task(String string, Date dueDate, boolean b) {
+		// TODO Auto-generated constructor stub
+    	this.taskName=string;
+        this.dueDate=dueDate;
+    	this.finished =b;
+	}
+
+	public Date getDueDate() {
         return dueDate;
     }
 

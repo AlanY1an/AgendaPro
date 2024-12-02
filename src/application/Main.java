@@ -130,6 +130,13 @@ public class Main extends Application {
         // 将分类和菜单项添加到侧边栏
         sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);
 
+        // 默认选中 Dashboard 菜单项
+        selectedMenuItem = dashboard; // 设置 Dashboard 为选中
+        ((Label) dashboard.getChildren().get(1)).setTextFill(Color.web("#4CAF50"));
+        ((ImageView) dashboard.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("/resources/icons/dashboard1.png")));
+        dashboard.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
+
+        
         return sidebar;
     }
 
@@ -155,25 +162,51 @@ public class Main extends Application {
             if (menuItem != selectedMenuItem) { // 非选中项才应用悬停效果
                 label.setTextFill(Color.web("#4CAF50"));
                 menuItem.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
+                
+                // 切换为悬停图标
+                String hoverIconPath = iconPath.replace(".png", "1.png");
+                Image hoverImage = new Image(getClass().getResourceAsStream(hoverIconPath));
+                if (!hoverImage.isError()) {
+                    icon.setImage(hoverImage);
+                } else {
+                    System.err.println("Hover icon not found: " + hoverIconPath);
+                }
             }
         });
         menuItem.setOnMouseExited(e -> {
             if (menuItem != selectedMenuItem) { // 非选中项恢复默认样式
                 label.setTextFill(Color.BLACK);
                 menuItem.setStyle("-fx-background-color: #ffffff; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
+                
+                // 恢复默认图标
+                Image defaultImage = new Image(getClass().getResourceAsStream(iconPath));
+                if (!defaultImage.isError()) {
+                    icon.setImage(defaultImage);
+                } else {
+                    System.err.println("Default icon not found: " + iconPath);
+                }
             }
+            
+
         });
 
-        // 点击事件：设置选中状态并加载内容
+        
+     // 点击事件：设置选中状态并加载内容
+     // 点击事件：设置选中状态并加载内容
         menuItem.setOnMouseClicked(e -> {
             if (selectedMenuItem != null) { // 恢复上一个选中项的默认样式
-                ((Label) selectedMenuItem.getChildren().get(1)).setTextFill(Color.BLACK);
+                Label previousLabel = (Label) selectedMenuItem.getChildren().get(1);
+                ImageView previousIcon = (ImageView) selectedMenuItem.getChildren().get(0);
+
+                previousLabel.setTextFill(Color.BLACK);
+                previousIcon.setImage(new Image(getClass().getResourceAsStream("/resources/icons/" + previousLabel.getText().toLowerCase() + ".png")));
                 selectedMenuItem.setStyle("-fx-background-color: #ffffff; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
             }
 
             // 设置当前菜单项为选中状态
             selectedMenuItem = menuItem;
             label.setTextFill(Color.web("#4CAF50"));
+            icon.setImage(new Image(getClass().getResourceAsStream("/resources/icons/" + text.toLowerCase() + "1.png")));
             menuItem.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
 
             // 加载指定 FXML 文件
@@ -181,6 +214,9 @@ public class Main extends Application {
                 loadContent(fxmlPath);
             }
         });
+
+
+
 
         return menuItem;
     }

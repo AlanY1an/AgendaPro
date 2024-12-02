@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="note_pane" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TaskController">
+<HBox fx:id="note_pane" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TaskController">
    <children>
       <Pane fx:id="note_list_pane" minHeight="600.0" styleClass="statics_pane">
          <children>
@@ -88,7 +88,7 @@
                   <Insets />
                </opaqueInsets>
             </TextArea>
-            <Button fx:id="btn_save_note" alignment="CENTER_RIGHT" layoutX="487.0" layoutY="509.0" mnemonicParsing="false" onAction="#saveNote" style="-fx-background-color: #43A047;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="55.0">
+            <Button fx:id="btn_save_note" alignment="CENTER_RIGHT" layoutX="487.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleSave" style="-fx-background-color: #43A047;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="55.0">
                <font>
                   <Font size="17.0" />
                </font>

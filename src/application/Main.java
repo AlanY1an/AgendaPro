@@ -18,19 +18,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.Achievements;
 import view.CalendarView;
 
 public class Main extends Application {
 
     private BorderPane root; // 主布局容器
     private EventController eventController;
+    private Achievements ac;
     
     @Override
     public void start(Stage primaryStage) {
         try {
         	
         	eventController = new EventController();
-        	
+        	ac = new Achievements(eventController);
             // 主布局
             root = new BorderPane();
 
@@ -160,22 +162,17 @@ public class Main extends Application {
         	System.out.println("Loading FXML View: " + fxmlPath);
             // 使用 FXMLLoader 加载 FXML 文件
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            
-            if (fxmlPath.equals("/view/CalendarView.fxml")) {
-                // 设置 CalendarView 的控制器工厂以注入 EventController
-                loader.setControllerFactory(param -> {
-                    if (param == CalendarView.class) {
-                        return new CalendarView(eventController);
-                    }
-                    return null; // 默认行为
-                });
-            }  else if (fxmlPath.equals("/view/Pomodoro.fxml")) {
+            if (fxmlPath.equals("/view/Achievement.fxml")) {
+                loader.setControllerFactory(param -> new AchievementController(ac)); // 注入 Achievements
+            } else if (fxmlPath.equals("/view/CalendarView.fxml")) {
+                loader.setControllerFactory(param -> new CalendarView(eventController));
+            } else if (fxmlPath.equals("/view/Pomodoro.fxml")) {
                 loader.setControllerFactory(param -> {
                     PomodoroController controller = new PomodoroController();
                     controller.setEventController(eventController);
                     return controller;
                 });
-            } else if (fxmlPath.equals("/view/Meditation.fxml")) {  // 添加这个条件
+            } else if (fxmlPath.equals("/view/Meditation.fxml")) {
                 loader.setControllerFactory(param -> {
                     MeditationController controller = new MeditationController();
                     controller.setEventController(eventController);

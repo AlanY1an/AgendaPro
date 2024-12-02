@@ -7,6 +7,7 @@ public class Task {
     private String taskName;
     private Date dueDate;
     private boolean finished;
+    private String notes;
 
     // Constructor
     public Task(String taskName, Date dueDate) {
@@ -26,6 +27,10 @@ public class Task {
     public boolean isFinished() {
         return finished;
     }
+    
+    public String getNote() {
+		return notes;
+	}
 
     public void setFinished(boolean finished) {
         this.finished = finished;
@@ -42,6 +47,10 @@ public class Task {
 
 	public void setDueDate(Date dueDateValue) {
 		this.dueDate = dueDate;
+	}
+	
+	public void setNote(String note) {
+		this.notes = note;
 	}
 
 }

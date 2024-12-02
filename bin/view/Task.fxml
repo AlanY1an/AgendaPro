@@ -10,8 +10,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -29,12 +27,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="140.0">
                      <children>
-                        <ImageView fitHeight="28.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Downloads/Jobney-main/src/images/note.png" />
-                           </image>
-                        </ImageView>
-                        <Label alignment="CENTER_RIGHT" graphicTextGap="0.0" prefHeight="30.0" prefWidth="143.0" text="My Tasks" textAlignment="RIGHT">
+                        <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="30.0" prefWidth="150.0" text="My Tasks">
                            <font>
                               <Font name="AppleGothic Regular" size="20.0" />
                            </font>
@@ -95,7 +88,7 @@
                   <Insets />
                </opaqueInsets>
             </TextArea>
-            <Button fx:id="btn_save_note" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveNote" style="-fx-background-color: #43A047;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="55.0">
+            <Button fx:id="btn_save_note" alignment="CENTER_RIGHT" layoutX="487.0" layoutY="509.0" mnemonicParsing="false" onAction="#handleSave" style="-fx-background-color: #43A047;" text="Save" textFill="WHITE" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="55.0">
                <font>
                   <Font size="17.0" />
                </font>

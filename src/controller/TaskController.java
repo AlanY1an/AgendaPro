@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Event;
 import model.Task;
+import model.TaskRepository;
 
 public class TaskController {
 	
@@ -28,19 +29,17 @@ public class TaskController {
     @FXML
     private TextArea note_content;
 
-    // Observable list to hold tasks
-    private final ObservableList<Task> taskList = FXCollections.observableArrayList();
-
     @FXML
     public void initialize() {
         // Bind ListView with tasks
-        TodoListView.setItems(taskList);
+    	TodoListView.setItems(TaskRepository.getInstance().getTasks());
 
+        // Set custom cell factory
         TodoListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Task task, boolean empty) {
                 super.updateItem(task, empty);
-                if (empty || task == null || task.getTaskName() == null) {
+                if (empty || task == null) {
                     setText(null);
                 } else {
                     setText(task.getTaskName() + (task.isFinished() ? " (Finished)" : ""));
@@ -48,14 +47,6 @@ public class TaskController {
             }
         });
 
-        // Check if taskList is not empty
-        if (!taskList.isEmpty()) {
-            System.out.println("Tasks Loaded"); // Display a message when tasks exist
-        } else {
-        	System.out.println("No tasks available"); // Default message when no tasks
-        }
-
-        // Handle selection changes
         TodoListView.getSelectionModel().selectedItemProperty().addListener((obs, oldTask, selectedTask) -> {
             if (selectedTask != null) {
                 populateTaskDetails(selectedTask);
@@ -64,10 +55,11 @@ public class TaskController {
     }
 
     @FXML
-    private void saveNote() {
+    private void handleSave() {
         String name = taskName.getText();
         LocalDate localDueDate = dueDate.getValue();
         boolean finished = isfinished.isSelected();
+        String note = note_content.getText();
 
         if (name == null || name.trim().isEmpty() || localDueDate == null) {
             showAlert("Error", "Task Name and Due Date are required!");
@@ -83,11 +75,14 @@ public class TaskController {
             selectedTask.setTaskName(name);
             selectedTask.setDueDate(dueDateValue);
             selectedTask.setFinished(finished);
+            selectedTask.setNote(note);
         } else {
             // Add a new task
             Task newTask = new Task(name, dueDateValue);
             newTask.setFinished(finished);
-            taskList.add(newTask);
+            if(note_content != null) newTask.setNote(note);
+            TaskRepository.getInstance().getTasks().add(newTask);
+            
         }
 
         clearForm();
@@ -98,7 +93,7 @@ public class TaskController {
         taskName.setText(task.getTaskName());
         dueDate.setValue(task.getDueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         isfinished.setSelected(task.isFinished());
-        note_content.setText("Edit task details here.");
+        note_content.setText(task.getNote());
     }
 
     private void clearForm() {
@@ -114,9 +109,5 @@ public class TaskController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-    
-    public ObservableList<Task> getAllTasks() {
-        return FXCollections.unmodifiableObservableList(taskList);
     }
 }

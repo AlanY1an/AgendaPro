@@ -1,13 +1,17 @@
 package controller;
 
+import java.time.LocalDate;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Event;
 
-import java.time.LocalDate;
+
 
 public class EventController {
 
+	
+	// dynamicly get change of the list and refresh the view
     private final ObservableList<Event> eventList;
 
     public EventController() {
@@ -29,11 +33,17 @@ public class EventController {
             if (event.getDate().equals(date)) {
                 eventsOnDate.add(event);
             }
+            if (event.getDate().isBefore(LocalDate.now())) {
+                event.setFinished(true);
+            }
         }
         return eventsOnDate;
     }
 
     public ObservableList<Event> getAllEvents() {
-        return FXCollections.unmodifiableObservableList(eventList);
+        return eventList;
     }
+    
+    
+
 }

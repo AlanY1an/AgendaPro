@@ -1,5 +1,11 @@
 package application;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
+import controller.AchievementController;
+import controller.EventController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,15 +19,26 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import model.Achievements;
+import model.Event;
+import model.Task;
+import model.User;
+import view.CalendarView;
 
 public class Main extends Application {
 
     private BorderPane root; // 主布局容器
-
+    private EventController eventController;
+    private Achievements ac;
+    
     @Override
     public void start(Stage primaryStage) {
         try {
+        	eventController = new EventController();
+            
+        	ac=new Achievements(eventController);
             // 主布局
+        	initiateData(ac);
             root = new BorderPane();
 
             // 左侧菜单栏
@@ -48,7 +65,27 @@ public class Main extends Application {
         }
     }
 
-    private VBox createSidebar() {
+
+	private void initiateData(Achievements ac) {
+		// TODO Auto-generated method stub
+		ac.getEventController().addEvent(new Event(1, "Study", LocalDate.now(), true));
+        ac.getEventController().addEvent(new Event(2, "Work", LocalDate.now().minusDays(1), true));
+        ac.getEventController().addEvent(new Event(3, "Exercise", LocalDate.now().minusDays(35), true));
+
+        // Add default tasks
+        ac.addTask(new Task("Complete Homework", convertToDate(LocalDate.now().minusDays(1)), true));
+        ac.addTask(new Task("Attend Meeting", convertToDate(LocalDate.now().minusDays(5)), true));
+        ac.addTask(new Task("Go Jogging", convertToDate(LocalDate.now().minusDays(40)), true));
+	}
+
+
+	private Date convertToDate(LocalDate localDate) {
+		// TODO Auto-generated method stub
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+
+
+	private VBox createSidebar() {
         VBox sidebar = new VBox();
         sidebar.setStyle("-fx-background-color: #ffffff; -fx-padding: 20; -fx-spacing: 10;");
 
@@ -74,15 +111,16 @@ public class Main extends Application {
         // Plan 分类的菜单项
         HBox dashboard = createMenuItem("DashBoard", "/resources/icons/dashboard.png", null);
         HBox calendar = createMenuItem("Calendar", "/resources/icons/calendar.png", "/view/CalendarView.fxml");
+        
         HBox achievement = createMenuItem("Achievement", "/resources/icons/achievement.png", "/view/Achievement.fxml");
-        HBox task = createMenuItem("Task", "/resources/icons/task.png", null);
+        //HBox task = createMenuItem("Task", "/resources/icons/task.png", "/view/ToToTask.fxml");
 
         // Tools 分类的菜单项
-        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", null);
-        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", null);
+        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", "/view/Meditation.fxml");
+        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", "/view/Pomodoro.fxml");
 
         // 将分类和菜单项添加到侧边栏
-        sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);
+        sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement,toolsLabel, meditation, pomodoroTimer);
 
         return sidebar;
     }
@@ -145,6 +183,17 @@ public class Main extends Application {
         	System.out.println("Loading FXML View: " + fxmlPath);
             // 使用 FXMLLoader 加载 FXML 文件
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            
+            loader.setControllerFactory(param -> {
+            	if (param == AchievementController.class) {
+                    return new AchievementController(ac);
+                } 
+            	if (param == CalendarView.class) {
+                    return new CalendarView(eventController);
+                }
+                return null; // 默认行为
+            });
+            
             Parent content = loader.load();
             
             root.setCenter(content);

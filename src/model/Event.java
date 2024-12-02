@@ -22,10 +22,19 @@ public class Event {
         this.description = description;
         this.date = date;
     }
+   
     
-    
-    
-    // 验证分类是否合法
+    public Event(int i, String string, LocalDate now, boolean b) {
+		// TODO Auto-generated constructor stub
+    	 this.id = i;
+    	 this.category=string;
+    	 this.date=now;
+    	 this.finished=b;
+	}
+
+
+
+	// 验证分类是否合法
     private boolean isValidCategory(String category) {
         for (String validCategory : CATEGORIES) {
             if (validCategory.equalsIgnoreCase(category)) {

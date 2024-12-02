@@ -1,6 +1,7 @@
 package view;
 
 import controller.EventController;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -29,6 +30,12 @@ public class WeeklyView extends GridPane {
 
         setupGrid();
         populateWeek();
+        
+        eventController.getAllEvents().addListener((ListChangeListener<Event>) change -> {
+            while (change.next()) {
+                populateWeek(); // 刷新周视图
+            }
+        });
     }
 
     private void setupGrid() {
@@ -48,7 +55,16 @@ public class WeeklyView extends GridPane {
         this.getRowConstraints().add(rowEvents);
     }
 
+    public void setDate(LocalDate newDate) {
+        this.startOfWeek = newDate.with(DayOfWeek.MONDAY); // 更新为新日期对应的周一
+        populateWeek(); // 重新填充周视图
+    }
+
+    
     private void populateWeek() {
+    	
+    	this.getChildren().clear();
+    	
         // 遍历一周的日期
         LocalDate currentDate = startOfWeek;
 

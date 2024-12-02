@@ -1,5 +1,8 @@
 package application;
 
+import controller.AchievementController;
+import controller.DashboardController;
+import controller.EventController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,16 +16,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import view.CalendarView;
 
 public class Main extends Application {
 
     private BorderPane root; // 主布局容器
-
+    private EventController eventController;
+    
     @Override
     public void start(Stage primaryStage) {
         try {
-            // 主布局
         	
+        	eventController = new EventController();
+        	
+            // 主布局
             root = new BorderPane();
 
             // 左侧菜单栏
@@ -31,15 +38,19 @@ public class Main extends Application {
             // 默认内容区域
             VBox defaultContent = new VBox();
             defaultContent.setStyle("-fx-background-color: #e0e0e0;");
-
+            
             // 设置布局
             root.setLeft(sidebar);
             root.setCenter(defaultContent);
+            loadContent("/view/Dashboard.fxml");
 
             // 创建场景
-            Scene scene = new Scene(root, 1000, 600);
-            primaryStage.setMinWidth(1000);
+            Scene scene = new Scene(root, 1010, 600);
+            primaryStage.setMinWidth(1010);
             primaryStage.setMinHeight(690);
+            primaryStage.setResizable(false);
+
+            
             
             primaryStage.setTitle("AgendaPro");
             primaryStage.setScene(scene);
@@ -73,14 +84,15 @@ public class Main extends Application {
         toolsLabel.setStyle("-fx-padding: 10 0 5 0;");
 
         // Plan 分类的菜单项
-        HBox dashboard = createMenuItem("DashBoard", "/resources/icons/dashboard.png", null);
+        HBox dashboard = createMenuItem("DashBoard", "/resources/icons/dashboard.png", "/view/Dashboard.fxml");
         HBox calendar = createMenuItem("Calendar", "/resources/icons/calendar.png", "/view/CalendarView.fxml");
+        
         HBox achievement = createMenuItem("Achievement", "/resources/icons/achievement.png", "/view/Achievement.fxml");
-        HBox task = createMenuItem("Task", "/resources/icons/task.png", null);
+        HBox task = createMenuItem("Task", "/resources/icons/task.png", "/view/ToToTask.fxml");
 
         // Tools 分类的菜单项
-        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", null);
-        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", null);
+        HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", "/view/Meditation.fxml");
+        HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", "/view/Pomodoro.fxml");
 
         // 将分类和菜单项添加到侧边栏
         sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);
@@ -146,6 +158,17 @@ public class Main extends Application {
         	System.out.println("Loading FXML View: " + fxmlPath);
             // 使用 FXMLLoader 加载 FXML 文件
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            
+            if (fxmlPath.equals("/view/CalendarView.fxml")) {
+                // 设置 CalendarView 的控制器工厂以注入 EventController
+                loader.setControllerFactory(param -> {
+                    if (param == CalendarView.class) {
+                        return new CalendarView(eventController);
+                    }
+                    return null; // 默认行为
+                });
+            }
+
             Parent content = loader.load();
             
             root.setCenter(content);

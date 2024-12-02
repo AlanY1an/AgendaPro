@@ -26,6 +26,7 @@ public class MeditationController {
 	    @FXML private Button thirtyMinButton;
 	    @FXML private Button oneHourButton;
 
+	    private long remainingSeconds;
 	    private int currentMeditationDuration;
 	    private static int meditationEventId = 1; 
 	    private EventController eventController;
@@ -40,16 +41,16 @@ public class MeditationController {
 	        "Hold Your Breath"
 	    };
 
-	    private final double INITIAL_RADIUS = 30;
-	    private final double MIN_RADIUS = 20;
-	    private final double MAX_RADIUS = 60;
+	    private final double INITIAL_RADIUS = 45; 
+	    private final double MIN_RADIUS = 30;      
+	    private final double MAX_RADIUS = 95;
 	    private int currentStage = 0;
 	    private final int PETAL_COUNT = 12;
 
-	    private final Color LIGHT_CENTER = Color.web("#7FFFD4", 0.9);
-	    private final Color LIGHT_EDGE = Color.web("#48D1CC", 0.7);
-	    private final Color DARK_CENTER = Color.web("#40B4B0", 0.9);
-	    private final Color DARK_EDGE = Color.web("#20A4A0", 0.7);
+	    private final Color LIGHT_CENTER = Color.web("#7FFFD4", 0.9);  // 保持不变
+	    private final Color LIGHT_EDGE = Color.web("#48D1CC", 0.7);    // 保持不变
+	    private final Color DARK_CENTER = Color.web("#60C4C0", 0.9);   // 从#40B4B0改为#60C4C0，使其更亮
+	    private final Color DARK_EDGE = Color.web("#40B4B0", 0.7); 
 
 	    @FXML
 	    public void initialize() {
@@ -66,26 +67,26 @@ public class MeditationController {
 	        
 	        for (int i = 0; i < PETAL_COUNT; i++) {
 	            double angle = (360.0 / PETAL_COUNT) * i;
+	        
+	        for (int j = 0; j < 3; j++) {
+	            Circle petal = new Circle(
+	                INITIAL_RADIUS * 0.37 * (j + 1),  // 调整为0.37，与新的初始半径相配合
+	                createGradient(LIGHT_CENTER.deriveColor(0, 1, 1, 0.3),
+	                             LIGHT_EDGE.deriveColor(0, 1, 1, 0.2))
+	            );
 	            
-	            for (int j = 0; j < 3; j++) {
-	                Circle petal = new Circle(
-	                    INITIAL_RADIUS * 0.3 * (j + 1),
-	                    createGradient(LIGHT_CENTER.deriveColor(0, 1, 1, 0.3),
-	                                 LIGHT_EDGE.deriveColor(0, 1, 1, 0.2))
-	                );
-	                
-	                double offset = INITIAL_RADIUS * 0.7;
-	                petal.setTranslateX(Math.cos(Math.toRadians(angle)) * offset);
-	                petal.setTranslateY(Math.sin(Math.toRadians(angle)) * offset);
-	                petal.setEffect(new GaussianBlur(5));
-	                
-	                flowerPattern.getChildren().add(petal);
-	            }
+	            double offset = INITIAL_RADIUS * 1.1;  // 调整为1.1，让花瓣分布更合适
+	            petal.setTranslateX(Math.cos(Math.toRadians(angle)) * offset);
+	            petal.setTranslateY(Math.sin(Math.toRadians(angle)) * offset);
+	            petal.setEffect(new GaussianBlur(7));  // 调整为7，与新的大小相称
+	            
+	            flowerPattern.getChildren().add(petal);
 	        }
+	    }
 
 	        Circle mainCircle = new Circle(INITIAL_RADIUS);
 	        mainCircle.setFill(createGradient(LIGHT_CENTER, LIGHT_EDGE));
-	        mainCircle.setEffect(new GaussianBlur(2));
+	        mainCircle.setEffect(new GaussianBlur(3));
 	        flowerPattern.getChildren().add(mainCircle);
 
 	        flowerPattern.translateXProperty().bind(mainPane.widthProperty().divide(2));
@@ -153,6 +154,7 @@ public class MeditationController {
 	        List<KeyFrame> frames = new ArrayList<>();
 	        double timeOffset = 0;
 
+	        // 吸气阶段 (5秒) - 从小变大
 	        double breatheInDuration = 5.0;
 	        for (int i = 0; i <= 50; i++) {
 	            double progress = i / 50.0;
@@ -161,23 +163,25 @@ public class MeditationController {
 	            
 	            KeyFrame frame = new KeyFrame(
 	                Duration.seconds(time),
-	                event -> updateFlowerPattern(1.0 + progressCopy * 0.5, progressCopy)
+	                event -> updateFlowerPattern(1.0 + progressCopy * 0.7, progressCopy)
 	            );
 	            frames.add(frame);
 	        }
 	        frames.add(new KeyFrame(Duration.seconds(timeOffset), event -> updateStage(0)));
 	        timeOffset += breatheInDuration;
 
+	        // 第一次屏息 (5秒) - 保持最大状态
 	        frames.add(new KeyFrame(
 	            Duration.seconds(timeOffset),
 	            event -> {
 	                updateStage(1);
-	                updateFlowerPattern(1.5, 1.0);
+	                updateFlowerPattern(1.7, 1.0);
 	            }
 	        ));
-	        frames.add(new KeyFrame(Duration.seconds(timeOffset + 5.0)));  
+	        frames.add(new KeyFrame(Duration.seconds(timeOffset + 5.0)));
 	        timeOffset += 5.0;
 
+	        // 呼气阶段 (5秒) - 从大变小
 	        double breatheOutDuration = 5.0;
 	        for (int i = 0; i <= 50; i++) {
 	            double progress = i / 50.0;
@@ -186,21 +190,21 @@ public class MeditationController {
 	            
 	            KeyFrame frame = new KeyFrame(
 	                Duration.seconds(time),
-	                event -> updateFlowerPattern(1.5 - progressCopy * 0.5, progressCopy)
+	                event -> updateFlowerPattern(1.7 - (progressCopy * 0.7), 1.0 - progressCopy)
 	            );
 	            frames.add(frame);
 	        }
 	        frames.add(new KeyFrame(Duration.seconds(timeOffset), event -> updateStage(2)));
 	        timeOffset += breatheOutDuration;
 
+	        // 第二次屏息 (5秒) - 保持最小状态
 	        frames.add(new KeyFrame(
 	            Duration.seconds(timeOffset),
 	            event -> {
-	                updateStage(3); 
-	                updateFlowerPattern(1.0, 0.0);
+	                updateStage(3);  // 修改为正确的阶段
+	                updateFlowerPattern(1.0, 0.0);  // 保持最小状态
 	            }
 	        ));
-	        
 	        frames.add(new KeyFrame(Duration.seconds(timeOffset + 5.0)));
 	        timeOffset += 5.0;
 
@@ -247,21 +251,29 @@ public class MeditationController {
 	    }
 
 	    private void startTimeDisplay(int totalMinutes) {
-	    	timerLabel.setText("00:00");
-	        timeDisplay = new Timeline(
-	            new KeyFrame(Duration.seconds(1), event -> {
-	                if (durationTimer != null && durationTimer.getStatus() == Animation.Status.RUNNING) {
-	                    long remainingSeconds = (long) durationTimer.getTotalDuration()
-	                            .subtract(durationTimer.getCurrentTime()).toSeconds();
-	                    long minutes = remainingSeconds / 60;
-	                    long seconds = remainingSeconds % 60;
-	                    timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
-	                }
-	            })
-	        );
-	        timeDisplay.setCycleCount(Animation.INDEFINITE);
+	        // 初始化剩余秒数
+	        remainingSeconds = totalMinutes * 60;
+	        
+	        // 显示初始时间
+	        timerLabel.setText(String.format("%02d:00", totalMinutes));
+	        
+	        timeDisplay = new Timeline();
+	        
+	        // 创建每秒更新的关键帧
+	        KeyFrame kf = new KeyFrame(Duration.seconds(1), event -> {
+	            remainingSeconds--;
+	            if (remainingSeconds >= 0) {
+	                long minutes = remainingSeconds / 60;
+	                long seconds = remainingSeconds % 60;
+	                timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
+	            }
+	        });
+	        
+	        timeDisplay.getKeyFrames().add(kf);
+	        timeDisplay.setCycleCount(totalMinutes * 60);
 	        timeDisplay.play();
 	    }
+	       
 
 	    private Timeline timeDisplay;
 	    
@@ -272,6 +284,7 @@ public class MeditationController {
 	        if (durationTimer != null) {
 	            durationTimer.stop();
 	        }
+	        remainingSeconds = 0;
 	        disableButtons(false);
 	        timerLabel.setText("");
 	    }
@@ -296,5 +309,4 @@ public class MeditationController {
 	        statusLabel.setText(BREATH_STAGES[stageIndex]);
 	    }
 	}
-
 

@@ -1,0 +1,56 @@
+/** clock.css */
+
+.root {
+  -fx-background-color: linear-gradient(to bottom, #e8f5e9, #c8e6c9); /* 浅绿色渐变背景 */
+  -fx-padding: 12;
+  -fx-background-insets: 5;
+  -fx-effect: dropshadow(three-pass-box, #a5d6a7, 10, 0, 0, 0); /* 浅绿阴影 */
+}
+
+#face {
+  -fx-fill: radial-gradient(radius 180%, #ffffff, #e0f2f1); /* 白色渐变到淡绿蓝 */
+  -fx-stroke: #b2dfdb; /* 浅蓝绿边框 */
+  -fx-stroke-width: 5;
+  -fx-effect: dropshadow(three-pass-box, #a5d6a7, 10, 0, 4, 4); /* 浅绿阴影 */
+}
+
+#brand {
+  -fx-font-size: 14px;
+  -fx-text-fill: #388e3c; /* 深绿色字体 */
+}
+
+#hourHand {
+  -fx-stroke: #2e7d32; /* 深绿色 */
+  -fx-stroke-width: 4;
+  -fx-stroke-line-cap: round;
+}
+
+#minuteHand {
+  -fx-stroke: #66bb6a; /* 中亮度绿色 */
+  -fx-stroke-width: 3;
+  -fx-stroke-line-cap: round;
+}
+
+#secondHand {
+  -fx-stroke: #81c784; /* 亮绿色 */
+  -fx-stroke-width: 2;
+  -fx-stroke-line-cap: round;
+}
+
+#spindle {
+  -fx-fill: #388e3c; /* 深绿色 */
+  -fx-effect: dropshadow(three-pass-box, #81c784, 5, 0, 0, 0); /* 亮绿色阴影 */
+}
+
+#digitalClock {
+  -fx-font-size: 16px; /* 增大字体以提升可读性 */
+  -fx-font-family: 'Courier New';
+  -fx-text-fill: #33691e; /* 深橄榄绿色 */
+  -fx-effect: dropshadow(one-pass-box, #a5d6a7, 2, 0, 1, 1); /* 浅绿边缘光 */
+}
+
+.tick {
+  -fx-stroke: #66bb6a; /* 中绿色刻度 */
+  -fx-stroke-width: 3;
+  -fx-stroke-line-cap: round;
+}

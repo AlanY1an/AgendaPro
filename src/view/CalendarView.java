@@ -61,8 +61,8 @@ public class CalendarView {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy", Locale.ENGLISH);
 
-    public CalendarView() {
-        this.eventController = new EventController(); 
+    public CalendarView(EventController eventController) {
+        this.eventController = eventController; 
     }
 
     @FXML

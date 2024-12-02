@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CalendarView">
+<BorderPane minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="view.CalendarView">
    <top>
       <!-- 固定高度的顶部工具栏 -->
       <AnchorPane maxHeight="81.0" minHeight="55.0" prefHeight="61.0" style="-fx-background-color: #F9FAFB; -fx-border-color: #eaebed;" BorderPane.alignment="CENTER">
@@ -59,7 +59,7 @@
 
             
             <!-- add event -->
-            <Button fx:id="addEventButton" prefHeight="44.0" style="-fx-background-color: #43A047" text="Add event" textFill="WHITE" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
+            <Button fx:id="addEventButton" prefHeight="44.0" style="-fx-background-color: #43A047" text="Add event" textFill="WHITE" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -67,7 +67,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Line endX="-4.0" endY="18.0" fill="#282727" startX="-4.0" startY="-9.0" stroke="#868686" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="20.0"/>
+            <Line endX="-4.0" endY="18.0" fill="#282727" startX="-4.0" startY="-9.0" stroke="#868686" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="20.0" />
          </children>
       </AnchorPane>
    </top>

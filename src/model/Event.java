@@ -37,7 +37,6 @@ public class Event {
     }
     
     public Event(int i, String string, LocalDate now, boolean b) {
-		// TODO Auto-generated constructor stub
     	 this.id = i;
     	 this.category=string;
     	 this.date=now;

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PomodoroController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PomodoroController">
    <children>
       <Button fx:id="pomodoroButton" layoutX="249.0" layoutY="175.0" prefHeight="26.0" prefWidth="84.0" text="Pomodoro" />
       <Button fx:id="breakButton" alignment="CENTER" layoutX="476.0" layoutY="173.0" prefHeight="26.0" prefWidth="84.0" text="Break" />

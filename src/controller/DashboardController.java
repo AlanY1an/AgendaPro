@@ -55,7 +55,7 @@ public class DashboardController {
     
     @FXML
     public void initialize() {
-        System.out.println("DashboardController initialized");
+        System.out.println("Dashboard Controller initialized");
         // Greeting
         LocalTime now = LocalTime.now();
         String greeting = getGreeting(now);

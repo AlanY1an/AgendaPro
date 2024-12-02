@@ -14,6 +14,10 @@ public class Task {
         this.dueDate = dueDate;
         this.finished = false; // Default to not finished
     }
+    
+    public String getTaskName() {
+		return taskName;
+	}
 
     public Date getDueDate() {
         return dueDate;
@@ -27,10 +31,17 @@ public class Task {
         this.finished = finished;
     }
 
-    // Other getters and setters ...
-
     public boolean isOnDate(LocalDate localDate) {
         LocalDate taskDate = LocalDate.ofInstant(dueDate.toInstant(), java.time.ZoneId.systemDefault());
         return taskDate.equals(localDate);
     }
+
+	public void setTaskName(String name) {
+		this.taskName = taskName;
+	}
+
+	public void setDueDate(Date dueDateValue) {
+		this.dueDate = dueDate;
+	}
+
 }

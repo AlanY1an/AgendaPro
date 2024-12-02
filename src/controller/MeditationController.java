@@ -54,12 +54,15 @@ public class MeditationController {
 
 	    @FXML
 	    public void initialize() {
-	    	this.eventController = new EventController();
 	        setupFlowerPattern();
 	        setupBreathAnimation();
 	        setupButtons();
 	        resetMeditation();
 	        timerLabel.setText("");
+	    }
+	    
+	    public void setEventController(EventController eventController) {
+	        this.eventController = eventController;
 	    }
 
 	    private void setupFlowerPattern() {
@@ -97,7 +100,7 @@ public class MeditationController {
 	    }
 
 	    private void setupButtons() {
-	        tenMinButton.setOnAction(e -> startMeditation(10));
+	        tenMinButton.setOnAction(e -> startMeditation(5.0/60.0));  // 5秒 = 5/60分钟
 	        thirtyMinButton.setOnAction(e -> startMeditation(30));
 	        oneHourButton.setOnAction(e -> startMeditation(60));
 	    }
@@ -213,34 +216,38 @@ public class MeditationController {
 	    }
 
 	   
-	    private void startMeditation(int minutes) {
+	    private void startMeditation(double minutes) {  // 改为double类型
 	        if (breathAnimation.getStatus() == Animation.Status.RUNNING) {
 	            return;
 	        }
-	        
-	        currentMeditationDuration = minutes;
 	        
 	        if (durationTimer != null) {
 	            durationTimer.stop();
 	        }
 
 	        durationTimer = new Timeline(
-	            new KeyFrame(Duration.minutes(minutes), event -> {
+	            new KeyFrame(Duration.seconds(minutes * 60), event -> {
 	                stopMeditation();
 	                statusLabel.setText("Meditation Complete");
-	            
-	            Event meditationEvent = new Event(
+	                
+	                // 测试用：打印日志
+	                System.out.println("Creating meditation event");
+	                System.out.println("EventController is " + (eventController != null ? "not null" : "null"));
+	                
+	                Event meditationEvent = new Event(
 	                    meditationEventId++,
-	                    "Meditation Session",
 	                    "Meditation",
-	                    minutes + " minute meditation session completed",
+	                    "Meditation",
+	                    "Meditation session completed",
 	                    LocalDate.now(),
-	                    0,  // duration for pomodoro
-	                    minutes  // meditationMinutes
+	                    0,
+	                    (int)(minutes * 60)  // 转换为秒数
 	                );
 	                eventController.addEvent(meditationEvent);
+	                System.out.println("Event added: " + meditationEvent);
 	            })
 	        );
+	        
 	        durationTimer.setCycleCount(1);
 	        timerLabel.setText("");
 	        updateStage(0);
@@ -250,28 +257,31 @@ public class MeditationController {
 	        startTimeDisplay(minutes);
 	    }
 
-	    private void startTimeDisplay(int totalMinutes) {
+	    private void startTimeDisplay(double totalMinutes) {
 	        // 初始化剩余秒数
-	        remainingSeconds = totalMinutes * 60;
+	        remainingSeconds = (long)(totalMinutes * 60);
 	        
 	        // 显示初始时间
-	        timerLabel.setText(String.format("%02d:00", totalMinutes));
+	        updateTimerDisplay();
 	        
 	        timeDisplay = new Timeline();
 	        
-	        // 创建每秒更新的关键帧
 	        KeyFrame kf = new KeyFrame(Duration.seconds(1), event -> {
 	            remainingSeconds--;
 	            if (remainingSeconds >= 0) {
-	                long minutes = remainingSeconds / 60;
-	                long seconds = remainingSeconds % 60;
-	                timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
+	                updateTimerDisplay();
 	            }
 	        });
 	        
 	        timeDisplay.getKeyFrames().add(kf);
-	        timeDisplay.setCycleCount(totalMinutes * 60);
+	        timeDisplay.setCycleCount((int)(totalMinutes * 60));
 	        timeDisplay.play();
+	    }
+
+	    private void updateTimerDisplay() {
+	        long minutes = remainingSeconds / 60;
+	        long seconds = remainingSeconds % 60;
+	        timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
 	    }
 	       
 
@@ -309,5 +319,4 @@ public class MeditationController {
 	        statusLabel.setText(BREATH_STAGES[stageIndex]);
 	    }
 	}
-
 

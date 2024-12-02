@@ -16,6 +16,13 @@ public class Task {
         this.finished = false; // Default to not finished
     }
     
+    public Task(String taskName, Date dueDate,Boolean finished) {
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.finished = finished; 
+    }
+    
+    
     public String getTaskName() {
 		return taskName;
 	}

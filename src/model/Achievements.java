@@ -119,12 +119,10 @@ public class Achievements {
 
 
 	public EventController getEventController() {
-		// TODO Auto-generated method stub
 		return this.eventController;
 	}
 
 	public void addTask(Task task) {
-		// TODO Auto-generated method stub
 		tasklist.add(task);
 	}
 }

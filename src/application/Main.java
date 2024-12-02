@@ -1,5 +1,9 @@
 package application;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import controller.AchievementController;
 import controller.DashboardController;
 import controller.EventController;
@@ -19,6 +23,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Achievements;
+import model.Event;
+import model.Task;
 import view.CalendarView;
 
 public class Main extends Application {
@@ -33,6 +39,8 @@ public class Main extends Application {
         	
         	eventController = new EventController();
         	ac = new Achievements(eventController);
+        	
+        	initiateData(ac);
             // 主布局
             root = new BorderPane();
 
@@ -64,6 +72,23 @@ public class Main extends Application {
         }
     }
 
+	private void initiateData(Achievements ac) {
+		// TODO Auto-generated method stub
+		ac.getEventController().addEvent(new Event(1, "Study", LocalDate.now(), true));
+        ac.getEventController().addEvent(new Event(2, "Work", LocalDate.now().minusDays(1), true));
+        ac.getEventController().addEvent(new Event(3, "Exercise", LocalDate.now().minusDays(35), true));
+
+        // Add default tasks
+        ac.addTask(new Task("Complete Homework", convertToDate(LocalDate.now().minusDays(1)), true));
+        ac.addTask(new Task("Attend Meeting", convertToDate(LocalDate.now().minusDays(5)), true));
+        ac.addTask(new Task("Go Jogging", convertToDate(LocalDate.now().minusDays(40)), true));
+	}
+
+
+	private Date convertToDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+    
     private VBox createSidebar() {
         VBox sidebar = new VBox();
         sidebar.setStyle("-fx-background-color: #ffffff; -fx-padding: 20; -fx-spacing: 10;");

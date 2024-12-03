@@ -138,6 +138,12 @@ public class TaskController {
         taskName.setText(task.getTaskName());
         dueDate.setValue(task.getDueDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         isfinished.setSelected(task.isFinished());
+        isfinished.setStyle(
+        	    "-fx-background-color: white; " +
+        	    "-fx-border-color: white; " +
+        	    "-fx-mark-color: #4CAF50;" +
+        	    "-fx-stroke-width: 3;"
+        	);
         note_content.setText(task.getNote());
     }
 

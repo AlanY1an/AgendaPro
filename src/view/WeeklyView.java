@@ -1,7 +1,9 @@
 package view;
 
 import controller.EventController;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -29,6 +31,12 @@ public class WeeklyView extends GridPane {
 
         setupGrid();
         populateWeek();
+        
+        eventController.getAllEvents().addListener((ListChangeListener<Event>) change -> {
+            while (change.next()) {
+                populateWeek(); // 刷新周视图
+            }
+        });
     }
 
     private void setupGrid() {
@@ -48,7 +56,16 @@ public class WeeklyView extends GridPane {
         this.getRowConstraints().add(rowEvents);
     }
 
+    public void setDate(LocalDate newDate) {
+        this.startOfWeek = newDate.with(DayOfWeek.MONDAY); // 更新为新日期对应的周一
+        populateWeek(); // 重新填充周视图
+    }
+
+    
     private void populateWeek() {
+    	
+    	this.getChildren().clear();
+    	
         // 遍历一周的日期
         LocalDate currentDate = startOfWeek;
 
@@ -76,7 +93,7 @@ public class WeeklyView extends GridPane {
         dateText.setStyle("-fx-font-size: 18; -fx-fill: black;");
 
         if (date.equals(today)) {
-            cell.setStyle("-fx-border-color: blue; -fx-background-color: lightblue; -fx-padding: 5;");
+        	cell.setStyle("-fx-border-color: #388E3C; -fx-border-width: 3; -fx-padding: 5; -fx-background-color: #E8F5E9;");
         }
 
         VBox dateBox = new VBox(dayText, dateText);
@@ -94,20 +111,54 @@ public class WeeklyView extends GridPane {
         content.setAlignment(Pos.TOP_CENTER);
 
         List<Event> events = eventController.getEventsOnDate(date);
+        int maxVisibleEvents = 9;
+
         if (events.isEmpty()) {
             Text noEventText = new Text("No Events");
             noEventText.setStyle("-fx-font-size: 10; -fx-fill: gray;");
             content.getChildren().add(noEventText);
         } else {
-            for (Event event : events) {
+            for (int i = 0; i < Math.min(events.size(), maxVisibleEvents); i++) {
+                Event event = events.get(i);
                 VBox eventItem = createEventItem(event);
                 content.getChildren().add(eventItem);
             }
+
+            if (events.size() > maxVisibleEvents) {
+                Text moreText = new Text("+" + (events.size() - maxVisibleEvents) + " more");
+                moreText.setStyle("-fx-font-size: 10; -fx-fill: red;");
+                content.getChildren().add(moreText);
+            }
         }
+
+        // 点击事件查看详情
+        cell.setOnMouseClicked(event -> showEventDetails(date));
 
         cell.getChildren().add(content);
         return cell;
     }
+
+
+    
+    private void showEventDetails(LocalDate date) {
+        List<Event> events = eventController.getEventsOnDate(date);
+        StringBuilder details = new StringBuilder("Events on " + date + ":\n");
+
+        for (Event event : events) {
+            details.append(event.getTitle())
+                   .append(" - ")
+                   .append(event.getCategory())
+                   .append("\n");
+        }
+
+        // 使用 Alert 显示详情
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Event Details");
+        alert.setHeaderText("Details for " + date);
+        alert.setContentText(details.toString());
+        alert.showAndWait();
+    }
+
 
     private VBox createEventItem(Event event) {
         VBox eventBox = new VBox();

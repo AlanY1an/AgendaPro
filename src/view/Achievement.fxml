@@ -3,90 +3,114 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" minHeight="600.0" minWidth="800.0" 
-      prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21.0.5"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AchievementController">
+<Pane fx:id="root" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AchievementController">
 
    <children>
-      <Pane id="achievenmentPane" prefHeight="400.0" prefWidth="367.0">
+      <Pane id="achievenmentPane" prefHeight="600.0" prefWidth="412.0">
          <children>
-            <GridPane id="achievementGrid" hgap="15.0" layoutX="37.0" layoutY="64.0" prefHeight="312.0" prefWidth="265.0" vgap="15.0">
+            <Label layoutX="67.0" layoutY="124.0" prefHeight="23.0" prefWidth="62.0" text="Evetns" textFill="#4caf50">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font></Label>
+            <GridPane id="achievementGrid" hgap="15.0" layoutX="65.0" layoutY="145.0" prefHeight="372.0" prefWidth="298.0" vgap="15.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="128.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="122.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="138.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="124.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="124.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints maxHeight="137.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="4.0" minHeight="0.0" prefHeight="1.0" />
+                  <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="165.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="176.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Pane id="StudyEventPane" fx:id="StudyEventsPane" prefHeight="95.0" prefWidth="105.0" styleClass="statics_pane" GridPane.rowIndex="1">
                      <children>
                         <Label layoutX="18.0" layoutY="20.0" text="Study" textFill="#8ea3b7">
                            <font>
-                              <Font name="Apple Braille Outline 6 Dot" size="13.0" />
+                              <Font name="Apple Braille Outline 8 Dot" size="14.0" />
                            </font>
                         </Label>
-                        <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                        <Label id="StudyEvents" fx:id="StudyEvents" layoutX="63.0" layoutY="82.0" text="129" textFill="#006ed3">
+                        <Line endX="-100.0" endY="36.0" layoutX="118.0" layoutY="44.0" startX="-100.0" startY="8.0" stroke="#4caf50" strokeWidth="3.0" />
+                        <Label id="StudyEvents" fx:id="StudyEvents" layoutX="64.0" layoutY="52.0" text="0" textFill="4caf50">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="73.0" fitWidth="54.0" layoutX="64.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #43A047;">
+                           <image>
+                              <Image url="@../resources/icons/study2.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
-                  <Pane id="WorkEvent" fx:id="WorkEventsPane" prefHeight="115.0" prefWidth="128.0" styleClass="WorkEventPane" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Pane id="WorkEvent" fx:id="WorkEventsPane" prefHeight="184.0" prefWidth="132.0" styleClass="WorkEventPane" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label layoutX="18.0" layoutY="20.0" text="Work" textFill="#8ea3b7">
                            <font>
-                              <Font name="Apple Braille Outline 6 Dot" size="13.0" />
+                              <Font name="Apple Braille Outline 6 Dot" size="14.0" />
                            </font>
                         </Label>
-                        <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                        <Label id="WorkEvent" fx:id="WorkEvents" layoutX="76.0" layoutY="82.0" text="52" textFill="#006ed3">
+                        <Line endX="-100.0" endY="36.0" layoutX="120.0" layoutY="46.0" startX="-100.0" startY="8.0" stroke="#4caf50" strokeWidth="3.0" />
+                        <Label id="WorkEvents" fx:id="WorkEvents" layoutX="80.0" layoutY="54.0" text="0" textFill="4caf50">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="69.0" fitWidth="54.0" layoutX="68.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #43A047;">
+                           <image>
+                              <Image url="@../resources/icons/work2.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
-                  <Pane id="EntertainmenEvent" fx:id="EntertainmentEventsPane" prefHeight="129.0" prefWidth="125.0" styleClass="EntertainmentEventPane" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Pane id="EntertainmenEvent" fx:id="EntertainmentEventsPane" prefHeight="161.0" prefWidth="144.0" styleClass="EntertainmentEventPane" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Label layoutX="20.0" layoutY="22.0" text="Entertainment" textFill="#8ea3b7">
+                        <Label layoutX="20.0" layoutY="23.0" text="Entertainment" textFill="#8ea3b7">
                            <font>
-                              <Font name="Apple Braille Outline 6 Dot" size="13.0" />
+                              <Font name="Apple Braille Outline 6 Dot" size="14.0" />
                            </font>
                         </Label>
-                        <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                        <Label id="EntertainmentEvent" fx:id="EntertainmentEvents" layoutX="76.0" layoutY="82.0" text="2" textFill="#006ed3">
+                        <Line endX="-100.0" endY="36.0" layoutX="120.0" layoutY="44.0" startX="-100.0" startY="8.0" stroke="#4caf50" strokeWidth="3.0" />
+                        <Label id="EntertainmentEvents" fx:id="EntertainmentEvents" layoutX="86.0" layoutY="52.0" text="0" textFill="4caf50">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="78.0" fitWidth="71.0" layoutX="58.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons/entertainment2.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Pane id="ExerciseEvent" fx:id="ExerciseEventsPane" prefHeight="129.0" prefWidth="125.0" styleClass="EnerciseEventPane" GridPane.rowIndex="2">
                      <children>
                         <Label layoutX="18.0" layoutY="20.0" text="Exercise " textFill="#8ea3b7">
                            <font>
-                              <Font name="Apple Braille Outline 6 Dot" size="13.0" />
+                              <Font name="Apple Braille Outline 6 Dot" size="14.0" />
                            </font>
                         </Label>
-                        <Line endX="-100.0" endY="36.0" layoutX="121.0" layoutY="74.0" startX="-100.0" startY="8.0" stroke="#369fff" strokeWidth="3.0" />
-                        <Label id="ExerciseEvent" fx:id="ExcerciseEvents" layoutX="84.0" layoutY="82.0" text="6" textFill="#006ed3">
+                        <Line endX="-100.0" endY="36.0" layoutX="118.0" layoutY="44.0" startX="-100.0" startY="8.0" stroke="#4caf50" strokeWidth="3.0" />
+                        <Label id="ExerciseEvents" fx:id="ExerciseEvents" layoutX="65.0" layoutY="52.0" text="0" textFill="#4caf50">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="68.0" fitWidth="62.0" layoutX="52.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons/workout2.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <effect>
                         <Blend />
@@ -94,18 +118,73 @@
                   </Pane>
                </children>
             </GridPane>
-            <Label layoutX="29.0" layoutY="31.0" prefHeight="18.0" prefWidth="93.0" text="Achievement:" />
+            <Label layoutX="295.0" layoutY="25.0" prefHeight="24.0" prefWidth="134.0" text="Achievement" textFill="#388e3c" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView id="EventIcon" fitHeight="75.0" fitWidth="68.0" layoutX="4.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons/trophy.png" />
+               </image>
+            </ImageView>
+            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="-58.0" layoutY="182.0" startX="99.99993896484375" startY="6.62164306640625" stroke="#4caf50" strokeWidth="3.0" />
          </children>
       </Pane>
-      <Pane layoutX="367.0" layoutY="-4.0" prefHeight="400.0" prefWidth="234.0">
+      <Pane layoutX="364.0" layoutY="4.0" prefHeight="593.0" prefWidth="437.0">
          <children>
-            <Label id="completedTasks7DaysLabel" layoutX="24.0" layoutY="124.0" text="Completed in the Last 7 Days" />
-            <Label layoutX="24.0" layoutY="63.0" text="Tasks" />
-            <ProgressBar fx:id="tasks7DaysProgress" layoutX="24.0" layoutY="159.0" prefHeight="17.0" prefWidth="128.0" progress="0.32" />
-            <Label id="completedTasks30DaysLabel" layoutX="7.0" layoutY="211.0" text="Completed in the Last 30 Days" />
-            <ProgressBar fx:id="tasks30DaysProgress" layoutX="24.0" layoutY="248.0" prefHeight="18.0" prefWidth="128.0" progress="0.37" />
-            <Label id="TasksIn7Days" layoutX="172.0" layoutY="159.0" />
-            <Label id="TasksIn30Days" layoutX="172.0" layoutY="249.0" />
+            <Label id="completedTasks7DaysLabel" layoutX="73.0" layoutY="177.0" text="Completed in the Last 7 Days" textFill="#8ea3b7">
+               <font>
+                  <Font name="Apple Braille Pinpoint 8 Dot" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="109.0" text="Tasks" textFill="#4caf50">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <ProgressBar id="tasks7DaysProgress" fx:id="tasks7DaysProgress" layoutX="70.0" layoutY="207.0" prefHeight="23.0" prefWidth="210.0" style="-fx-accent: #4CAF50;" />
+            <Label id="completedTasks30DaysLabel" layoutX="75.0" layoutY="251.0" text="Completed in the Last 30 Days" textFill="#8ea3b7">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ProgressBar id="tasks30DaysProgress" fx:id="tasks30DaysProgress" layoutX="73.0" layoutY="283.0" prefHeight="23.0" prefWidth="210.0" style="-fx-accent: #4CAF50;" />
+            <Label id="TasksIn7Days" fx:id="TasksIn7Days" layoutX="305.0" layoutY="210.0" prefHeight="17.0" prefWidth="15.0" />
+            <Label id="TasksIn30Days" fx:id="TasksIn30Days" layoutX="298.0" layoutY="286.0" prefHeight="17.0" prefWidth="13.0" />
+            <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="17.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons/target2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="73.0" layoutX="337.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons/ladder.png" />
+               </image>
+            </ImageView>
+            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="-73.0" layoutY="206.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
+            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="266.0" layoutY="443.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
+            <ImageView fitHeight="74.0" fitWidth="73.0" layoutX="328.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../bin/resources/icons/meditation.png" />
+               </image>
+            </ImageView>
+            <Line endX="100.0" endY="-11.11578369140625" layoutX="-73.0" layoutY="533.0" startX="100.0" startY="23.2047119140625" stroke="#4caf50" strokeWidth="3.0" />
+            <Label fx:id="focusTime" layoutX="70.0" layoutY="370.0" text="Focus Time" textFill="#8ea3b7">
+               <font>
+                  <Font name="Apple Braille" size="13.0" />
+               </font>
+            </Label>
+            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="-69.0" layoutY="372.0" startX="141.86502075195312" startY="-27.839874267578125" stroke="#4caf50" strokeWidth="3.0" />
+            <Line endX="100.0" endY="-19.096435546875" layoutX="-72.0" layoutY="385.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
+            <ProgressBar layoutX="75.0" layoutY="407.0" prefWidth="200.0" progress="0.0" />
+            <Label layoutX="72.0" layoutY="447.0" text="Meditation Time" textFill="#8ea3b7">
+               <font>
+                  <Font name="Apple Braille" size="13.0" />
+               </font>
+            </Label>
+            <ProgressBar layoutX="76.0" layoutY="476.0" prefWidth="200.0" progress="0.0" />
+            <Line endX="185.42916870117188" endY="-6.103515625E-5" layoutX="-137.0" layoutY="558.0" startX="164.08303833007812" startY="-6.103515625E-5" stroke="#4caf50" strokeWidth="3.0" />
          </children>
       </Pane>
    </children>

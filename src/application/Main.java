@@ -45,31 +45,25 @@ public class Main extends Application {
         	
         	eventController = new EventController();
         	ac = new Achievements(eventController);
-        	
+
         	initiateData(ac);
-            // 主布局
+
             root = new BorderPane();
 
-            // 左侧菜单栏
             VBox sidebar = createSidebar();
 
-            // 默认内容区域
             VBox defaultContent = new VBox();
             defaultContent.setStyle("-fx-background-color: #e0e0e0;");
             
-            // 设置布局
             root.setLeft(sidebar);
             root.setCenter(defaultContent);
             loadContent("/view/Dashboard.fxml");
 
-            // 创建场景
             Scene scene = new Scene(root, 1010, 600);
             primaryStage.setMaxWidth(1010);
             primaryStage.setMaxHeight(690);
             primaryStage.setResizable(false);
 
-            
-            
             primaryStage.setTitle("AgendaPro");
             primaryStage.setScene(scene);
             primaryStage.show();

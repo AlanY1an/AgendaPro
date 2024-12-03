@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -8,13 +9,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import model.Event;
 import model.Task;
-import model.TaskRepository;
 
 public class TaskController {
-	
-	@FXML
+
+    @FXML
     private ListView<Task> TodoListView;
 
     @FXML
@@ -29,10 +28,18 @@ public class TaskController {
     @FXML
     private TextArea note_content;
 
+    private static final String FILE_PATH = "tasks.txt";
+    private final ObservableList<Task> tasks;
+
+    public TaskController() {
+        tasks = FXCollections.observableArrayList();
+        loadTasksFromFile(FILE_PATH);
+    }
+
     @FXML
     public void initialize() {
         // Bind ListView with tasks
-    	TodoListView.setItems(TaskRepository.getInstance().getTasks());
+        TodoListView.setItems(tasks);
 
         // Set custom cell factory
         TodoListView.setCellFactory(param -> new ListCell<>() {
@@ -80,11 +87,11 @@ public class TaskController {
             // Add a new task
             Task newTask = new Task(name, dueDateValue);
             newTask.setFinished(finished);
-            if(note_content != null) newTask.setNote(note);
-            TaskRepository.getInstance().getTasks().add(newTask);
-            
+            newTask.setNote(note);
+            tasks.add(newTask);
         }
 
+        saveTasksToFile(FILE_PATH);
         clearForm();
         TodoListView.refresh();
     }
@@ -109,5 +116,44 @@ public class TaskController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private void saveTasksToFile(String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Task task : tasks) {
+                writer.write(task.getTaskName() + "|" +
+                        task.getDueDate().getTime() + "|" +
+                        task.isFinished() + "|" +
+                        (task.getNote() != null ? task.getNote().replace("|", " ") : ""));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTasksFromFile(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            tasks.clear();
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    String taskName = parts[0];
+                    Date dueDate = new Date(Long.parseLong(parts[1]));
+                    boolean isFinished = Boolean.parseBoolean(parts[2]);
+                    String note = parts.length > 3 ? parts[3] : "";
+
+                    Task task = new Task(taskName, dueDate);
+                    task.setFinished(isFinished);
+                    task.setNote(note);
+                    tasks.add(task);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Task file not found. Starting with an empty list.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -22,6 +22,7 @@ public class EventController {
     public EventController() {
         eventList = FXCollections.observableArrayList();
         loadEventsFromFile("events.txt");
+        markFinishedEvents(); // 自动标记已完成事件
     }
 
     public void addEvent(Event event) {
@@ -32,6 +33,14 @@ public class EventController {
     public void removeEvent(Event event) {
         eventList.removeIf(e -> e.getId() == event.getId());
         saveEventsToFile("events.txt"); // 保存到文件
+    }
+    
+    private void markFinishedEvents() {
+        for (Event event : eventList) {
+            if (event.getDate().isBefore(LocalDate.now())) {
+                event.setFinished(true);
+            }
+        }
     }
 
     

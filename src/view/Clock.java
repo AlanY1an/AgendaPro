@@ -109,7 +109,7 @@ public class Clock {
         final VBox layout = new VBox();
         layout.getChildren().addAll(analogueClock,digitalClock);
         layout.setAlignment(Pos.CENTER);
-        layout.setSpacing(-30); // 减少间距
+        layout.setSpacing(-20); // 减少间距
 
 
         layout.setPadding(new Insets(0, 30, 30, 30)); // 上20px，右30px，下20px，左30px

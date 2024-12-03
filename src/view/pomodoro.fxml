@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PomodoroController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.PomodoroController">
    <children>
-      <Button fx:id="pomodoroButton" layoutX="249.0" layoutY="175.0" prefHeight="26.0" prefWidth="84.0" text="Pomodoro" />
-      <Button fx:id="breakButton" alignment="CENTER" layoutX="476.0" layoutY="173.0" prefHeight="26.0" prefWidth="84.0" text="Break" />
+      <Button fx:id="pomodoroButton" layoutX="249.0" layoutY="175.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #43A047;" text="Pomodoro" textFill="WHITE" />
+      <Button fx:id="breakButton" alignment="CENTER" layoutX="476.0" layoutY="173.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #43A047;" text="Break" textFill="WHITE" />
       <TextField fx:id="timerText" alignment="CENTER" layoutX="138.0" layoutY="244.0" prefHeight="110.0" prefWidth="524.0" text="25:00">
          <font>
             <Font size="48.0" />
          </font>
       </TextField>
       <ComboBox fx:id="taskTypeComboBox" layoutX="351.0" layoutY="401.0" prefHeight="26.0" prefWidth="113.0" promptText="Task Type" />
-      <Button fx:id="startButton" layoutX="360.0" layoutY="520.0" prefHeight="26.0" prefWidth="94.0" text="Start" />
+      <Button fx:id="startButton" layoutX="360.0" layoutY="520.0" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #43A047;" text="Start" textFill="WHITE" />
       <TextField fx:id="taskInput" layoutX="296.0" layoutY="453.0" prefHeight="37.0" prefWidth="225.0" text="Task" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="92.0" prefHeight="42.0" prefWidth="800.0" text="Pomodoto Timer" textAlignment="CENTER" textFill="#08d367">
          <font>

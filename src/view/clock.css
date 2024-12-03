@@ -1,56 +1,50 @@
 /** clock.css */
 
+/* 根布局背景为白色 */
 .root {
-  -fx-background-color: linear-gradient(to bottom, #e8f5e9, #c8e6c9); /* 浅绿色渐变背景 */
+  -fx-background-color: #ffffff; /* 纯白背景 */
   -fx-padding: 12;
   -fx-background-insets: 5;
-  -fx-effect: dropshadow(three-pass-box, #a5d6a7, 10, 0, 0, 0); /* 浅绿阴影 */
 }
 
+/* 时钟表盘样式 */
 #face {
-  -fx-fill: radial-gradient(radius 180%, #ffffff, #e0f2f1); /* 白色渐变到淡绿蓝 */
-  -fx-stroke: #b2dfdb; /* 浅蓝绿边框 */
+  -fx-fill: radial-gradient(radius 180%, #e0e0e0, #ffffff); /* 浅灰渐变到白色 */
+  -fx-stroke: #9e9e9e; /* 边框为中灰色 */
   -fx-stroke-width: 5;
-  -fx-effect: dropshadow(three-pass-box, #a5d6a7, 10, 0, 4, 4); /* 浅绿阴影 */
 }
 
-#brand {
-  -fx-font-size: 14px;
-  -fx-text-fill: #388e3c; /* 深绿色字体 */
-}
-
+/* 时针样式 */
 #hourHand {
-  -fx-stroke: #2e7d32; /* 深绿色 */
+  -fx-stroke: #212121; /* 纯黑色，强调对比 */
   -fx-stroke-width: 4;
   -fx-stroke-line-cap: round;
 }
 
+/* 分针样式 */
 #minuteHand {
-  -fx-stroke: #66bb6a; /* 中亮度绿色 */
+  -fx-stroke: #424242; /* 深灰色，次要对比 */
   -fx-stroke-width: 3;
   -fx-stroke-line-cap: round;
 }
 
+/* 秒针样式 */
 #secondHand {
-  -fx-stroke: #81c784; /* 亮绿色 */
+  -fx-stroke: #f44336; /* 红色，突出秒针 */
   -fx-stroke-width: 2;
   -fx-stroke-line-cap: round;
 }
 
-#spindle {
-  -fx-fill: #388e3c; /* 深绿色 */
-  -fx-effect: dropshadow(three-pass-box, #81c784, 5, 0, 0, 0); /* 亮绿色阴影 */
-}
-
+/* 数字时钟样式 */
 #digitalClock {
-  -fx-font-size: 16px; /* 增大字体以提升可读性 */
-  -fx-font-family: 'Courier New';
-  -fx-text-fill: #33691e; /* 深橄榄绿色 */
-  -fx-effect: dropshadow(one-pass-box, #a5d6a7, 2, 0, 1, 1); /* 浅绿边缘光 */
+  -fx-font-size: 16px; /* 字体大小 */
+  -fx-font-family: 'Arial Rounded MT Bold'; /* 现代风格字体 */
+  -fx-text-fill: #ffffff; /* 黑色文字，与白色背景形成对比 */
 }
 
+/* 时钟刻度样式 */
 .tick {
-  -fx-stroke: #66bb6a; /* 中绿色刻度 */
+  -fx-stroke: #616161; /* 中灰色刻度，低调而清晰 */
   -fx-stroke-width: 3;
   -fx-stroke-line-cap: round;
 }

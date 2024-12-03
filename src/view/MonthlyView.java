@@ -4,6 +4,8 @@ import controller.EventController;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import model.Event;
@@ -137,29 +139,63 @@ public class MonthlyView extends GridPane {
         StackPane cell = new StackPane();
         cell.setStyle("-fx-border-color: lightgray; -fx-padding: 5;");
 
-        VBox content = new VBox(5);
+        VBox content = new VBox(2);
         content.setAlignment(Pos.TOP_LEFT);
-        content.setPadding(new Insets(5));
+        content.setPadding(new Insets(3));
+        content.setMaxHeight(60); // 限制格子内容最大高度
 
+        // 添加日期文本
         Text dayText = new Text(String.valueOf(date.getDayOfMonth()));
         dayText.setStyle("-fx-font-size: 12; -fx-fill: " + textColor + ";");
         content.getChildren().add(dayText);
 
-        // get event titles
+        // 获取当天的事件列表
         List<Event> eventList = eventController.getEventsOnDate(date);
-        for (Event event : eventList) {
+        int maxVisibleEvents = 2; // 最多显示的事件数量
+
+        // 显示前两个事件
+        for (int i = 0; i < Math.min(eventList.size(), maxVisibleEvents); i++) {
+            Event event = eventList.get(i);
             Text eventText = new Text(event.getTitle());
             eventText.setStyle("-fx-font-size: 10; -fx-fill: gray;");
             content.getChildren().add(eventText);
         }
 
-        // hightlight today
+        // 如果有更多事件，显示 "+N more"
+        if (eventList.size() > maxVisibleEvents) {
+            Text moreText = new Text("+" + (eventList.size() - maxVisibleEvents) + " more");
+            moreText.setStyle("-fx-font-size: 10; -fx-fill: red;");
+            content.getChildren().add(moreText);
+        }
+
+        // 点击事件，显示详情弹窗
+        cell.setOnMouseClicked(event -> showEventDetails(date));
+
+        // 高亮今天
         if (date.equals(today)) {
-        	cell.setStyle("-fx-border-color: #388E3C; -fx-border-width: 3; -fx-padding: 5; -fx-background-color: #E8F5E9;");
+            cell.setStyle("-fx-border-color: #388E3C; -fx-border-width: 3; -fx-padding: 5; -fx-background-color: #E8F5E9;");
         }
 
         cell.getChildren().add(content);
         return cell;
     }
+
+
+    // 显示事件详情弹窗
+    private void showEventDetails(LocalDate date) {
+        List<Event> eventList = eventController.getEventsOnDate(date);
+        StringBuilder details = new StringBuilder("Events on " + date + ":\n");
+        for (Event event : eventList) {
+            details.append(event.getTitle()).append(" - ").append(event.getCategory()).append("\n");
+        }
+
+        // 使用 Alert 显示
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Event Details");
+        alert.setHeaderText("Details for " + date);
+        alert.setContentText(details.toString());
+        alert.showAndWait();
+    }
+
 
 }

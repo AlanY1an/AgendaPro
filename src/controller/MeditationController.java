@@ -319,4 +319,3 @@ public class MeditationController {
 	        statusLabel.setText(BREATH_STAGES[stageIndex]);
 	    }
 	}
-

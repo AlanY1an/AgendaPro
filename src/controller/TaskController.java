@@ -1,5 +1,11 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -10,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Event;
 import model.Task;
-import model.TaskRepository;
 
 public class TaskController {
 	
@@ -34,11 +39,19 @@ public class TaskController {
 
     @FXML
     private Button deleteButton;
+    
+    private static final String FILE_PATH = "tasks.txt";
+    private final ObservableList<Task> tasks;
+
+    public TaskController() {
+        tasks = FXCollections.observableArrayList();
+        loadTasksFromFile(FILE_PATH);
+    }
 
     @FXML
     public void initialize() {
         // Bind ListView with tasks
-    	TodoListView.setItems(TaskRepository.getInstance().getTasks());
+    	TodoListView.setItems(tasks);
 
         // Set custom cell factory
         TodoListView.setCellFactory(param -> new ListCell<>() {
@@ -97,14 +110,15 @@ public class TaskController {
         }
 
         // Clear the form and refresh the ListView
+        saveTasksToFile(FILE_PATH);
         TodoListView.refresh();
     }
     
     public void handleDelete() {
     	Task selectedTask = TodoListView.getSelectionModel().getSelectedItem();
         if (selectedTask != null) {
-            TaskRepository.getInstance().removeTask(selectedTask); // Remove from repository
-            TodoListView.getSelectionModel().clearSelection(); // Clear selection in UI
+        	tasks.remove(selectedTask); // Remove the task from the ObservableList
+        	saveTasksToFile(FILE_PATH); // Save updated tasks to the file
             clearForm();
         } else {
             showAlert("Error", "No task selected to delete!");
@@ -114,7 +128,7 @@ public class TaskController {
     public void handleAdd() {
     	clearForm();
     	Task newTask = new Task();
-        TaskRepository.getInstance().addTask(newTask); // Add to repository
+    	tasks.add(newTask); // Add new task to the ObservableList
 
         // Select the new task to allow editing
         TodoListView.getSelectionModel().select(newTask);
@@ -140,5 +154,44 @@ public class TaskController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    
+    private void saveTasksToFile(String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Task task : tasks) {
+                writer.write(task.getTaskName() + "|" +
+                        task.getDueDate().getTime() + "|" +
+                        task.isFinished() + "|" +
+                        (task.getNote() != null ? task.getNote().replace("|", " ") : ""));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTasksFromFile(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            tasks.clear();
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length >= 3) {
+                    String taskName = parts[0];
+                    Date dueDate = new Date(Long.parseLong(parts[1]));
+                    boolean isFinished = Boolean.parseBoolean(parts[2]);
+                    String note = parts.length > 3 ? parts[3] : "";
+
+                    Task task = new Task(taskName, dueDate);
+                    task.setFinished(isFinished);
+                    task.setNote(note);
+                    tasks.add(task);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Task file not found. Starting with an empty list.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <HBox fx:id="note_pane" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TaskController">
    <children>
       <Pane fx:id="note_list_pane" minHeight="600.0" styleClass="statics_pane">
@@ -96,8 +97,8 @@
                   </TextField>
                   <Label text="DueDate:" GridPane.rowIndex="1" />
                   <DatePicker id="dueDate" fx:id="dueDate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Finishied:" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <CheckBox id="isFinished " fx:id="isfinished" mnemonicParsing="false" text="Yes" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Mark as Finished:" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <CheckBox id="isFinished " fx:id="isfinished" mnemonicParsing="false" text="Finished" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" top="10.0" />

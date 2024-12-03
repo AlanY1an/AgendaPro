@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
@@ -177,7 +176,7 @@
          </HBox>
       </children>
    </AnchorPane>
-   <AnchorPane layoutX="15.0" layoutY="324.0" prefHeight="265.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane id="taskBoard" layoutX="15.0" layoutY="324.0" prefHeight="265.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <children>
          <VBox layoutX="6.0" layoutY="7.0" prefHeight="251.0" prefWidth="200.0">
             <children>
@@ -186,14 +185,14 @@
                      <Font name="Arial Rounded MT Bold" size="13.0" />
                   </font>
                   <VBox.margin>
-                     <Insets bottom="5.0" top="7.0" />
+                     <Insets bottom="10.0" top="8.0" />
                   </VBox.margin>
                </Label>
-               <ListView id="TodoListView" style="-fx-background-radius: 10; -fx-background-color: white;">
+               <VBox fx:id="taskContainer" prefHeight="216.0" prefWidth="194.0" spacing="5.0">
                   <VBox.margin>
-                     <Insets bottom="7.0" left="3.0" right="3.0" />
+                     <Insets bottom="10.0" left="10.0" right="10.0" />
                   </VBox.margin>
-               </ListView>
+               </VBox>
             </children>
          </VBox>
       </children></AnchorPane>

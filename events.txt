@@ -386,6 +386,180 @@
 1|null|Study|null|2024-12-02|false
 2|null|Work|null|2024-12-01|false
 3|null|Exercise|null|2024-10-28|false
-1|null|Study|null|2024-12-02|true
-2|null|Work|null|2024-12-01|true
-3|null|Exercise|null|2024-10-28|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|false
+2|null|Work|null|2024-12-02|false
+3|null|Exercise|null|2024-10-29|false
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false
+1|null|Study|null|2024-12-03|true
+2|null|Work|null|2024-12-02|true
+3|null|Exercise|null|2024-10-29|true
+1|Meditation|Meditation|Prepare for exams|2024-12-03|120|25|false
+2|Meditation|Meditation|Complete project deliverables|2024-12-02|480|10|false
+3|Meditation|Meditation|Morning jog|2024-11-28|60|20|false

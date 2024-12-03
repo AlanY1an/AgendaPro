@@ -1,0 +1,8 @@
+.indicator{
+	-fx-border-color: #4CAF50;
+	-fx-progress-color: #4CAF50;
+	-fx-stroke-color:#4CAF50;
+	-fx-border-color: #4CAF50;
+	-fx-border-radius: 10px;
+	-fx-border-width: 1px;
+}

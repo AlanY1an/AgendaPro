@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
@@ -19,12 +20,12 @@
 <AnchorPane maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 	<HBox alignment="CENTER" fillHeight="true" maxHeight="60.0" maxWidth="800.0" minHeight="55.0" prefHeight="60.0" prefWidth="800.0">
 	   <children>
-	      <Label fx:id="greetingLabel" maxHeight="55.0" prefHeight="55.0" prefWidth="487.0" style="-fx-font-size: 24; -fx-font-family: 'AppleGothic Regular';" text="Hello, Good Morning!" textAlignment="CENTER" />
-	      <Label fx:id="inspirationLabel" alignment="BASELINE_LEFT" contentDisplay="CENTER" maxHeight="55.0" prefHeight="55.0" prefWidth="695.0" text="How are you?" textAlignment="CENTER">
-	         <font>
-	            <Font name="AppleGothic Regular" size="18.0" />
-	         </font>
-	      </Label>
+	      <Label fx:id="greetingLabel" maxHeight="55.0" prefHeight="55.0" prefWidth="321.0" style="-fx-font-size: 24; -fx-font-family: 'AppleGothic Regular';" text="Hello, Good Morning!" textAlignment="CENTER" />
+         <Label fx:id="inspirationLabel" prefHeight="46.0" prefWidth="455.0" text="Label">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="14.0" />
+            </font>
+         </Label>
 	   </children>
 	   <padding>
 	      <Insets bottom="0.0" left="20.0" right="20.0" top="0.0" />
@@ -102,16 +103,16 @@
 	</AnchorPane>
 
    
-   <AnchorPane layoutX="444.0" layoutY="74.0" prefHeight="134.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane fx:id="achievementPane" layoutX="444.0" layoutY="73.0" prefHeight="150.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1; -fx-background-radius: 10px;" styleClass="achievement" stylesheets="@DashboardAchievement.css">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
       <children>
-         <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="312.0">
+         <HBox layoutX="10.0" layoutY="10.0" prefHeight="134.0" prefWidth="313.0">
             <children>
                <VBox prefHeight="100.0" prefWidth="171.0">
                   <children>
-                     <Label contentDisplay="TOP" text="Achievements" textAlignment="CENTER">
+                     <Label contentDisplay="TOP" styleClass="fontcolor" stylesheets="@DashboardAchievement.css" text="Achievements" textAlignment="CENTER">
                         <font>
                            <Font name="Arial Rounded MT Bold" size="20.0" />
                         </font>
@@ -119,27 +120,46 @@
                            <Insets />
                         </opaqueInsets>
                      </Label>
-                     <AnchorPane />
-                     <VBox prefHeight="100.0" prefWidth="120.0">
+                     <VBox prefHeight="51.0" prefWidth="51.0" stylesheets="@DashboardAchievement.css">
                         <children>
-                           <Label contentDisplay="TOP" text="Something" textAlignment="CENTER">
-                              <font>
-                                 <Font name="Arial Rounded MT Bold" size="20.0" />
-                              </font>
-                              <opaqueInsets>
-                                 <Insets />
-                              </opaqueInsets>
-                           </Label>
-                           <AnchorPane />
+                           <HBox prefHeight="100.0" prefWidth="200.0">
+                              <children>
+                                 <Label prefHeight="50.0" prefWidth="115.0" text="Finished Events" textFill="#030303">
+                                    <font>
+                                       <Font name="Arial Rounded MT Bold" size="14.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="finishedeEvents" prefHeight="51.0" prefWidth="52.0" textFill="#171717">
+                                    <font>
+                                       <Font name="Arial Rounded MT Bold" size="18.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
                         </children>
                      </VBox>
+                     <HBox prefHeight="41.0" prefWidth="169.0">
+                        <children>
+                           <Label prefHeight="41.0" prefWidth="116.0" text="Events">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="allEvents" prefHeight="41.0" prefWidth="52.0" textFill="#111010">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="18.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
                   </children>
                </VBox>
+               <ProgressIndicator fx:id="processBar" accessibleRole="IMAGE_VIEW" accessibleText="process label" cacheShape="false" centerShape="false" depthTest="DISABLE" minHeight="-Infinity" minWidth="-Infinity" prefHeight="133.0" prefWidth="143.0" progress="0.13" style="-fx-border-color: #4CAF50; -fx-stroke: #4CAF50; -fx-background-color: tranparent;" styleClass="indicator" stylesheets="@DashboardAchievement.css" />
             </children>
          </HBox>
       </children>
    </AnchorPane>
-   <AnchorPane layoutX="444.0" layoutY="227.0" prefHeight="134.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane fx:id="meditationPane" layoutX="444.0" layoutY="244.0" prefHeight="134.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
@@ -156,7 +176,20 @@
                            <Insets />
                         </opaqueInsets>
                      </Label>
-                     <AnchorPane />
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Label prefHeight="77.0" prefWidth="112.0" text="Today">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="focusTimeToday" prefHeight="77.0" prefWidth="42.0">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
                   </children>
                </VBox>
                <VBox prefHeight="100.0" prefWidth="120.0">
@@ -169,7 +202,20 @@
                            <Insets />
                         </opaqueInsets>
                      </Label>
-                     <AnchorPane />
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Label prefHeight="80.0" prefWidth="57.0" text="Today">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="MeditationTimeToday" prefHeight="82.0" prefWidth="63.0">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="14.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
                   </children>
                </VBox>
             </children>

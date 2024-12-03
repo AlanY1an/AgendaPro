@@ -10,10 +10,21 @@ public class Task {
     private String notes;
 
     // Constructor
+    public Task() {
+        this.taskName = "New Task"; // Default
+        this.finished = false; // Default to not finished
+    }
+
     public Task(String taskName, Date dueDate) {
         this.taskName = taskName;
         this.dueDate = dueDate;
         this.finished = false; // Default to not finished
+    }
+    
+    public Task(String taskName, Date dueDate, Boolean finished) {
+        this.taskName = taskName;
+        this.dueDate = dueDate;
+        this.finished = finished; 
     }
     
     public String getTaskName() {
@@ -42,11 +53,11 @@ public class Task {
     }
 
 	public void setTaskName(String name) {
-		this.taskName = taskName;
+		this.taskName = name;
 	}
 
 	public void setDueDate(Date dueDateValue) {
-		this.dueDate = dueDate;
+		this.dueDate = dueDateValue;
 	}
 	
 	public void setNote(String note) {

@@ -36,7 +36,13 @@ public class Event {
         this.meditationMinutes = meditationMinutes;
     }
     
-    
+    public Event(int i, String string, LocalDate now, boolean b) {
+    	 this.id = i;
+    	 this.category=string;
+    	 this.date=now;
+    	 this.finished=b;
+	}
+
     
     // 验证分类是否合法
     private boolean isValidCategory(String category) {
@@ -94,6 +100,24 @@ public class Event {
         this.date = date;
     }
 
+    //
+    public int getDuration() { 
+        return duration;
+    }
+
+    public void setDuration(int duration) { 
+        this.duration = duration;
+    }
+    
+    public int getMeditationMinutes() {
+        return meditationMinutes;
+    }
+
+    public void setMeditationMinutes(int meditationMinutes) {
+        this.meditationMinutes = meditationMinutes;
+    }
+    
+   
     // 检查事件是否发生在指定日期
     public boolean isOnDate(LocalDate localDate) {
         return date.equals(localDate);

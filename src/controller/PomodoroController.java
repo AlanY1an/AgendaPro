@@ -3,6 +3,7 @@ package controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -29,7 +30,9 @@ public class PomodoroController {
 
     private Timeline timeline;
     private int timeRemaining;
-    private EventController eventController = new EventController(); 
+    private boolean isBreakMode = false;
+    
+    private EventController eventController;
     
     @FXML
     private void goToMeditation() {
@@ -53,14 +56,26 @@ public class PomodoroController {
 
     public void initialize() {
     	
+    	isBreakMode = false;
+    	
+    	if (eventController == null) {
+            System.out.println("EventController not set in initialize!");
+        }
+    	
     	taskTypeComboBox.getItems().addAll(
     		    Arrays.stream(Event.CATEGORIES) 
-    		          .filter(category -> !category.equals("Entertainment")) 
+    		          .filter(category -> !category.equals("Entertainment") && !category.equals("Meditation")) 
     		          .toList() 
     		);
 
-        pomodoroButton.setOnAction(e -> switchMode(25 * 60)); 
-        breakButton.setOnAction(e -> switchMode(5 * 60));     
+    	pomodoroButton.setOnAction(e -> {
+            isBreakMode = false;  // 设置为番茄钟模式
+            switchMode(3);
+        });
+        breakButton.setOnAction(e -> {
+            isBreakMode = true;   // 设置为休息模式
+            switchMode(5);
+        });
         startButton.setOnAction(e -> startTimer());
 
         taskInput.setOnMouseClicked(e -> {
@@ -90,40 +105,44 @@ public class PomodoroController {
     }
 
     private void startTimer() {
-        if (timeline != null && timeline.getStatus() == Timeline.Status.RUNNING) {
-            return;
+        if (timeline != null) {
+            timeline.stop();
         }
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            if (timeRemaining > 0) {
-                timeRemaining--;
-                updateTimerText();
-            } else {
+
+        timeline = new Timeline();
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), event -> {
+            timeRemaining--;
+            updateTimerText();
+            
+            if (timeRemaining <= 0) {
                 timeline.stop();
                 startButton.setDisable(false);
-
-                String category = taskTypeComboBox.getValue();
-                String title = taskInput.getText().trim();
-                if (category != null && !category.isEmpty() && !title.isEmpty()) {
-                    LocalDate today = LocalDate.now();
-                    int duration = parseTime(timerText.getText());
-                    Event newEvent = new Event(
-                        eventController.getAllEvents().size() + 1,
-                        title,
-                        category,
-                        "Focus session",
-                        today,
-                        duration,
-                        0
-                    );
-                    eventController.addEvent(newEvent);
-                    System.out.println("Event Added: " + newEvent);
+                if (!isBreakMode) {
+                    String category = taskTypeComboBox.getValue();
+                    String title = taskInput.getText().trim();
+                    
+                    if (category != null && !category.isEmpty() && !title.isEmpty()) {
+                        Event newEvent = new Event(
+                            eventController.getAllEvents().size() + 1,
+                            title,
+                            category,
+                            "Focus session",
+                            LocalDate.now(),
+                            25,  // 固定25分钟
+                            0
+                        );
+                        eventController.addEvent(newEvent);
+                    }
                 }
             }
-        }));
-        timeline.setCycleCount(timeRemaining);
+        });
+        
+        timeline.getKeyFrames().add(frame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
         startButton.setDisable(true);
     }
+
 
     private void updateTimerText() {
         if (timeRemaining < 0) {

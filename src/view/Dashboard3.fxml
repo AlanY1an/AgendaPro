@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+	<HBox alignment="CENTER" fillHeight="true" maxHeight="60.0" maxWidth="800.0" minHeight="55.0" prefHeight="60.0" prefWidth="800.0">
+	   <children>
+	      <Label fx:id="greetingLabel" maxHeight="55.0" prefHeight="55.0" prefWidth="487.0" style="-fx-font-size: 24; -fx-font-family: 'AppleGothic Regular';" text="Hello, Good Morning!" textAlignment="CENTER" />
+	      <Label fx:id="inspirationLabel" alignment="BASELINE_LEFT" contentDisplay="CENTER" maxHeight="55.0" prefHeight="55.0" prefWidth="695.0" text="How are you?" textAlignment="CENTER">
+	         <font>
+	            <Font name="AppleGothic Regular" size="18.0" />
+	         </font>
+	      </Label>
+	   </children>
+	   <padding>
+	      <Insets bottom="0.0" left="20.0" right="20.0" top="0.0" />
+	   </padding>
+	</HBox>
+    <Separator layoutY="60.0" prefHeight="5.0" prefWidth="800.0" />
+   <AnchorPane layoutX="236.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6E6E6E; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+      <children>
+      	<VBox>
+      	   <children>
+      	      <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="200.0" text="Today is" textAlignment="CENTER" textFill="WHITE">
+      	         <font>
+      	            <Font name="Arial Rounded MT Bold" size="13.0" />
+      	         </font>
+      	      </Label>
+      	      <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="28.0" prefWidth="200.0" text="Sunday" textAlignment="CENTER" textFill="WHITE">
+      	         <font>
+      	            <Font name="Arial Rounded MT Bold" size="26.0" />
+      	         </font>
+      	      </Label>
+      	      <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="200.0" text="Dec 1" textAlignment="CENTER" textFill="WHITE">
+      	         <font>
+      	            <Font name="Arial Rounded MT Bold" size="13.0" />
+      	         </font>
+      	      </Label>
+      	      <AnchorPane fx:id="clockAnchorPane" minHeight="64.0" minWidth="200.0" prefHeight="211.0" prefWidth="200.0" />
+               <VBox prefHeight="200.0" prefWidth="100.0">
+                  <children>
+                     <StackPane fx:id="weatherIcon" prefHeight="98.0" prefWidth="200.0" />
+                     <Label fx:id="temperatureLabel" alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="28.0" prefWidth="200.0" text="Fetching" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="Arial Rounded MT Bold" size="26.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="weatherLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="200.0" text="Mostly overcast clouds" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                           <Font name="Arial Rounded MT Bold" size="13.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+
+      	   </children>
+      	</VBox>
+         <Circle centerX="50.0" centerY="50.0" disable="true" fill="RED" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="7.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <effect>
+               <Lighting diffuseConstant="2.0" specularConstant="0.0" specularExponent="0.0" surfaceScale="0.0">
+                  <bumpInput>
+                     <Shadow />
+                  </bumpInput>
+                  <light>
+                     <Light.Distant>
+                        <color>
+                           <Color red="0.6710526347160339" green="0.6368786692619324" blue="0.6368786692619324" />
+                        </color>
+                     </Light.Distant>
+                  </light>
+               </Lighting>
+            </effect></Circle>
+      </children>
+   </AnchorPane>
+
+	<AnchorPane fx:id="todayCalendarPane" layoutX="15.0" layoutY="74.0" prefHeight="237.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+	    <children>
+	        <Label fx:id="dateLabel" graphicTextGap="1.0" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="138.0" style="-fx-font-size: 16px;" text="December 2024">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="13.0" />
+            </font></Label>
+	        <GridPane fx:id="miniCalendarGrid" layoutX="10.0" layoutY="36.0" prefHeight="157.0" prefWidth="194.0" />
+	    </children>
+	</AnchorPane>
+
+   
+   <AnchorPane layoutX="444.0" layoutY="74.0" prefHeight="134.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
+      <children>
+         <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="312.0">
+            <children>
+               <VBox prefHeight="100.0" prefWidth="171.0">
+                  <children>
+                     <Label contentDisplay="TOP" text="Achievements" textAlignment="CENTER">
+                        <font>
+                           <Font name="Arial Rounded MT Bold" size="20.0" />
+                        </font>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </Label>
+                     <AnchorPane />
+                     <VBox prefHeight="100.0" prefWidth="120.0">
+                        <children>
+                           <Label contentDisplay="TOP" text="Something" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Arial Rounded MT Bold" size="20.0" />
+                              </font>
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                           </Label>
+                           <AnchorPane />
+                        </children>
+                     </VBox>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+      </children>
+   </AnchorPane>
+   <AnchorPane layoutX="444.0" layoutY="227.0" prefHeight="134.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+      <padding>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </padding>
+      <children>
+         <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="312.0">
+            <children>
+               <VBox prefHeight="100.0" prefWidth="171.0">
+                  <children>
+                     <Label contentDisplay="TOP" text="Focus Time" textAlignment="CENTER">
+                        <font>
+                           <Font name="Arial Rounded MT Bold" size="20.0" />
+                        </font>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </Label>
+                     <AnchorPane />
+                  </children>
+               </VBox>
+               <VBox prefHeight="100.0" prefWidth="120.0">
+                  <children>
+                     <Label contentDisplay="TOP" text="Meditation" textAlignment="CENTER">
+                        <font>
+                           <Font name="Arial Rounded MT Bold" size="20.0" />
+                        </font>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                     </Label>
+                     <AnchorPane />
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+      </children>
+   </AnchorPane>
+   <AnchorPane layoutX="15.0" layoutY="324.0" prefHeight="265.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+      <children>
+         <VBox layoutX="6.0" layoutY="7.0" prefHeight="251.0" prefWidth="200.0">
+            <children>
+               <Label fx:id="dateLabel1" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" prefHeight="20.0" prefWidth="200.0" style="-fx-font-size: 16px;" text="Today's To-do" textAlignment="CENTER">
+                  <font>
+                     <Font name="Arial Rounded MT Bold" size="13.0" />
+                  </font>
+                  <VBox.margin>
+                     <Insets bottom="5.0" top="7.0" />
+                  </VBox.margin>
+               </Label>
+               <ListView id="TodoListView" style="-fx-background-radius: 10; -fx-background-color: white;">
+                  <VBox.margin>
+                     <Insets bottom="7.0" left="3.0" right="3.0" />
+                  </VBox.margin>
+               </ListView>
+            </children>
+         </VBox>
+      </children></AnchorPane>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+
+</AnchorPane>

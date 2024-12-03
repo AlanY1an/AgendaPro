@@ -28,6 +28,12 @@ public class TaskController {
 
     @FXML
     private TextArea note_content;
+    
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button deleteButton;
 
     @FXML
     public void initialize() {
@@ -52,24 +58,33 @@ public class TaskController {
                 populateTaskDetails(selectedTask);
             }
         });
+        
+        addButton.setOnAction(event -> handleAdd());
+        deleteButton.setOnAction(event -> handleDelete());
     }
 
     @FXML
     private void handleSave() {
-        String name = taskName.getText();
+    	String name = taskName.getText();
         LocalDate localDueDate = dueDate.getValue();
         boolean finished = isfinished.isSelected();
         String note = note_content.getText();
 
-        if (name == null || name.trim().isEmpty() || localDueDate == null) {
-            showAlert("Error", "Task Name and Due Date are required!");
+        // Validation
+        if (name == null || name.trim().isEmpty()) {
+            showAlert("Error", "Task Name is required!");
+            return;
+        }
+
+        if (localDueDate == null) {
+            showAlert("Error", "Due Date is required!");
             return;
         }
 
         // Convert LocalDate to Date
         Date dueDateValue = Date.from(localDueDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        // Check if editing an existing task
+        // Editing an existing task
         Task selectedTask = TodoListView.getSelectionModel().getSelectedItem();
         if (selectedTask != null) {
             selectedTask.setTaskName(name);
@@ -77,16 +92,32 @@ public class TaskController {
             selectedTask.setFinished(finished);
             selectedTask.setNote(note);
         } else {
-            // Add a new task
-            Task newTask = new Task(name, dueDateValue);
-            newTask.setFinished(finished);
-            if(note_content != null) newTask.setNote(note);
-            TaskRepository.getInstance().getTasks().add(newTask);
-            
+            // Inform the user they need to use the "Add" button to create new tasks
+            showAlert("Error", "No task is selected. Use the 'Add' button to create a new task.");
         }
 
-        clearForm();
+        // Clear the form and refresh the ListView
         TodoListView.refresh();
+    }
+    
+    public void handleDelete() {
+    	Task selectedTask = TodoListView.getSelectionModel().getSelectedItem();
+        if (selectedTask != null) {
+            TaskRepository.getInstance().removeTask(selectedTask); // Remove from repository
+            TodoListView.getSelectionModel().clearSelection(); // Clear selection in UI
+            clearForm();
+        } else {
+            showAlert("Error", "No task selected to delete!");
+        }
+    }
+    
+    public void handleAdd() {
+    	clearForm();
+    	Task newTask = new Task();
+        TaskRepository.getInstance().addTask(newTask); // Add to repository
+
+        // Select the new task to allow editing
+        TodoListView.getSelectionModel().select(newTask);
     }
 
     private void populateTaskDetails(Task task) {

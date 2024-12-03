@@ -19,4 +19,12 @@ public class TaskRepository {
     public ObservableList<Task> getTasks() {
         return tasks;
     }
+    
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+    
+    public void removeTask(Task task) {
+    	tasks.remove(task);
+    }
 }

@@ -41,6 +41,9 @@ public class EventController {
             if (event.getDate().equals(date)) {
                 eventsOnDate.add(event);
             }
+            if (event.getDate().isBefore(LocalDate.now())) {
+            	event.setFinished(true);
+            }
         }
         return eventsOnDate;
     }
@@ -56,9 +59,7 @@ public class EventController {
             if ("Meditation".equals(event.getCategory()) && event.getDate().equals(date)) {
                 meditationEvents.add(event);
             }
-            if (event.getDate().isBefore(LocalDate.now())) {
-            	event.setFinished(true);
-            }
+
         }
         return meditationEvents;
     }

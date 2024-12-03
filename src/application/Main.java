@@ -3,6 +3,7 @@ package application;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Map;
 
 import controller.AchievementController;
 import controller.DashboardController;
@@ -27,6 +28,7 @@ import model.Event;
 import model.Task;
 import view.CalendarView;
 
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
@@ -131,11 +133,10 @@ public class Main extends Application {
         sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);
 
         // 默认选中 Dashboard 菜单项
-        selectedMenuItem = dashboard; // 设置 Dashboard 为选中
+        selectedMenuItem = dashboard;
         ((Label) dashboard.getChildren().get(1)).setTextFill(Color.web("#4CAF50"));
-        ((ImageView) dashboard.getChildren().get(0)).setImage(new Image(getClass().getResourceAsStream("/resources/icons/dashboard1.png")));
+        ((ImageView) dashboard.getChildren().get(0)).setImage(loadImage("/resources/icons/dashboard1.png"));
         dashboard.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
-
         
         return sidebar;
     }
@@ -143,83 +144,79 @@ public class Main extends Application {
 
     private HBox selectedMenuItem;
     private HBox createMenuItem(String text, String iconPath, String fxmlPath) {
-        // 加载图标
-        ImageView icon = new ImageView(new Image(getClass().getResourceAsStream(iconPath)));
+        ImageView icon = new ImageView(loadImage(iconPath));
         icon.setFitWidth(20);
         icon.setFitHeight(20);
 
-        // 创建文字标签
         Label label = new Label(text);
         label.setFont(Font.font("Arial", 16));
         label.setTextFill(Color.BLACK);
 
-        // 创建 HBox 并设置样式
         HBox menuItem = new HBox(10, icon, label);
         menuItem.setStyle("-fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
 
         // 鼠标悬停效果
         menuItem.setOnMouseEntered(e -> {
-            if (menuItem != selectedMenuItem) { // 非选中项才应用悬停效果
+            if (menuItem != selectedMenuItem) {
                 label.setTextFill(Color.web("#4CAF50"));
                 menuItem.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
-                
-                // 切换为悬停图标
-                String hoverIconPath = iconPath.replace(".png", "1.png");
-                Image hoverImage = new Image(getClass().getResourceAsStream(hoverIconPath));
-                if (!hoverImage.isError()) {
-                    icon.setImage(hoverImage);
-                } else {
-                    System.err.println("Hover icon not found: " + hoverIconPath);
-                }
+                icon.setImage(loadImage(getIconPath(text, true)));
             }
         });
         menuItem.setOnMouseExited(e -> {
-            if (menuItem != selectedMenuItem) { // 非选中项恢复默认样式
+            if (menuItem != selectedMenuItem) {
                 label.setTextFill(Color.BLACK);
                 menuItem.setStyle("-fx-background-color: #ffffff; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
-                
-                // 恢复默认图标
-                Image defaultImage = new Image(getClass().getResourceAsStream(iconPath));
-                if (!defaultImage.isError()) {
-                    icon.setImage(defaultImage);
-                } else {
-                    System.err.println("Default icon not found: " + iconPath);
-                }
+                icon.setImage(loadImage(getIconPath(text, false)));
             }
-            
-
         });
 
-        
-     // 点击事件：设置选中状态并加载内容
-     // 点击事件：设置选中状态并加载内容
+        // 点击事件
         menuItem.setOnMouseClicked(e -> {
-            if (selectedMenuItem != null) { // 恢复上一个选中项的默认样式
-                Label previousLabel = (Label) selectedMenuItem.getChildren().get(1);
-                ImageView previousIcon = (ImageView) selectedMenuItem.getChildren().get(0);
+            if (selectedMenuItem != null) {
+                Label prevLabel = (Label) selectedMenuItem.getChildren().get(1);
+                ImageView prevIcon = (ImageView) selectedMenuItem.getChildren().get(0);
 
-                previousLabel.setTextFill(Color.BLACK);
-                previousIcon.setImage(new Image(getClass().getResourceAsStream("/resources/icons/" + previousLabel.getText().toLowerCase() + ".png")));
+                prevLabel.setTextFill(Color.BLACK);
+                prevIcon.setImage(loadImage(getIconPath(prevLabel.getText(), false)));
                 selectedMenuItem.setStyle("-fx-background-color: #ffffff; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
             }
 
-            // 设置当前菜单项为选中状态
             selectedMenuItem = menuItem;
             label.setTextFill(Color.web("#4CAF50"));
-            icon.setImage(new Image(getClass().getResourceAsStream("/resources/icons/" + text.toLowerCase() + "1.png")));
+            icon.setImage(loadImage(getIconPath(text, true)));
             menuItem.setStyle("-fx-background-color: #E8F5E9; -fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
 
-            // 加载指定 FXML 文件
             if (fxmlPath != null) {
                 loadContent(fxmlPath);
             }
         });
 
-
-
-
         return menuItem;
     }
+
+    private static final Map<String, String> ICON_MAP = Map.of(
+    	    "DashBoard", "/resources/icons/dashboard.png",
+    	    "Calendar", "/resources/icons/calendar.png",
+    	    "Achievement", "/resources/icons/achievement.png",
+    	    "Task", "/resources/icons/task.png",
+    	    "Meditation", "/resources/icons/cloud.png",
+    	    "Pomodoro Timer", "/resources/icons/clock.png"
+    	);
+
+	private String getIconPath(String key, boolean selected) {
+	    String base = ICON_MAP.getOrDefault(key, "/resources/icons/default.png");
+	    return selected ? base.replace(".png", "1.png") : base;
+	}
+
+	private Image loadImage(String path) {
+	    InputStream stream = getClass().getResourceAsStream(path);
+	    if (stream == null) {
+	        System.err.println("Failed to load resource: " + path);
+	        return null;
+	    }
+	    return new Image(stream);
+	}
 
 
     private void loadContent(String fxmlPath) {

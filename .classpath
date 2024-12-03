@@ -11,7 +11,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.base.jar">
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaFX">
+>>>>>>> Stashed changes
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -21,37 +25,65 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.web.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.swing.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.graphics.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.media.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+=======
 	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx-swt.jar">
+>>>>>>> Stashed changes
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< Updated upstream
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.swing.jar">
+=======
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.base.jar">
+>>>>>>> Stashed changes
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+<<<<<<< Updated upstream
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.graphics.jar">
+=======
 	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.fxml.jar">
+>>>>>>> Stashed changes
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< Updated upstream
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.media.jar">
+=======
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.graphics.jar">
+>>>>>>> Stashed changes
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+<<<<<<< Updated upstream
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx-swt.jar">
+=======
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.media.jar">
+>>>>>>> Stashed changes
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+<<<<<<< Updated upstream
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.fxml.jar">
+=======
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.swing.jar">
+>>>>>>> Stashed changes
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+<<<<<<< Updated upstream
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javaFx">
+=======
+	<classpathentry kind="lib" path="/Users/qiaohui/JavaFX-SDK/javafx-sdk-21.0.5/lib/javafx.web.jar">
+>>>>>>> Stashed changes
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

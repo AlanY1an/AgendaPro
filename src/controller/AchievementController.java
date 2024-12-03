@@ -26,6 +26,13 @@ public class AchievementController {
 
     @FXML private Label TasksIn7Days;
     @FXML private Label TasksIn30Days;
+    
+    @FXML private Label MeditationIn7Days;
+    @FXML private Label MeditationIn30Days;
+    
+    @FXML private ProgressBar meditationIn7Days;
+    @FXML private ProgressBar meditationIn30Days;
+
 
     // Instance of Achievements to get the data
     private Achievements achievements;
@@ -98,7 +105,17 @@ public class AchievementController {
         // Update labels for tasks
         TasksIn7Days.setText(String.valueOf(tasksCompleted7Days));
         TasksIn30Days.setText(String.valueOf(tasksCompleted30Days));
+        
+        
+        int meditateIn7Days = achievements.getTotalMeditationMinutesInLast7Days();
+        int meditateIn30Days = achievements.getTotalMeditationMinutesInLast30Days();
+        int maxLength = 10;
 
+        MeditationIn7Days.setText(String.valueOf(meditateIn7Days));
+        MeditationIn30Days.setText(String.valueOf(meditateIn30Days));
+        
+        meditationIn7Days.setProgress((double) meditateIn7Days / maxLength);
+        meditationIn30Days.setProgress((double) meditateIn30Days / maxLength);
     }
 
     // Normalize progress values between 0 and 1

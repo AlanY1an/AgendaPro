@@ -109,7 +109,7 @@ public class Achievements {
         LocalDate today = LocalDate.now(); // Get today's date
         LocalDate thirtyDaysAgo = today.minusDays(30); // Calculate the date 30 days ago
 
-        return eventController.getAllEvents().stream()
+        return eventController.getAllEvents().stream() 
                 .filter(event -> event.isFinished() // Check if the event is finished
                         && event.getCategory().equalsIgnoreCase(category) // Check category
                         && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo))) // Check if within 30 days
@@ -127,4 +127,30 @@ public class Achievements {
 		// TODO Auto-generated method stub
 		tasklist.add(task);
 	}
+
+	public int getTotalMeditationMinutesInLast7Days() {
+		LocalDate today = LocalDate.now();
+	    LocalDate sevenDaysAgo = today.minusDays(7);
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo))) // Within the last 7 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
+
+	public int getTotalMeditationMinutesInLast30Days() {
+		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+	    LocalDate thirtyDaysAgo = today.minusDays(30);
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo))) // Within the last 30 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
 }
+>>>>>>> Stashed changes

@@ -34,7 +34,11 @@ public class EventController {
                 eventsOnDate.add(event);
             }
             if (event.getDate().isBefore(LocalDate.now())) {
+<<<<<<< Updated upstream
                 event.setFinished(true);
+=======
+            	event.setFinished(true);
+>>>>>>> Stashed changes
             }
         }
         return eventsOnDate;

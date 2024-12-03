@@ -1,0 +1,135 @@
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Meditation session completed|2024-12-02|0|5|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+50|234|Study||2023-11-02|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+54|34|Work||2024-11-06|false
+55|34|Entertainment||2024-11-20|false
+56|45|Exercise||2024-11-19|false
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Meditation session completed|2024-12-02|0|5|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Meditation session completed|2024-12-02|0|5|true
+65|45|Meditation||2024-12-11|false
+66|23|Meditation||2024-11-05|false
+67|345|Meditation||2024-11-05|false
+2|Meditation|Meditation|Meditation session completed|2024-12-02|0|5|true
+3|Meditation|Meditation|Meditation session completed|2024-12-02|0|5|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-10-28|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|false
+2|null|Work|null|2024-12-01|false
+3|null|Exercise|null|2024-10-28|false
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true
+1|null|Study|null|2024-12-02|true
+2|null|Work|null|2024-12-01|true
+3|null|Exercise|null|2024-10-28|true
+1|Meditation|Meditation|Prepare for exams|2024-12-02|120|25|true
+2|Meditation|Meditation|Complete project deliverables|2024-12-01|480|10|true
+3|Meditation|Meditation|Morning jog|2024-11-27|60|20|true

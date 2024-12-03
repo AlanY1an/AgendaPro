@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AchievementController">
+<Pane fx:id="root" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AchievementController">
 
    <children>
       <Pane id="achievenmentPane" prefHeight="600.0" prefWidth="412.0">
@@ -166,25 +166,27 @@
             <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="266.0" layoutY="443.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
             <ImageView fitHeight="74.0" fitWidth="73.0" layoutX="328.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../bin/resources/icons/meditation.png" />
+                  <Image url="@../resources/icons/meditation.png" />
                </image>
             </ImageView>
             <Line endX="100.0" endY="-11.11578369140625" layoutX="-73.0" layoutY="533.0" startX="100.0" startY="23.2047119140625" stroke="#4caf50" strokeWidth="3.0" />
-            <Label fx:id="focusTime" layoutX="70.0" layoutY="370.0" text="Focus Time" textFill="#8ea3b7">
+            <Label fx:id="focusTime" layoutX="70.0" layoutY="370.0" text="Meditation In Past 7 Days" textFill="#8ea3b7">
                <font>
                   <Font name="Apple Braille" size="13.0" />
                </font>
             </Label>
             <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="-69.0" layoutY="372.0" startX="141.86502075195312" startY="-27.839874267578125" stroke="#4caf50" strokeWidth="3.0" />
             <Line endX="100.0" endY="-19.096435546875" layoutX="-72.0" layoutY="385.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
-            <ProgressBar layoutX="75.0" layoutY="407.0" prefWidth="200.0" progress="0.0" />
-            <Label layoutX="72.0" layoutY="447.0" text="Meditation Time" textFill="#8ea3b7">
+            <ProgressBar fx:id="meditationIn7Days" layoutX="75.0" layoutY="407.0" prefWidth="200.0" progress="0.0" style="-fx-accent: #4CAF50;" />
+            <Label layoutX="72.0" layoutY="447.0" text="Meditation In Past 30 Days" textFill="#8ea3b7">
                <font>
                   <Font name="Apple Braille" size="13.0" />
                </font>
             </Label>
-            <ProgressBar layoutX="76.0" layoutY="476.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="meditationIn30Days" layoutX="76.0" layoutY="476.0" prefWidth="200.0" progress="0.0" style="-fx-accent: #4CAF50;" />
             <Line endX="185.42916870117188" endY="-6.103515625E-5" layoutX="-137.0" layoutY="558.0" startX="164.08303833007812" startY="-6.103515625E-5" stroke="#4caf50" strokeWidth="3.0" />
+            <Label fx:id="MeditationIn7Days" layoutX="305.0" layoutY="408.0" />
+            <Label fx:id="MeditationIn30Days" layoutX="298.0" layoutY="477.0" prefHeight="17.0" prefWidth="24.0" />
          </children>
       </Pane>
    </children>

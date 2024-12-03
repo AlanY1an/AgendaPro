@@ -19,6 +19,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -28,14 +29,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import model.Achievements;
 import view.Clock;
 import java.util.Random;
 import java.util.Scanner;
 
-import org.json.JSONObject;
 
 
 public class DashboardController {
@@ -67,6 +65,21 @@ public class DashboardController {
     private Label temperatureLabel;
     @FXML
     private Label weatherLabel;
+    @FXML
+    private ProgressIndicator processBar;
+    @FXML
+    private Label finishedeEvents;
+    @FXML
+    private Label allEvents;
+    @FXML
+    private Label focusTimeToday;
+    @FXML
+    private Label MeditationTimeToday;
+    
+    
+    private Achievements achievements;
+    
+    
     private static final String API_KEY = "78ee7cedb6926adb9593055fb371ce53";
     private static final String API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=42.43&lon=71.06&appid=" + API_KEY + "&units=imperial";
     private static boolean isWeatherDataFetched = false;
@@ -86,6 +99,11 @@ public class DashboardController {
             "Don’t stop when you’re tired. Stop when you’re done."
     );
     
+    
+    public DashboardController(Achievements as) {
+   	 this.achievements=as;
+   	 
+   }
     @FXML
     public void initialize() {
         System.out.println("Dashboard Controller initialized");
@@ -125,9 +143,31 @@ public class DashboardController {
         } else {
             updateWeatherUI();
         }
+        
+        
+        //achievement pane
+        processBar.setStyle("-fx-stroke-width: 6px;-fx-background-image: url('../resources/icons/achievement.png');-fx-background-size:cover;-fx-background-position: center;");
+        populateAchievementsAndMeditation();
     }
-    
-    // Weather Methods
+     
+	private void populateAchievementsAndMeditation() {
+		 int eventsOnToday = achievements.countAllEventsOnCurrentDate();
+    	 int eventsFinishedOnToday = achievements.countFinishedEventsOnCurrentDate();
+         int maxTasks = 10; // Assuming 100 is the maximum for normalization
+
+         // Safeguard progress values between 0 and 1
+         processBar.setProgress((double)eventsFinishedOnToday/eventsOnToday);
+         finishedeEvents.setText(String.valueOf(eventsFinishedOnToday));
+         allEvents.setText(String.valueOf(eventsOnToday));
+    	
+         int focusTimeOnToday = achievements.countFocusTimeOnCurrentDate();
+    	 int meditationTimeOnToday = achievements.countMeditationTimeOnCurrentDate();
+    	 
+    	 focusTimeToday.setText(String.valueOf(focusTimeOnToday));
+    	 MeditationTimeToday.setText(String.valueOf(meditationTimeOnToday));
+		
+	}
+	// Weather Methods
     private void fetchWeatherData() {
         new Thread(() -> {
             try {

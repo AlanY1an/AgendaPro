@@ -82,6 +82,15 @@ public class Main extends Application {
         ac.addTask(new Task("Complete Homework", convertToDate(LocalDate.now().minusDays(1)), true));
         ac.addTask(new Task("Attend Meeting", convertToDate(LocalDate.now().minusDays(5)), true));
         ac.addTask(new Task("Go Jogging", convertToDate(LocalDate.now().minusDays(40)), true));
+        
+        ac.getEventController().addEvent(new Event(1, "Meditation", "Meditation", "Prepare for exams", 
+                LocalDate.now(), 120, 25)); // 冥想时间从15增加到25
+        //ac.getEventController().getAllEvents().get(0).setFinished(true);
+        ac.getEventController().addEvent(new Event(2, "Meditation", "Meditation", "Complete project deliverables", 
+                LocalDate.now().minusDays(1), 480, 10)); // 冥想时间从0增加到10
+        //ac.getEventController().getAllEvents().get(1).setFinished(true);
+        ac.getEventController().addEvent(new Event(3, "Meditation", "Meditation", "Morning jog", 
+                LocalDate.now().minusDays(5), 60, 20)); // 冥想时间从10增加到20
 	}
 
 
@@ -234,6 +243,8 @@ public class Main extends Application {
                     controller.setEventController(eventController);
                     return controller;
                 });
+            }else if (fxmlPath.equals("/view/Dashboard.fxml")) {
+                    loader.setControllerFactory(param -> new DashboardController(ac));
             }
 
             Parent content = loader.load();

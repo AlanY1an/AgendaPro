@@ -38,6 +38,11 @@ public class Achievements {
                 .filter(Event::isFinished)
                 .count();
     }
+    
+    public int countAllEventsOnCurrentDate() {
+        LocalDate today = LocalDate.now();
+        return (int) eventController.getEventsOnDate(today).stream().count();
+    }
 
     // 2. Count all finished events in the last 7 days
     public int countFinishedEventsInLast7Days() {
@@ -124,5 +129,63 @@ public class Achievements {
 
 	public void addTask(Task task) {
 		tasklist.add(task);
+	}
+
+	public int getTotalMeditationMinutesInLast7Days() {
+		LocalDate today = LocalDate.now();
+	    LocalDate sevenDaysAgo = today.minusDays(7);
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo))) // Within the last 7 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
+
+	public int getTotalMeditationMinutesInLast30Days() {
+		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+	    LocalDate thirtyDaysAgo = today.minusDays(30);
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo))) // Within the last 30 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
+	
+	public int getTotalMeditationMinutesToday() {
+		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished()&& (event.getDate().isEqual(today))) // Within the last 30 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
+
+	public int countFocusTimeOnCurrentDate() {
+		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isEqual(today))) // Within the last 7 days
+	            .mapToInt(Event::getDuration) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
+	}
+
+	public int countMeditationTimeOnCurrentDate() {
+		// TODO Auto-generated method stub
+		LocalDate today = LocalDate.now();
+
+	    return eventController.getAllEvents().stream()
+	            .filter(event -> event.isFinished() // Event is finished
+	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
+	                    && (event.getDate().isAfter(today) || event.getDate().isEqual(today))) // Within the last 30 days
+	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
+	            .sum(); // Sum up all minutes
 	}
 }

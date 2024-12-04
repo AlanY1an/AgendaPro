@@ -156,7 +156,7 @@
                      </HBox>
                   </children>
                </VBox>
-               <ProgressIndicator fx:id="processBar" accessibleRole="IMAGE_VIEW" accessibleText="process label" cacheShape="false" centerShape="false" depthTest="DISABLE" minHeight="-Infinity" minWidth="-Infinity" prefHeight="133.0" prefWidth="139.0" progress="0.13" style="-fx-stroke: #4CAF50; -fx-background-color: tranparent;" styleClass="indicator" stylesheets="@DashboardAchievement.css">
+               <ProgressIndicator fx:id="processBar" accessibleRole="IMAGE_VIEW" accessibleText="process label" cacheShape="false" centerShape="false" depthTest="DISABLE" minHeight="-Infinity" minWidth="-Infinity" prefHeight="133.0" prefWidth="139.0" progress="0.13" style="-fx-stroke: #08E4EA; -fx-background-color: tranparent;" styleClass="indicator" stylesheets="@DashboardAchievement.css">
                   <padding>
                      <Insets top="10.0" />
                   </padding></ProgressIndicator>

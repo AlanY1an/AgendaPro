@@ -113,3 +113,4 @@
 2|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
 3|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
 115|Task|Exercise|Focus session|2024-12-04|25|0|true
+116|Walkdog|Work||2024-12-04|false

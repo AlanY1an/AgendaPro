@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox fx:id="note_pane" minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TaskController">
+   <children>
+      <Pane fx:id="note_list_pane" minHeight="600.0" styleClass="statics_pane">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="262.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="140.0">
+                     <children>
+                        <Label alignment="CENTER" graphicTextGap="0.0" prefHeight="30.0" prefWidth="150.0" text="My Tasks">
+                           <font>
+                              <Font name="AppleGothic Regular" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView id="TodoList" fx:id="TodoListView" prefHeight="473.0" prefWidth="237.0">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" minWidth="70.0" onAction="#handleDelete" style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-background-radius: 5;" text="Delete">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" minWidth="70.0" onAction="#handleAdd" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 5;" text="Add">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+         <cursor>
+            <Cursor fx:constant="V_RESIZE" />
+         </cursor>
+         <effect>
+            <Blend />
+         </effect>
+      </Pane>
+      <AnchorPane minHeight="600.0" prefHeight="600.0" prefWidth="600.0">
+         <children>
+            <GridPane alignment="TOP_CENTER" vgap="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="118.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="277.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Task Name:" />
+                  <TextField id="taskName" fx:id="taskName" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="DueDate:" GridPane.rowIndex="1" />
+                  <DatePicker id="dueDate" fx:id="dueDate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Mark as Finished:" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <CheckBox id="isFinished " fx:id="isfinished" mnemonicParsing="false" text="Finished" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+            <TextArea fx:id="note_content" promptText="Start your note" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="210.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextArea>
+            <Button fx:id="btnSave" alignment="CENTER" contentDisplay="CENTER" layoutX="487.0" layoutY="509.0" minWidth="70.0" mnemonicParsing="false" onAction="#handleSave" style="-fx-background-color: #43A047;" text="Save" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="55.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

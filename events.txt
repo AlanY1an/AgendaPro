@@ -1,0 +1,104 @@
+1|Group Project - CSYE 6200|Work|2:00 - 5:00\nSnell Library 402\nWrapping up the rest of the project!|2024-12-03|false
+2|CSYN - Lab7|Study||2024-11-28|true
+3|On Site Work|Work|Go to company to work!|2024-12-01|true
+4|Dinner with Maya|Entertainment|KFC|2024-12-03|false
+5|Weekly Meeting|Work|Discuss project updates and next steps.|2024-12-07|false
+6|Grocery Shopping|Work|Buy groceries for the week.|2024-12-06|false
+7|Meditation|Work|Morning meditation session for relaxation.|2024-12-04|false
+8|Math Homework|Study|Complete problem set 8 for math class.|2024-11-30|true
+9|Yoga Class|Work|Evening yoga session at studio.|2024-12-05|false
+10|Movie Night|Entertainment|Watch "The Matrix" with friends.|2024-12-09|false
+11|Team Lunch|Work|Lunch at Olive Garden with teammates.|2024-12-05|false
+12|Final Presentation Prep|Study|Prepare slides and practice for final presentation.|2024-12-06|false
+13|Thanksgiving Dinner|Work|Celebrate Thanksgiving with family.|2024-11-28|true
+14|Volunteer Activity|Work|Help at the local food bank.|2024-12-02|true
+15|Fitness Training|Work|Morning workout session.|2024-12-03|false
+16|Birthday Party|Entertainment|Surprise birthday party for John.|2024-12-10|false
+17|Doctor Appointment|Work|Annual check-up with Dr. Smith.|2024-12-04|false
+18|CSYE Final Exam|Study|CSYE 6200 final exam preparation and review.|2024-12-08|false
+19|Book Reading Club|Work|Discuss "The Great Gatsby".|2024-11-30|true
+20|Photography Workshop|Work|Learn night photography techniques.|2024-12-09|false
+21|Weekend Hike|Work|Trail hike with friends.|2024-11-26|true
+22|CSYE Lab 8 Submission|Study|Complete and submit Lab 8 assignment.|2024-12-01|true
+23|Hackathon|Work|Participate in the 24-hour coding event.|2024-12-12|false
+24|Piano Recital|Work|Perform Beethoven’s Sonata No. 14.|2024-12-11|false
+25|Christmas Shopping|Work|Buy gifts for family and friends.|2024-12-15|false
+26|Weekly Yoga|Work|Evening yoga session for flexibility.|2024-12-13|false
+27|Office Party|Work|End-of-year celebration at the office.|2024-12-20|false
+28|Library Study Session|Study|Snell Library, 3rd Floor.|2024-12-17|false
+29|Board Game Night|Entertainment|Play board games with classmates.|2024-12-14|false
+30|Resume Workshop|Work|Enhance your resume with tips from career advisors.|2024-12-18|false
+31|Winter Cleanup|Work|Clean up the local park.|2024-12-19|false
+32|Snowball Fight|Entertainment|Fun in the snow with neighbors.|2024-12-22|false
+33|New Year Party Planning|Work|Organize party activities and food list.|2024-12-23|false
+34|Christmas Carol Singing|Work|Sing carols at the city square.|2024-12-24|false
+35|New Year Celebration|Work|Countdown and fireworks display.|2024-01-01|true
+36|Valentine's Day Dinner|Work|Dinner with loved one.|2024-02-14|true
+37|Easter Sunday|Work|Celebrate Easter with family.|2024-03-31|true
+38|Spring Cleaning|Work|Declutter the house for spring.|2024-04-05|true
+39|Earth Day Volunteering|Work|Plant trees in the local park.|2024-04-22|true
+40|Memorial Day BBQ|Work|Host a barbecue for friends.|2024-05-27|true
+41|Summer Vacation Begins|Work|Trip to Hawaii.|2024-06-10|true
+42|Independence Day Celebration|Work|Fireworks and parade.|2024-07-04|true
+43|Back to School Shopping|Work|Buy school supplies for the new semester.|2024-08-20|true
+44|Halloween Party|Entertainment|Costume party with friends.|2024-10-31|true
+45|Thanksgiving Parade|Work|Watch the Thanksgiving parade.|2024-11-28|true
+46|Christmas Eve Dinner|Work|Family dinner and gift exchange.|2024-12-24|false
+47|New Year’s Resolution Planning|Work|Set goals for the upcoming year.|2024-12-31|false
+48|Birthday Celebration|Work|Surprise birthday party for Sarah.|2023-03-15|true
+49|Graduation Ceremony|Work|University graduation celebration.|2023-05-20|true
+50|Family Reunion|Work|Gathering at Grandma's house.|2023-08-12|true
+51|Labor Day Picnic|Work|Outdoor picnic with coworkers.|2023-09-04|true
+52|Pumpkin Patch Visit|Work|Pick pumpkins with family.|2023-10-15|true
+53|Black Friday Shopping|Entertainment|Buy electronics at discounted prices.|2023-11-24|true
+54|Holiday Concert|Entertainment|Attend Christmas music concert.|2023-12-20|true
+55|Summer Internship Starts|Work|Begin work at TechCorp.|2023-06-01|true
+56|Family Ski Trip|Work|Weekend skiing in Aspen.|2024-02-17|true
+57|MLK Day Parade|Work|Watch the MLK Day parade downtown.|2024-01-15|true
+58|Lunar New Year Celebration|Work|Celebrate the Year of the Dragon.|2024-02-10|true
+59|International Women’s Day|Work|Attend a women empowerment seminar.|2024-03-08|true
+60|Mother’s Day Brunch|Work|Celebrate with mom at her favorite restaurant.|2024-05-12|true
+61|Father’s Day BBQ|Work|Host a barbecue for dad.|2024-06-16|true
+62|School Field Trip|Work|Visit the science museum with classmates.|2024-09-15|true
+63|Fall Foliage Hike|Work|Hike to enjoy the autumn leaves.|2024-10-10|true
+64|New Year Countdown Party|Entertainment|Celebrate the new year at Times Square.|2024-12-31|false
+65|New Year's Day|Work|Welcome 2025 with friends and family.|2025-01-01|false
+66|Martin Luther King Jr. Day|Work|Attend a civil rights seminar.|2025-01-20|false
+67|Valentine's Day Dinner|Work|Romantic dinner with loved one.|2025-02-14|false
+68|Lunar New Year Celebration|Work|Celebrate the Year of the Snake.|2025-01-29|false
+69|St. Patrick's Day Parade|Work|Watch the parade downtown.|2025-03-17|false
+70|Easter Sunday|Work|Easter egg hunt at the park.|2025-04-20|false
+71|Earth Day Cleanup|Work|Join a beach cleanup event.|2025-04-22|false
+72|Mother's Day Brunch|Work|Take mom out for brunch.|2025-05-11|false
+73|Memorial Day Ceremony|Work|Visit a memorial and honor veterans.|2025-05-26|false
+74|Father's Day Golf Outing|Work|Golf outing with dad.|2025-06-15|false
+75|Independence Day Celebration|Work|Fireworks and barbecue with friends.|2025-07-04|false
+76|Back to School Preparation|Work|Shop for school supplies and clothes.|2025-08-15|false
+77|Labor Day Weekend Trip|Work|Weekend getaway to the mountains.|2025-09-01|false
+78|Halloween Costume Party|Entertainment|Dress up as a favorite movie character.|2025-10-31|false
+79|Thanksgiving Dinner|Work|Family dinner with turkey and pumpkin pie.|2025-11-27|false
+80|Black Friday Shopping|Entertainment|Shop for holiday gifts.|2025-11-28|false
+81|Christmas Eve Service|Work|Attend midnight mass at church.|2025-12-24|false
+82|Christmas Day Celebration|Work|Exchange gifts and enjoy family dinner.|2025-12-25|false
+83|New Year's Eve Party|Entertainment|Countdown to 2026 at a rooftop party.|2025-12-31|false
+84|Spring Festival Fair|Work|Local fair with games and food.|2025-04-05|false
+85|Summer Outdoor Concert|Entertainment|Attend a live concert in the park.|2025-06-20|false
+86|Beach Volleyball Tournament|Work|Compete in a local tournament.|2025-07-15|false
+87|Autumn Festival|Work|Celebrate the harvest with a potluck.|2025-09-22|false
+88|Winter Wonderland Market|Entertainment|Shop for unique holiday gifts.|2025-12-10|false
+89|Work Conference|Work|Present at the annual tech summit.|2025-10-05|false
+90|Marathon Participation|Work|Run in the city marathon.|2025-03-08|false
+91|Book Club Launch|Work|Start a book club with neighbors.|2025-01-18|false
+92|Volunteer at Animal Shelter|Work|Help care for rescued animals.|2025-05-02|false
+93|Ski Trip|Work|Hit the slopes with friends.|2025-01-25|false
+94|Art Exhibit Visit|Entertainment|Explore modern art at the gallery.|2025-02-10|false
+95|Graduation Celebration|Work|Celebrate a friend's graduation.|2025-06-12|false
+96|Zoo Family Day|Work|Visit the zoo with the kids.|2025-07-25|false
+97|Photography Workshop|Work|Learn landscape photography techniques.|2025-08-05|false
+98|Winter Camping Adventure|Work|Camp under the stars in the snow.|2025-12-15|false
+99|Corporate Retreat|Work|Team-building activities at a resort.|2025-11-05|false
+100|Charity Gala|Work|Attend a fundraiser for local schools.|2025-10-12|false
+101|HW 9|Study||2024-12-02|true
+102|HW2|Study||2024-12-01|true
+103|Starbucks|Work||2024-11-29|true
+104|Workout Chest Day|Exercise||2024-12-02|true

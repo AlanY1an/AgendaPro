@@ -46,15 +46,16 @@ Explore AgendaPro's intuitive interface with features designed to streamline you
    ```bash
    git clone https://github.com/AlanY1an/AgendaPro
    ```
-2. Open the project in your IDE (e.g., Eclipse).  
-3. Run the application by executing the `Main.java` file.  
+2. Open the project in your IDE (e.g., Eclipse).
+3. Add the JavaFX 21.0.5 jar file into the build path.
+4. Choose Java 21 to compile.
+5. Run the application by executing the `Main.java` file.  
 
 ---
 
 ## Future Enhancements
 
 - **Enhanced Event Management**: Add support for recurring events with precise start and end times down to the minute.  
-- **Mobile Integration**: Extend functionality to Android and iOS platforms.  
 - **Advanced Analytics**: Provide users with insights into their time allocation and productivity trends.  
 - **Smart Notifications**: Integrate AI-powered reminders and motivational messages.  
 - **Weather-Based Suggestions**: Combine weather insights with productivity tips for better daily planning.

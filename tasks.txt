@@ -1,5 +1,5 @@
 INFO 6150 - HW 5|2024-12-04|true|Design a website\nFinish the video
-Practice Piano|2024-12-04|false|Learn Beethoven's Sonata No. 14\nPractice for 30 minutes
+Practice Piano|2024-12-04|true|Learn Beethoven's Sonata No. 14\nPractice for 30 minutes
 Meditation Session|2024-12-04|false|Focus on breathing exercises\n10-minute session
 Dinner with Family|2024-12-03|true|Home-cooked meal\nSpend quality time together
 Grocery Shopping|2024-11-27|true|Bought fruits, vegetables, and snacks

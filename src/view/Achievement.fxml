@@ -150,8 +150,8 @@
                </font>
             </Label>
             <ProgressBar id="tasks30DaysProgress" fx:id="tasks30DaysProgress" layoutX="73.0" layoutY="283.0" prefHeight="23.0" prefWidth="210.0" style="-fx-accent: #4CAF50;" />
-            <Label id="TasksIn7Days" fx:id="TasksIn7Days" layoutX="305.0" layoutY="210.0" prefHeight="17.0" prefWidth="15.0" />
-            <Label id="TasksIn30Days" fx:id="TasksIn30Days" layoutX="298.0" layoutY="286.0" prefHeight="17.0" prefWidth="13.0" />
+            <Label id="TasksIn7Days" fx:id="TasksIn7Days" layoutX="290.0" layoutY="212.0" prefHeight="18.0" prefWidth="50.0" />
+            <Label id="TasksIn30Days" fx:id="TasksIn30Days" layoutX="290.0" layoutY="286.0" prefHeight="17.0" prefWidth="45.0" />
             <ImageView fitHeight="60.0" fitWidth="57.0" layoutX="17.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icons/target2.png" />
@@ -185,8 +185,8 @@
             </Label>
             <ProgressBar fx:id="meditationIn30Days" layoutX="76.0" layoutY="476.0" prefWidth="200.0" progress="0.0" style="-fx-accent: #4CAF50;" />
             <Line endX="185.42916870117188" endY="-6.103515625E-5" layoutX="-137.0" layoutY="558.0" startX="164.08303833007812" startY="-6.103515625E-5" stroke="#4caf50" strokeWidth="3.0" />
-            <Label fx:id="MeditationIn7Days" layoutX="305.0" layoutY="408.0" />
-            <Label fx:id="MeditationIn30Days" layoutX="298.0" layoutY="477.0" prefHeight="17.0" prefWidth="24.0" />
+            <Label fx:id="MeditationIn7Days" layoutX="290.0" layoutY="408.0" prefHeight="17.0" prefWidth="45.0" />
+            <Label fx:id="MeditationIn30Days" layoutX="290.0" layoutY="477.0" prefHeight="17.0" prefWidth="58.0" />
          </children>
       </Pane>
    </children>

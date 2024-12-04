@@ -95,7 +95,7 @@ public class AchievementController {
     	int tasksCompleted7Days = achievements.countFinishedTasksInLast7Days();
         int tasksCompleted30Days = achievements.countFinishedTasksInLast30Days();
         int maxTasks1 = 50; // Maximum value for normalization
-        int maxTasks2 = 200; // Maximum value for normalization
+        int maxTasks2 = 100; // Maximum value for normalization
 
         // Normalize progress and update UI
         tasks7DaysProgress.setProgress(normalizeProgress((double) tasksCompleted7Days / maxTasks1));
@@ -107,8 +107,8 @@ public class AchievementController {
         // Get meditation data
         int meditateIn7Days = achievements.getTotalMeditationMinutesInLast7Days();
         int meditateIn30Days = achievements.getTotalMeditationMinutesInLast30Days();
-        int maxMeditation1 = 240; // Maximum value for normalization
-        int maxMeditation2 = 360;
+        int maxMeditation1 = 60; // Maximum value for normalization
+        int maxMeditation2 = 180;
         // Normalize progress and update UI
         meditationIn7Days.setProgress(normalizeProgress((double) meditateIn7Days / maxMeditation1));
         meditationIn30Days.setProgress(normalizeProgress((double) meditateIn30Days / maxMeditation2));

@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MeditationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.MeditationController">
    <children>
-      <Label contentDisplay="CENTER" layoutX="336.0" layoutY="68.0" prefHeight="47.0" prefWidth="162.0" text="Meditation" textAlignment="CENTER" textFill="#05c61b">
+      <Label contentDisplay="CENTER" layoutX="336.0" layoutY="68.0" prefHeight="47.0" prefWidth="162.0" text="Meditation" textAlignment="CENTER" textFill="#4caf50">
          <font>
             <Font size="34.0" />
          </font>
@@ -21,9 +21,9 @@
             <Font size="20.0" />
          </font></Label>
       
-      <Button fx:id="tenMinButton" layoutX="200.0" layoutY="469.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="10 Minutes" />
-      <Button fx:id="thirtyMinButton" layoutX="374.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="30 Minutes" />
-      <Button fx:id="oneHourButton" layoutX="546.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="1 Hour" />
+      <Button fx:id="tenMinButton" layoutX="200.0" layoutY="469.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #4CAF50;" text="10 Minutes" textFill="#f1f8f2" />
+      <Button fx:id="thirtyMinButton" layoutX="374.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #4CAF50;" text="30 Minutes" textFill="#f5f2f2" />
+      <Button fx:id="oneHourButton" layoutX="546.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #4CAF50;" text="1 Hour" textFill="#f5f2f2" />
       
             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="334.0" layoutY="418.0" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18;" text="Ready to start" textAlignment="CENTER" textFill="#06971e">
          <font>

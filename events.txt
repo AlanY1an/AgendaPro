@@ -107,3 +107,4 @@
 107|Task|Exercise|Focus session|2024-12-03|25|0|true
 108|12312|Work|Focus session|2024-12-03|25|0|true
 109|Task|Study|Focus session|2024-12-03|25|0|true
+1|Meditation|Meditation|Meditation session completed|2024-12-03|0|10|true

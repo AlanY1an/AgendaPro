@@ -114,14 +114,21 @@ public class DashboardController {
 
     
     private final List<String> quotes = List.of(
+            "Every step forward is a victory.",
+            "Shine bright, even on the darkest days.",
+            "Love yourself, and the world will follow.",
+            "Your journey is unique and beautiful.",
+            "Believe in the power of your dreams.",
             "Believe in yourself!",
             "Stay positive, work hard, make it happen.",
             "Your limitation—it's only your imagination.",
             "Push yourself, because no one else is going to do it for you.",
             "Dream it. Wish it. Do it.",
             "Success doesn’t just find you. You have to go out and get it.",
-            "The harder you work for something, the greater you’ll feel when you achieve it.",
-            "Don’t stop when you’re tired. Stop when you’re done."
+            "Don’t stop when you’re tired. Stop when you’re done.",
+            "You are stronger than you think.",
+            "Let your heart lead the way.",
+            "Keep going; your story is inspiring."
     );
     
     

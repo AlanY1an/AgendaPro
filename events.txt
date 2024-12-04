@@ -1,7 +1,7 @@
-1|Group Project - CSYE 6200|Work|2:00 - 5:00\nSnell Library 402\nWrapping up the rest of the project!|2024-12-03|false
+1|Group Project - CSYE 6200|Work|2:00 - 5:00\nSnell Library 402\nWrapping up the rest of the project!|2024-12-03|true
 2|CSYN - Lab7|Study||2024-11-28|true
 3|On Site Work|Work|Go to company to work!|2024-12-01|true
-4|Dinner with Maya|Entertainment|KFC|2024-12-03|false
+4|Dinner with Maya|Entertainment|KFC|2024-12-03|true
 5|Weekly Meeting|Work|Discuss project updates and next steps.|2024-12-07|false
 6|Grocery Shopping|Work|Buy groceries for the week.|2024-12-06|false
 7|Meditation|Work|Morning meditation session for relaxation.|2024-12-04|false
@@ -12,7 +12,7 @@
 12|Final Presentation Prep|Study|Prepare slides and practice for final presentation.|2024-12-06|false
 13|Thanksgiving Dinner|Work|Celebrate Thanksgiving with family.|2024-11-28|true
 14|Volunteer Activity|Work|Help at the local food bank.|2024-12-02|true
-15|Fitness Training|Work|Morning workout session.|2024-12-03|false
+15|Fitness Training|Work|Morning workout session.|2024-12-03|true
 16|Birthday Party|Entertainment|Surprise birthday party for John.|2024-12-10|false
 17|Doctor Appointment|Work|Annual check-up with Dr. Smith.|2024-12-04|false
 18|CSYE Final Exam|Study|CSYE 6200 final exam preparation and review.|2024-12-08|false
@@ -108,3 +108,8 @@
 108|12312|Work|Focus session|2024-12-03|25|0|true
 109|Task|Study|Focus session|2024-12-03|25|0|true
 1|Meditation|Meditation|Meditation session completed|2024-12-03|0|10|true
+111|Running|Work||2024-12-03|true
+1|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
+2|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
+3|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
+115|Task|Exercise|Focus session|2024-12-04|25|0|true

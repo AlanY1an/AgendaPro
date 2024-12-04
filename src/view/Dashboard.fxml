@@ -34,7 +34,7 @@
 	   </padding>
 	</HBox>
     <Separator layoutY="60.0" prefHeight="5.0" prefWidth="800.0" />
-   <AnchorPane layoutX="236.0" layoutY="74.0" prefHeight="315.0" prefWidth="202.0" style="-fx-background-color: #6E6E6E; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane layoutX="236.0" layoutY="71.0" prefHeight="315.0" prefWidth="202.0" style="-fx-background-color: linear-gradient(from 0% 30% to 0% 100%, #2AF598,#08E4EA); -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <children>
       	<VBox>
       	   <children>
@@ -74,7 +74,7 @@
             </effect></Circle>
       </children>
    </AnchorPane>
-   <AnchorPane layoutX="237.0" layoutY="394.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6E6E6E; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane layoutX="237.0" layoutY="391.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 0% to 0% 100%,#08E4EA, #2AF598); -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <children>
          <VBox layoutX="3.0" layoutY="14.0" prefHeight="173.0" prefWidth="194.0">
             <children>
@@ -94,7 +94,7 @@
       </children>
    </AnchorPane>
 
-	<AnchorPane fx:id="todayCalendarPane" layoutX="15.0" layoutY="74.0" prefHeight="237.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+	<AnchorPane fx:id="todayCalendarPane" layoutX="15.0" layoutY="71.0" prefHeight="233.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
 	    <children>
 	        <Label fx:id="dateLabel" graphicTextGap="1.0" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="138.0" style="-fx-font-size: 16px;" text="December 2024">
             <font>
@@ -105,7 +105,7 @@
 	</AnchorPane>
 
    
-   <AnchorPane fx:id="achievementPane" layoutX="444.0" layoutY="73.0" prefHeight="154.0" prefWidth="326.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1; -fx-background-radius: 10px;" styleClass="achievement" stylesheets="@DashboardAchievement.css">
+   <AnchorPane fx:id="achievementPane" layoutX="444.0" layoutY="70.0" prefHeight="154.0" prefWidth="326.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1; -fx-background-radius: 10px;" styleClass="achievement" stylesheets="@DashboardAchievement.css">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
@@ -131,7 +131,7 @@
                                        <Font name="Arial Rounded MT Bold" size="14.0" />
                                     </font>
                                  </Label>
-                                 <Label fx:id="finishedeEvents" alignment="CENTER" prefHeight="51.0" prefWidth="52.0" text="10">
+                                 <Label fx:id="finishedeEvents" alignment="CENTER" prefHeight="51.0" prefWidth="48.0" text="10">
                                     <font>
                                        <Font name="Arial Rounded MT Bold" size="16.0" />
                                     </font>
@@ -147,7 +147,7 @@
                                  <Font name="Arial Rounded MT Bold" size="14.0" />
                               </font>
                            </Label>
-                           <Label fx:id="allEvents" alignment="CENTER" prefHeight="41.0" prefWidth="52.0" text="100">
+                           <Label fx:id="allEvents" alignment="CENTER" prefHeight="41.0" prefWidth="48.0" text="100">
                               <font>
                                  <Font name="Arial Rounded MT Bold" size="16.0" />
                               </font>
@@ -170,7 +170,7 @@
          <Insets />
       </opaqueInsets>
    </AnchorPane>
-   <AnchorPane fx:id="meditationPane" layoutX="445.0" layoutY="234.0" prefHeight="154.0" prefWidth="161.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane fx:id="meditationPane" layoutX="445.0" layoutY="231.0" prefHeight="154.0" prefWidth="161.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
@@ -222,7 +222,7 @@
          </VBox>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="meditationPane1" layoutX="612.0" layoutY="234.0" maxHeight="153.0" prefHeight="153.0" prefWidth="161.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane fx:id="meditationPane1" layoutX="612.0" layoutY="231.0" maxHeight="153.0" prefHeight="153.0" prefWidth="161.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <padding>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </padding>
@@ -268,7 +268,7 @@
          </VBox>
       </children>
    </AnchorPane>
-   <AnchorPane id="taskBoard" layoutX="15.0" layoutY="324.0" prefHeight="265.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+   <AnchorPane id="taskBoard" layoutX="15.0" layoutY="312.0" prefHeight="280.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <children>
          <VBox layoutX="6.0" layoutY="7.0" prefHeight="251.0" prefWidth="200.0">
             <children>
@@ -288,7 +288,7 @@
             </children>
          </VBox>
       </children></AnchorPane>
-      <AnchorPane layoutX="443.0" layoutY="394.0" prefHeight="200.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
+      <AnchorPane layoutX="443.0" layoutY="391.0" prefHeight="200.0" prefWidth="334.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: lightgray; -fx-border-radius: 15; -fx-border-width: 1;">
       <children>
          <Label contentDisplay="TOP" layoutX="12.0" layoutY="9.0" text="Today's Memo" textAlignment="CENTER">
             <font>

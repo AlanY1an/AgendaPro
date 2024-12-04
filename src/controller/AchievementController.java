@@ -87,7 +87,7 @@ public class AchievementController {
         WorkEvents.setText(String.valueOf(achievements.countFinishedEventsInCategory("Work")));
         EntertainmentEvents.setText(String.valueOf(achievements.countFinishedEventsInCategory("Entertainment")));
         ExerciseEvents.setText(String.valueOf(achievements.countFinishedEventsInCategory("Exercise")));
-        System.out.print(String.valueOf(achievements.countFinishedEventsInCategory("Study")));
+        // System.out.print(String.valueOf(achievements.countFinishedEventsInCategory("Study")));
     }
 
     // Update task progress bars and labels

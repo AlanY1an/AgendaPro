@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 	<HBox alignment="CENTER" fillHeight="true" maxHeight="60.0" maxWidth="800.0" minHeight="55.0" prefHeight="60.0" prefWidth="800.0">
 	   <children>
 	      <Label fx:id="greetingLabel" maxHeight="55.0" prefHeight="55.0" prefWidth="321.0" style="-fx-font-size: 24; -fx-font-family: 'AppleGothic Regular';" text="Hello, Good Morning!" textAlignment="CENTER" />

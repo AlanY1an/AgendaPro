@@ -424,7 +424,7 @@ public class DashboardController {
         });
     }
     
- // Task loading
+    // Task loading
     @FXML
     public void loadTasksForDate(LocalDate date) {
         taskContainer.getChildren().clear(); // Clear existing tasks
@@ -435,11 +435,11 @@ public class DashboardController {
 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                if (parts.length >= 4) {
+                if (parts.length >= 3) {
                     String taskName = parts[0];  // Task name
                     LocalDate taskDueDate = LocalDate.parse(parts[1]);  // Parse due date
                     boolean isFinished = Boolean.parseBoolean(parts[2]);  // Task finished status
-                    String notes = parts[3].replace("\\n", "\n");  // Task notes, handling escaped newlines
+                    // String notes = parts[3].replace("\\n", "\n");  // Task notes, handling escaped newlines
                     
                     // Check if the task's due date matches the specified date
                     if (taskDueDate.equals(date)) {

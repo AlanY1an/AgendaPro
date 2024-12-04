@@ -107,4 +107,3 @@
 109|Task|Study|Focus session|2024-12-03|25|0|true
 115|Task|Exercise|Focus session|2024-12-04|25|0|true
 116|Walkdog|Work||2024-12-04|false
-117|Have dinner with MIa|Entertainment|Panda express|2024-12-04|false

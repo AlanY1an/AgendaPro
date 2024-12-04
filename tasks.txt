@@ -1,24 +1,11 @@
 INFO 6150 - HW 5|2024-12-03|false|Design a website\nFinish the video
-Morning Jog|2024-12-03|false|Run 5 km around the park\nStart at 7:00 AM
-Team Meeting|2024-12-03|false|Discuss project updates\nMeeting link: https://zoom.us
-Grocery Shopping|2024-12-03|false|Buy milk, eggs, bread, and veggies\nDon't forget coffee!
-Lunch with Sam|2024-12-03|false|Catch up on life\nLocation: Olive Garden
-Read Research Paper|2024-12-03|false|Topic: Machine Learning Applications\nHighlight key insights
 Practice Piano|2024-12-03|false|Learn Beethoven's Sonata No. 14\nPractice for 30 minutes
 Meditation Session|2024-12-03|false|Focus on breathing exercises\n10-minute session
-Prepare Presentation|2024-12-03|false|Create slides for Friday's meeting\nInclude summary of results
 Dinner with Family|2024-12-03|true|Home-cooked meal\nSpend quality time together
-INFO 6150 - HW 4|2024-11-26|true|Complete layout design\nSubmit on Canvas
 Grocery Shopping|2024-11-27|true|Bought fruits, vegetables, and snacks
 Morning Yoga|2024-11-27|true|Completed 20-minute session\nFocused on stretching
 Team Sync-up|2024-11-27|true|Discussed sprint progress\nUpdated Jira tickets
-Thanksgiving Dinner Prep|2024-11-28|true|Prepared turkey, stuffing, and pie
-CSYE 6200 - Lab 7|2024-11-28|true|Finished coding assignment\nDebugged server issues
-Black Friday Shopping|2024-11-29|true|Bought a laptop and a new phone case
-Project Brainstorming|2024-11-29|true|Finalized the idea for the new app\nTeam meeting lasted 2 hours
-Watch Documentary|2024-11-30|true|Topic: Climate Change\nDuration: 90 minutes
 Cleaning Apartment|2024-11-30|true|Cleaned kitchen, bathroom, and living room
-Family Video Call|2024-11-30|true|Caught up with parents and siblings
 Prepare Presentation|2024-12-01|true|Created slides for Monday's client meeting
 Jogging|2024-12-01|true|Ran 3 km in the park
 Book Club Discussion|2024-12-02|true|Discussed 'The Alchemist'\nShared favorite quotes

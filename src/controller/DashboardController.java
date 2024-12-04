@@ -200,7 +200,7 @@ public class DashboardController {
          allEvents.setText(String.valueOf(eventsOnToday));
     	
          int focusTimeOnToday = achievements.countFocusTimeOnCurrentDate();
-    	 int meditationTimeOnToday = achievements.countMeditationTimeOnCurrentDate();
+    	 int meditationTimeOnToday = achievements.getTotalMeditationMinutesToday();
     	 
     	 focusTimeToday.setText(String.valueOf(focusTimeOnToday));
     	 MeditationTimeToday.setText(String.valueOf(meditationTimeOnToday));

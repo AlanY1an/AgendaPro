@@ -92,33 +92,34 @@ public class AchievementController {
 
     // Update task progress bars and labels
     private void updateTaskProgress() {
-        int tasksCompleted7Days = achievements.countFinishedTasksInLast7Days();
+    	int tasksCompleted7Days = achievements.countFinishedTasksInLast7Days();
         int tasksCompleted30Days = achievements.countFinishedTasksInLast30Days();
-        int maxTasks = 10; // Assuming 100 is the maximum for normalization
+        int maxTasks1 = 50; // Maximum value for normalization
+        int maxTasks2 = 200; // Maximum value for normalization
 
-        // Safeguard progress values between 0 and 1
-        tasks7DaysProgress.setProgress((double) tasksCompleted7Days / maxTasks);
-        tasks30DaysProgress.setProgress((double) tasksCompleted30Days / maxTasks);
+        // Normalize progress and update UI
+        tasks7DaysProgress.setProgress(normalizeProgress((double) tasksCompleted7Days / maxTasks1));
+        tasks30DaysProgress.setProgress(normalizeProgress((double) tasksCompleted30Days / maxTasks2));
 
-
-        // Update labels for tasks
         TasksIn7Days.setText(String.valueOf(tasksCompleted7Days));
         TasksIn30Days.setText(String.valueOf(tasksCompleted30Days));
-        
+
+        // Get meditation data
         int meditateIn7Days = achievements.getTotalMeditationMinutesInLast7Days();
         int meditateIn30Days = achievements.getTotalMeditationMinutesInLast30Days();
-        int maxLength = 10;
+        int maxMeditation1 = 240; // Maximum value for normalization
+        int maxMeditation2 = 360;
+        // Normalize progress and update UI
+        meditationIn7Days.setProgress(normalizeProgress((double) meditateIn7Days / maxMeditation1));
+        meditationIn30Days.setProgress(normalizeProgress((double) meditateIn30Days / maxMeditation2));
 
         MeditationIn7Days.setText(String.valueOf(meditateIn7Days));
         MeditationIn30Days.setText(String.valueOf(meditateIn30Days));
-        
-        meditationIn7Days.setProgress((double) meditateIn7Days / maxLength);
-        meditationIn30Days.setProgress((double) meditateIn30Days / maxLength);
 
     }
 
     // Normalize progress values between 0 and 1
-//    private double normalizeProgress(double value) {
-//        return Math.max(0, Math.min(1, value));
-//    }
+    private double normalizeProgress(double value) {
+        return Math.max(0, Math.min(1, value));
+    }
 }

@@ -163,8 +163,8 @@
                </image>
             </ImageView>
             <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="-73.0" layoutY="206.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
-            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="266.0" layoutY="443.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
-            <ImageView fitHeight="74.0" fitWidth="73.0" layoutX="328.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+            <Line endX="99.99996185302734" endY="-27.839889526367188" layoutX="296.0" layoutY="430.0" startX="99.99996948242188" startY="-59.481109619140625" stroke="#4caf50" strokeWidth="3.0" />
+            <ImageView fitHeight="68.0" fitWidth="60.0" layoutX="357.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icons/meditation.png" />
                </image>

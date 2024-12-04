@@ -100,9 +100,9 @@ public class MeditationController {
 	    }
 
 	    private void setupButtons() {
-	        tenMinButton.setOnAction(e -> startMeditation(5.0/60.0));  // 5秒 = 5/60分钟
-	        thirtyMinButton.setOnAction(e -> startMeditation(30));
-	        oneHourButton.setOnAction(e -> startMeditation(60));
+	    	tenMinButton.setOnAction(e -> startMeditation(5.0/60.0, 10)); // 运行5秒，记录10分钟
+	    	thirtyMinButton.setOnAction(e -> startMeditation(30, 30)); // 运行30分钟，记录30分钟
+	    	oneHourButton.setOnAction(e -> startMeditation(60, 60)); // 运行60分钟，记录60分钟
 	    }
 
 	    private RadialGradient createGradient(Color centerColor, Color edgeColor) {
@@ -216,46 +216,43 @@ public class MeditationController {
 	    }
 
 	   
-	    private void startMeditation(double minutes) {  // 改为double类型
-	        if (breathAnimation.getStatus() == Animation.Status.RUNNING) {
-	            return;
-	        }
-	        
-	        if (durationTimer != null) {
-	            durationTimer.stop();
-	        }
+	    private void startMeditation(double runMinutes, double logMinutes) { // 改为double类型
+	    	if (breathAnimation.getStatus() == Animation.Status.RUNNING) {
+	    	return;
+	    	}
+	    	if (durationTimer != null) {
+	    	durationTimer.stop();
+	    	}
 
-	        durationTimer = new Timeline(
-	            new KeyFrame(Duration.seconds(minutes * 60), event -> {
-	                stopMeditation();
-	                statusLabel.setText("Meditation Complete");
-	                
-	                // 测试用：打印日志
-	                System.out.println("Creating meditation event");
-	                System.out.println("EventController is " + (eventController != null ? "not null" : "null"));
-	                
-	                Event meditationEvent = new Event(
-	                    meditationEventId++,
-	                    "Meditation",
-	                    "Meditation",
-	                    "Meditation session completed",
-	                    LocalDate.now(),
-	                    0,
-	                    (int)(minutes * 60)  // 转换为秒数
-	                );
-	                eventController.addEvent(meditationEvent);
-	                System.out.println("Event added: " + meditationEvent);
-	            })
-	        );
-	        
-	        durationTimer.setCycleCount(1);
-	        timerLabel.setText("");
-	        updateStage(0);
-	        breathAnimation.play();
-	        durationTimer.play();
-	        disableButtons(true);
-	        startTimeDisplay(minutes);
-	    }
+	    	durationTimer = new Timeline(
+	    	new KeyFrame(Duration.seconds(runMinutes * 60), event -> {
+	    	stopMeditation();
+	    	statusLabel.setText("Meditation Complete");
+	    	// 测试用：打印日志
+	    	System.out.println("Creating meditation event");
+	    	System.out.println("EventController is " + (eventController != null ? "not null" : "null"));
+	    	Event meditationEvent = new Event(
+	    	meditationEventId++,
+	    	"Meditation",
+	    	"Meditation",
+	    	"Meditation session completed",
+	    	LocalDate.now(),
+	    	0,
+	    	(int)(logMinutes) // 转换为秒数
+	    	);
+	    	meditationEvent.setFinished(true);
+	    	eventController.addEvent(meditationEvent);
+	    	System.out.println("Event added: " + meditationEvent);
+	    	})
+	    	);
+	    	durationTimer.setCycleCount(1);
+	    	timerLabel.setText("");
+	    	updateStage(0);
+	    	breathAnimation.play();
+	    	durationTimer.play();
+	    	disableButtons(true);
+	    	startTimeDisplay(runMinutes);
+	    	}
 
 	    private void startTimeDisplay(double totalMinutes) {
 	        // 初始化剩余秒数

@@ -1,6 +1,7 @@
 package model;
 
 import controller.EventController;
+import controller.TaskController;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -8,27 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Achievements {
-    private User user;
     private EventController eventController;
-    private ArrayList<Task> tasklist;
+    private TaskController taskController;
 
     // Constructor
-    public Achievements(User user, EventController eventController, ArrayList<Task> tasklist) {
-        this.user = user;
+    public Achievements(EventController eventController, TaskController tasklist) {
         this.eventController = eventController;
-        this.tasklist = tasklist;
-    }
-
-    public Achievements(User user) {
-        this.user = user;
-        this.eventController = new EventController();
-        this.tasklist = new ArrayList<>();
-    }
-    
-    public Achievements(EventController eventController) {
-        this.eventController = eventController;
-        this.tasklist = new ArrayList<>();
-
+        this.taskController = tasklist;
     }
 
     // 1. Count all finished events on current date
@@ -44,6 +31,11 @@ public class Achievements {
         return (int) eventController.getEventsOnDate(today).stream().count();
     }
 
+    
+    private boolean isOnDate(Date dueDate, LocalDate localDate) {
+        LocalDate taskDate = toLocalDate(dueDate);
+        return taskDate.equals(localDate);
+    }
     // 2. Count all finished events in the last 7 days
     public int countFinishedEventsInLast7Days() {
         LocalDate today = LocalDate.now();
@@ -62,23 +54,33 @@ public class Achievements {
 
     // 4. Count all finished tasks on current date
     public int countFinishedTasksOnCurrentDate() {
-        LocalDate today = LocalDate.now();
-        return (int) tasklist.stream()
+    	LocalDate today = LocalDate.now();
+        return (int) taskController.getTasks().stream()
                 .filter(task -> task.isFinished() && isOnDate(task.getDueDate(), today))
                 .count();
     }
 
     // 5. Count all finished tasks in the last 7 days
     public int countFinishedTasksInLast7Days() {
-        return (int) tasklist.stream()
-                .filter(task -> task.isFinished() && isInLastNDays(toLocalDate(task.getDueDate()), 7))
-                .count();
+    	 LocalDate today = LocalDate.now();
+    	    LocalDate sevenDaysAgo = today.minusDays(7);
+
+    	    return (int) taskController.getTasks().stream()
+    	            .filter(task -> task.isFinished() &&
+    	                    (toLocalDate(task.getDueDate()).isAfter(sevenDaysAgo) ||
+    	                     toLocalDate(task.getDueDate()).isEqual(sevenDaysAgo)))
+    	            .count();
     }
 
     // 6. Count all finished tasks in the last 30 days
     public int countFinishedTasksInLast30Days() {
-        return (int) tasklist.stream()
-                .filter(task -> task.isFinished() && isInLastNDays(toLocalDate(task.getDueDate()), 30))
+    	LocalDate today = LocalDate.now();
+        LocalDate thirtyDaysAgo = today.minusDays(30);
+
+        return (int) taskController.getTasks().stream()
+                .filter(task -> task.isFinished() &&
+                        (toLocalDate(task.getDueDate()).isAfter(thirtyDaysAgo) ||
+                         toLocalDate(task.getDueDate()).isEqual(thirtyDaysAgo)))
                 .count();
     }
 
@@ -92,23 +94,10 @@ public class Achievements {
         return LocalDate.ofInstant(date.toInstant(), java.time.ZoneId.systemDefault());
     }
 
-    // Helper method to check if task due date is on the given LocalDate
-    private boolean isOnDate(Date dueDate, LocalDate localDate) {
-        LocalDate taskDate = toLocalDate(dueDate);
-        return taskDate.equals(localDate);
-    }
-
     // Add a new event
     public void addEvent(Event event) {
         eventController.addEvent(event);
     }
-
-    // Count all finished events in a specific category
-//    public long countFinishedEventsInCategory(String category) {
-//        return eventController.getAllEvents().stream()
-//                .filter(event -> event.isFinished() && event.getCategory().equalsIgnoreCase(category))
-//                .count();
-//    }
     
     public long countFinishedEventsInCategory(String category) {
         LocalDate today = LocalDate.now(); // Get today's date
@@ -127,65 +116,51 @@ public class Achievements {
 		return this.eventController;
 	}
 
-	public void addTask(Task task) {
-		tasklist.add(task);
-	}
-
 	public int getTotalMeditationMinutesInLast7Days() {
 		LocalDate today = LocalDate.now();
 	    LocalDate sevenDaysAgo = today.minusDays(7);
 
 	    return eventController.getAllEvents().stream()
-	            .filter(event -> event.isFinished() // Event is finished
-	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
-	                    && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo))) // Within the last 7 days
-	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
-	            .sum(); // Sum up all minutes
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
+	                && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo)) // 日期在过去7天
+	                && event.isFinished()) // 已完成
+	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
+	        .sum(); // 求和
 	}
 
+	
 	public int getTotalMeditationMinutesInLast30Days() {
 		// TODO Auto-generated method stub
 		LocalDate today = LocalDate.now();
 	    LocalDate thirtyDaysAgo = today.minusDays(30);
-
 	    return eventController.getAllEvents().stream()
-	            .filter(event -> event.isFinished() // Event is finished
-	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
-	                    && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo))) // Within the last 30 days
-	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
-	            .sum(); // Sum up all minutes
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
+	                && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo)) // 日期在过去30天
+	                && event.isFinished()) // 已完成
+	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
+	        .sum(); // 求和
 	}
 	
+	
 	public int getTotalMeditationMinutesToday() {
-		// TODO Auto-generated method stub
-		LocalDate today = LocalDate.now();
+	    LocalDate today = LocalDate.now();
 	    return eventController.getAllEvents().stream()
-	            .filter(event -> event.isFinished()&& (event.getDate().isEqual(today))) // Within the last 30 days
-	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
-	            .sum(); // Sum up all minutes
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
+	                && event.getDate().isEqual(today) // 事件日期为今天
+	                && event.isFinished()) // 已完成
+	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
+	        .sum(); // 求和
 	}
 
 	public int countFocusTimeOnCurrentDate() {
-		// TODO Auto-generated method stub
-		LocalDate today = LocalDate.now();
-
-	    return eventController.getAllEvents().stream()
-	            .filter(event -> event.isFinished() // Event is finished
-	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
-	                    && (event.getDate().isEqual(today))) // Within the last 7 days
-	            .mapToInt(Event::getDuration) // Extract meditation minutes
-	            .sum(); // Sum up all minutes
-	}
-
-	public int countMeditationTimeOnCurrentDate() {
-		// TODO Auto-generated method stub
-		LocalDate today = LocalDate.now();
-
-	    return eventController.getAllEvents().stream()
-	            .filter(event -> event.isFinished() // Event is finished
-	                    && "Meditation".equalsIgnoreCase(event.getCategory()) // Event is in the Meditation category
-	                    && (event.getDate().isAfter(today) || event.getDate().isEqual(today))) // Within the last 30 days
-	            .mapToInt(Event::getMeditationMinutes) // Extract meditation minutes
-	            .sum(); // Sum up all minutes
+		 LocalDate today = LocalDate.now(); // 获取当天日期
+		    return eventController.getAllEvents().stream()
+		        .filter(event -> event.getDate().isEqual(today)) // 筛选当天的事件
+		        .filter(event -> {
+		            String category = event.getCategory();
+		            return !"Meditation".equalsIgnoreCase(category) && !"Entertainment".equalsIgnoreCase(category);
+		        }) // 排除类型为 Meditation 和 Entertainment 的事件
+		        .mapToInt(Event::getDuration) // 获取每个事件的 duration
+		        .sum(); // 计算总和
 	}
 }

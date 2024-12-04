@@ -40,10 +40,10 @@ public class PomodoroController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Meditation.fxml"));
             Parent meditationRoot = loader.load();
 
-            // 获取 MeditationController（如果需要与其交互）
+            // Get the MeditationController if you need to interact with it
             MeditationController meditationController = loader.getController();
 
-            // 设置新场景
+            // Setting up a new scene
             Scene meditationScene = new Scene(meditationRoot);
             Stage currentStage = (Stage) startButton.getScene().getWindow();
             currentStage.setTitle("Meditation");
@@ -55,35 +55,35 @@ public class PomodoroController {
     }
 
     public void initialize() {
-    	
-    	isBreakMode = false;
-    	if (eventController == null) {
-    	System.out.println("EventController not set in initialize!");
-    	}
-    	taskTypeComboBox.getItems().addAll(
-    	Arrays.stream(Event.CATEGORIES) 
-    	.filter(category -> !category.equals("Entertainment") && !category.equals("Meditation")) 
-    	.toList() 
-    	);
+     
+     isBreakMode = false;
+     if (eventController == null) {
+     System.out.println("EventController not set in initialize!");
+     }
+     taskTypeComboBox.getItems().addAll(
+     Arrays.stream(Event.CATEGORIES) 
+     .filter(category -> !category.equals("Entertainment") && !category.equals("Meditation")) 
+     .toList() 
+     );
 
-    	pomodoroButton.setOnAction(e -> {
-    	isBreakMode = false; // 设置为番茄钟模式
-    	switchMode(3);
-    	});
-    	breakButton.setOnAction(e -> {
-    	isBreakMode = true; // 设置为休息模式
-    	switchMode(5*60);
-    	});
-    	startButton.setOnAction(e -> startTimer());
+     pomodoroButton.setOnAction(e -> {
+     isBreakMode = false; // Set to Pomodoro mode
+     switchMode(25*60);
+     });
+     breakButton.setOnAction(e -> {
+     isBreakMode = true; // Set to rest mode
+     switchMode(5*60);
+     });
+     startButton.setOnAction(e -> startTimer());
 
-    	taskInput.setOnMouseClicked(e -> {
-    	if (taskInput.getText().equals("Task")) {
-    	taskInput.clear();
-    	}
-    	});
+     taskInput.setOnMouseClicked(e -> {
+     if (taskInput.getText().equals("Task")) {
+     taskInput.clear();
+     }
+     });
 
-    	timeRemaining = parseTime(timerText.getText());
-    	updateTimerText();
+     timeRemaining = parseTime(timerText.getText());
+     updateTimerText();
     }
 
     private int parseTime(String timeText) {
@@ -103,40 +103,40 @@ public class PomodoroController {
     }
 
     private void startTimer() {
-    	if (timeline != null) {
-    		timeline.stop();
-    		}
+     if (timeline != null) {
+      timeline.stop();
+      }
 
-    		timeline = new Timeline();
-    		KeyFrame frame = new KeyFrame(Duration.seconds(1), event -> {
-    		timeRemaining--;
-    		updateTimerText();
-    		if (timeRemaining <= 0) {
-    		timeline.stop();
-    		startButton.setDisable(false);
-    		if (!isBreakMode) {
-    		String category = taskTypeComboBox.getValue();
-    		String title = taskInput.getText().trim();
-    		if (category != null && !category.isEmpty() && !title.isEmpty()) {
-    		Event newEvent = new Event(
-    		eventController.getAllEvents().size() + 1,
-    		title,
-    		category,
-    		"Focus session",
-    		LocalDate.now(),
-    		25, // 固定25分钟
-    		0
-    		);
-    		newEvent.setFinished(true);
-    		eventController.addEvent(newEvent);
-    		}
-    		}
-    		}
-    		});
-    		timeline.getKeyFrames().add(frame);
-    		timeline.setCycleCount(Timeline.INDEFINITE);
-    		timeline.play();
-    		startButton.setDisable(true);
+      timeline = new Timeline();
+      KeyFrame frame = new KeyFrame(Duration.seconds(1), event -> {
+      timeRemaining--;
+      updateTimerText();
+      if (timeRemaining <= 0) {
+      timeline.stop();
+      startButton.setDisable(false);
+      if (!isBreakMode) {
+      String category = taskTypeComboBox.getValue();
+      String title = taskInput.getText().trim();
+      if (category != null && !category.isEmpty() && !title.isEmpty()) {
+      Event newEvent = new Event(
+      eventController.getAllEvents().size() + 1,
+      title,
+      category,
+      "Focus session",
+      LocalDate.now(),
+      25, //Fixed for 25 minutes
+      0
+      );
+      newEvent.setFinished(true);
+      eventController.addEvent(newEvent);
+      }
+      }
+      }
+      });
+      timeline.getKeyFrames().add(frame);
+      timeline.setCycleCount(Timeline.INDEFINITE);
+      timeline.play();
+      startButton.setDisable(true);
     }
 
 

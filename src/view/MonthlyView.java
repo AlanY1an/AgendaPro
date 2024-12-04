@@ -36,14 +36,14 @@ public class MonthlyView extends GridPane {
         
         eventController.getAllEvents().addListener((ListChangeListener<Event>) change -> {
             while (change.next()) {
-                populateMonth(); // 刷新月视图
+                populateMonth(); 
             }
         });
     }
 
     public void setDate(LocalDate newDate) {
         this.selectedDate = newDate;
-        populateMonth(); // 重新填充月视图
+        populateMonth(); 
     }
 
     
@@ -53,17 +53,17 @@ public class MonthlyView extends GridPane {
     private void configureGrid() {
         for (int i = 0; i < NUM_COLS; i++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setHgrow(Priority.ALWAYS); // 列水平增长
-            col.setMinWidth(0); // 最小宽度
-            col.prefWidthProperty().bind(this.widthProperty().divide(NUM_COLS)); // 动态绑定宽度
+            col.setHgrow(Priority.ALWAYS); 
+            col.setMinWidth(0); 
+            col.prefWidthProperty().bind(this.widthProperty().divide(NUM_COLS)); 
             this.getColumnConstraints().add(col);
         }
 
         for (int i = 0; i < NUM_ROWS; i++) {
             RowConstraints row = new RowConstraints();
-            row.setVgrow(Priority.ALWAYS); // 行垂直增长
-            row.setMinHeight(0); // 最小高度
-            row.prefHeightProperty().bind(this.heightProperty().divide(NUM_ROWS)); // 动态绑定高度
+            row.setVgrow(Priority.ALWAYS); 
+            row.setMinHeight(0); 
+            row.prefHeightProperty().bind(this.heightProperty().divide(NUM_ROWS)); 
             this.getRowConstraints().add(row);
         }
     }
@@ -89,10 +89,10 @@ public class MonthlyView extends GridPane {
      * Fill the date of the Month
      */
     private void populateMonth() {
-        // 清除所有内容，包括第 0 行的星期标题
+    
         this.getChildren().clear();
 
-        // 重新添加星期标题
+       
         addWeekHeaders();
         
         YearMonth yearMonth = YearMonth.from(selectedDate);
@@ -142,22 +142,22 @@ public class MonthlyView extends GridPane {
         VBox content = new VBox(2);
         content.setAlignment(Pos.TOP_LEFT);
         content.setPadding(new Insets(3));
-        content.setMaxHeight(60); // 限制格子内容最大高度
+        content.setMaxHeight(60); 
 
-        // 添加日期文本
+ 
         Text dayText = new Text(String.valueOf(date.getDayOfMonth()));
         dayText.setStyle("-fx-font-size: 12; -fx-fill: " + textColor + ";");
         content.getChildren().add(dayText);
 
-        // 获取当天的事件列表
-        List<Event> eventList = eventController.getEventsOnDate(date);
-        int maxVisibleEvents = 2; // 最多显示的事件数量
 
-        // 显示前两个事件
+        List<Event> eventList = eventController.getEventsOnDate(date);
+        int maxVisibleEvents = 2; 
+
+
         for (int i = 0; i < Math.min(eventList.size(), maxVisibleEvents); i++) {
             Event event = eventList.get(i);
 
-            // 限制标题长度为20个字符，多余部分显示省略号
+  
             String truncatedTitle = event.getTitle().length() > 18
                 ? event.getTitle().substring(0, 18) + "..." 
                 : event.getTitle();
@@ -167,17 +167,17 @@ public class MonthlyView extends GridPane {
             content.getChildren().add(eventText);
         }
 
-        // 如果有更多事件，显示 "+N more"
+
         if (eventList.size() > maxVisibleEvents) {
             Text moreText = new Text("+" + (eventList.size() - maxVisibleEvents) + " more");
             moreText.setStyle("-fx-font-size: 10; -fx-fill: red;");
             content.getChildren().add(moreText);
         }
 
-        // 点击事件，显示详情弹窗
+
         cell.setOnMouseClicked(event -> showEventDetails(date));
 
-        // 高亮今天
+
         if (date.equals(today)) {
             cell.setStyle("-fx-border-color: #388E3C; -fx-border-width: 3; -fx-padding: 5; -fx-background-color: #E8F5E9;");
         }
@@ -187,7 +187,7 @@ public class MonthlyView extends GridPane {
     }
 
 
-    // 显示事件详情弹窗
+
     private void showEventDetails(LocalDate date) {
         List<Event> eventList = eventController.getEventsOnDate(date);
         StringBuilder details = new StringBuilder("Events on " + date + ":\n\n");
@@ -197,7 +197,7 @@ public class MonthlyView extends GridPane {
                    .append("Category: ").append(event.getCategory()).append("\n")
                    .append("Description: ").append(event.getDescription() != null ? event.getDescription() : "No Description").append("\n");
 
-            // 如果是冥想事件或有时长信息，额外添加
+
             if (event.getMeditationMinutes() > 0) {
                 details.append("Meditation Minutes: ").append(event.getMeditationMinutes()).append("\n");
             }
@@ -205,11 +205,11 @@ public class MonthlyView extends GridPane {
                 details.append("Duration: ").append(event.getDuration()).append(" minutes\n");
             }
 
-            // 显示是否已完成
+
             details.append("Finished: ").append(event.isFinished() ? "Yes" : "No").append("\n\n");
         }
 
-        // 使用 Alert 显示详细信息
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Event Details");
         alert.setHeaderText("Details for " + date);

@@ -36,7 +36,7 @@ import java.io.PrintStream;
 
 public class Main extends Application {
 
-    private BorderPane root; // 主布局容器
+    private BorderPane root; 
     private EventController eventController;
     private TaskController taskController;
     private Achievements ac;
@@ -81,15 +81,15 @@ public class Main extends Application {
         VBox sidebar = new VBox();
         sidebar.setStyle("-fx-background-color: #ffffff; -fx-padding: 20; -fx-spacing: 10;");
 
-        // 添加 Logo
+     
         VBox logoContainer = new VBox();
-        logoContainer.setStyle("-fx-padding: 20 0 20 5;"); // 应用内边距
+        logoContainer.setStyle("-fx-padding: 20 0 20 5;"); 
         ImageView logo = new ImageView(new Image(getClass().getResourceAsStream("/resources/AgendaPro.png")));
         logo.setFitWidth(125);
         logo.setFitHeight(43);
         logoContainer.getChildren().add(logo);
 
-        // 创建分类标题
+        
         Label planLabel = new Label("Plan");
         planLabel.setFont(Font.font("Arial", 14));
         planLabel.setTextFill(Color.GRAY);
@@ -100,21 +100,21 @@ public class Main extends Application {
         toolsLabel.setTextFill(Color.GRAY);
         toolsLabel.setStyle("-fx-padding: 10 0 5 0;");
 
-        // Plan 分类的菜单项
+    
         HBox dashboard = createMenuItem("DashBoard", "/resources/icons/dashboard.png", "/view/Dashboard.fxml");
         HBox calendar = createMenuItem("Calendar", "/resources/icons/calendar.png", "/view/CalendarView.fxml");
         
         HBox achievement = createMenuItem("Achievement", "/resources/icons/achievement.png", "/view/Achievement.fxml");
         HBox task = createMenuItem("Task", "/resources/icons/task.png", "/view/Todolist.fxml");
 
-        // Tools 分类的菜单项
+
         HBox meditation = createMenuItem("Meditation", "/resources/icons/cloud.png", "/view/Meditation.fxml");
         HBox pomodoroTimer = createMenuItem("Pomodoro Timer", "/resources/icons/clock.png", "/view/Pomodoro.fxml");
 
-        // 将分类和菜单项添加到侧边栏
+ 
         sidebar.getChildren().addAll(logoContainer, planLabel, dashboard, calendar, achievement, task, toolsLabel, meditation, pomodoroTimer);
 
-        // 默认选中 Dashboard 菜单项
+       
         selectedMenuItem = dashboard;
         ((Label) dashboard.getChildren().get(1)).setTextFill(Color.web("#4CAF50"));
         ((ImageView) dashboard.getChildren().get(0)).setImage(loadImage("/resources/icons/dashboard1.png"));
@@ -137,7 +137,7 @@ public class Main extends Application {
         HBox menuItem = new HBox(10, icon, label);
         menuItem.setStyle("-fx-alignment: center-left; -fx-padding: 10; -fx-background-radius: 8;");
 
-        // 鼠标悬停效果
+   
         menuItem.setOnMouseEntered(e -> {
             if (menuItem != selectedMenuItem) {
                 label.setTextFill(Color.web("#4CAF50"));
@@ -153,7 +153,7 @@ public class Main extends Application {
             }
         });
 
-        // 点击事件
+       
         menuItem.setOnMouseClicked(e -> {
             if (selectedMenuItem != null) {
                 Label prevLabel = (Label) selectedMenuItem.getChildren().get(1);
@@ -204,7 +204,7 @@ public class Main extends Application {
     private void loadContent(String fxmlPath) {
         try {
         	System.out.println("Loading FXML View: " + fxmlPath);
-            // 使用 FXMLLoader 加载 FXML 文件
+          
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             if (fxmlPath.equals("/view/Achievement.fxml")) {
                 loader.setControllerFactory(param -> new AchievementController(ac)); // 注入 Achievements

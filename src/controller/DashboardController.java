@@ -383,12 +383,11 @@ public class DashboardController {
     
     // Notebook
     private void initializeMemo() {
-        // 获取之前保存的内容
         Preferences prefs = Preferences.userNodeForPackage(DashboardController.class);
         String savedMemo = prefs.get("dashboardMemo", "");
         memoArea.setText(savedMemo);
 
-        // 初始设置为不可编辑
+  
         memoArea.setEditable(false);
 
         Platform.runLater(() -> {
@@ -398,18 +397,17 @@ public class DashboardController {
             memoArea.getParent().requestFocus();
         });
 
-        // 文本框的点击事件 - 保持这个，这很重要
         memoArea.setOnMouseClicked(event -> {
             memoArea.setEditable(true);
             event.consume();
         });
 
-        // Scene级别的事件处理
+        // Scene
         Platform.runLater(() -> {
             Scene scene = memoArea.getScene();
             if (scene != null) {
                 scene.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                    // 如果点击的不是文本框
+                
                     if (event.getTarget() != memoArea) {
                         memoArea.setEditable(false);
                         scene.getRoot().requestFocus();
@@ -418,7 +416,7 @@ public class DashboardController {
             }
         });
 
-        // 保存内容
+  
         memoArea.textProperty().addListener((observable, oldValue, newValue) -> {
             prefs.put("dashboardMemo", newValue);
         });
@@ -474,7 +472,7 @@ public class DashboardController {
 
             // If no tasks were found for the given date, display a message
             if (!tasksFound) {
-                Label noTasksLabel = new Label("No tasks for today. Enjoy your time!");
+                Label noTasksLabel = new Label("No tasks for today. \n Enjoy your time!");
                 taskContainer.getChildren().add(noTasksLabel);
             }
         } catch (IOException e) {

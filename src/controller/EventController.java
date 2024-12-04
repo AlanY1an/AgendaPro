@@ -22,7 +22,7 @@ public class EventController {
     public EventController() {
         eventList = FXCollections.observableArrayList();
         loadEventsFromFile("events.txt");
-        markFinishedEvents(); // 自动标记已完成事件
+        markFinishedEvents(); 
     }
 
     public void addEvent(Event event) {
@@ -32,7 +32,7 @@ public class EventController {
 
     public void removeEvent(Event event) {
         eventList.removeIf(e -> e.getId() == event.getId());
-        saveEventsToFile("events.txt"); // 保存到文件
+        saveEventsToFile("events.txt"); 
     }
     
     private void markFinishedEvents() {
@@ -120,7 +120,7 @@ public class EventController {
     public void loadEventsFromFile(String filePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            eventList.clear(); // 清空列表
+            eventList.clear(); 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 if (parts.length == 8) {

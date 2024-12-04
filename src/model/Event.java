@@ -6,11 +6,11 @@ import java.util.Date;
 public class Event {
 
     public static final String[] CATEGORIES = { "Work", "Study", "Exercise", "Entertainment","Meditation" };
-    private int id; // 事件ID
-    private String title; // 标题
-    private String category; // 分类：Work, Study, Exercise, Entertainment
-    private String description; // 描述
-    private LocalDate date; // 日期
+    private int id; 
+    private String title; 
+    private String category; 
+    private String description; 
+    private LocalDate date; 
     private boolean finished; 
     private User user1;
     private int duration;
@@ -21,7 +21,7 @@ public class Event {
     public Event(int id, String title, String category, String description, LocalDate date) {
         this.id = id;
         this.title = title;
-        this.category = isValidCategory(category) ? category : "Work"; // 默认分类为 Work
+        this.category = isValidCategory(category) ? category : "Work"; 
         this.description = description;
         this.date = date;
     }
@@ -29,7 +29,7 @@ public class Event {
     public Event(int id, String title, String category, String description, LocalDate date, int duration, int meditationMinutes) {
         this.id = id;
         this.title = title;
-        this.category = isValidCategory(category) ? category : "Work"; // 默认分类为 Work
+        this.category = isValidCategory(category) ? category : "Work"; 
         this.description = description;
         this.date = date;
         this.duration = duration;
@@ -45,7 +45,6 @@ public class Event {
 	}
 
     
-    // 验证分类是否合法
     private boolean isValidCategory(String category) {
         for (String validCategory : CATEGORIES) {
             if (validCategory.equalsIgnoreCase(category)) {
@@ -119,12 +118,10 @@ public class Event {
     }
     
    
-    // 检查事件是否发生在指定日期
     public boolean isOnDate(LocalDate localDate) {
         return date.equals(localDate);
     }
 
-    // 打印事件信息
     @Override
     public String toString() {
         return "CalendarEvent{" +

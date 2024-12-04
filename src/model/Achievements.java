@@ -121,11 +121,11 @@ public class Achievements {
 	    LocalDate sevenDaysAgo = today.minusDays(7);
 
 	    return eventController.getAllEvents().stream()
-	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
-	                && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo)) // 日期在过去7天
-	                && event.isFinished()) // 已完成
-	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
-	        .sum(); // 求和
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) 
+	                && (event.getDate().isAfter(sevenDaysAgo) || event.getDate().isEqual(sevenDaysAgo)) 
+	                && event.isFinished()) 
+	        .mapToInt(Event::getMeditationMinutes) 
+	        .sum(); 
 	}
 
 	
@@ -134,33 +134,33 @@ public class Achievements {
 		LocalDate today = LocalDate.now();
 	    LocalDate thirtyDaysAgo = today.minusDays(30);
 	    return eventController.getAllEvents().stream()
-	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
-	                && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo)) // 日期在过去30天
-	                && event.isFinished()) // 已完成
-	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
-	        .sum(); // 求和
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) 
+	                && (event.getDate().isAfter(thirtyDaysAgo) || event.getDate().isEqual(thirtyDaysAgo)) 
+	                && event.isFinished()) 
+	        .mapToInt(Event::getMeditationMinutes) 
+	        .sum(); 
 	}
 	
 	
 	public int getTotalMeditationMinutesToday() {
 	    LocalDate today = LocalDate.now();
 	    return eventController.getAllEvents().stream()
-	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) // 冥想类事件
-	                && event.getDate().isEqual(today) // 事件日期为今天
-	                && event.isFinished()) // 已完成
-	        .mapToInt(Event::getMeditationMinutes) // 获取冥想分钟数
-	        .sum(); // 求和
+	        .filter(event -> "Meditation".equalsIgnoreCase(event.getCategory()) 
+	                && event.getDate().isEqual(today) 
+	                && event.isFinished()) 
+	        .mapToInt(Event::getMeditationMinutes) 
+	        .sum(); 
 	}
 
 	public int countFocusTimeOnCurrentDate() {
-		 LocalDate today = LocalDate.now(); // 获取当天日期
+		 LocalDate today = LocalDate.now(); 
 		    return eventController.getAllEvents().stream()
-		        .filter(event -> event.getDate().isEqual(today)) // 筛选当天的事件
+		        .filter(event -> event.getDate().isEqual(today)) 
 		        .filter(event -> {
 		            String category = event.getCategory();
 		            return !"Meditation".equalsIgnoreCase(category) && !"Entertainment".equalsIgnoreCase(category);
-		        }) // 排除类型为 Meditation 和 Entertainment 的事件
-		        .mapToInt(Event::getDuration) // 获取每个事件的 duration
-		        .sum(); // 计算总和
+		        }) 
+		        .mapToInt(Event::getDuration) 
+		        .sum(); 
 	}
 }

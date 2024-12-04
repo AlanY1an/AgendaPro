@@ -37,9 +37,8 @@ public class AddEventDialogController {
     
     @FXML
     public void initialize() {
-        // 初始化分类选项
         categoryComboBox.getItems().addAll(Event.CATEGORIES);
-        categoryComboBox.setValue(Event.CATEGORIES[0]); // 默认选择第一个分类
+        categoryComboBox.setValue(Event.CATEGORIES[0]); 
     }
 
     public void setEventController(EventController eventController) {

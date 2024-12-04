@@ -193,7 +193,7 @@ public class TaskController {
                 String[] parts = line.split("\\|", 4);
                 if (parts.length >= 3) {
                     String taskName = parts[0];
-                    Date dueDate = sdf.parse(parts[1]); // 解析日期字符串
+                    Date dueDate = sdf.parse(parts[1]); 
                     boolean isFinished = Boolean.parseBoolean(parts[2]);
                     String note = parts.length > 3 ? parts[3].replace("\\n", "\n") : "";
 

@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Event {
 
@@ -12,7 +11,6 @@ public class Event {
     private String description; 
     private LocalDate date; 
     private boolean finished; 
-    private User user1;
     private int duration;
     private int meditationMinutes; 
 
@@ -141,7 +139,5 @@ public class Event {
 		this.finished = finished;
 	}
 	
-	public User getUser() {
-		return user1;
-	}
+
 }

@@ -25,13 +25,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.Achievements;
-import model.Event;
-import model.Task;
 import view.CalendarView;
 
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
 
 
 public class Main extends Application {
@@ -73,10 +69,6 @@ public class Main extends Application {
     }
 
 
-	private Date convertToDate(LocalDate localDate) {
-		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-	}
-    
     private VBox createSidebar() {
         VBox sidebar = new VBox();
         sidebar.setStyle("-fx-background-color: #ffffff; -fx-padding: 20; -fx-spacing: 10;");

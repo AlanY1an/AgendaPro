@@ -108,3 +108,5 @@
 115|Task|Exercise|Focus session|2024-12-04|25|0|true
 116|Walkdog|Work||2024-12-04|false
 110|Walk the dog|Entertainment|Go to the dog park with Patrick|2024-12-04|false
+111|1|Work|1|2024-12-04|false
+112|12|Work|3|2024-12-04|false

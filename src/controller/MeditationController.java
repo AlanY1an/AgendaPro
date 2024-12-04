@@ -16,7 +16,6 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import model.Event;
-import controller.EventController;
 
 public class MeditationController {
     @FXML private Pane mainPane;  

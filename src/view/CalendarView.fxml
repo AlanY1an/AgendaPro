@@ -13,10 +13,8 @@
 
 <BorderPane minHeight="600.0" minWidth="800.0" style="-fx-background-color: #ffffff;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CalendarView">
    <top>
-      <!-- 固定高度的顶部工具栏 -->
       <AnchorPane maxHeight="81.0" minHeight="55.0" prefHeight="61.0" style="-fx-background-color: #F9FAFB; -fx-border-color: #eaebed;" BorderPane.alignment="CENTER">
          <children>
-            <!-- 日期 -->
             <Text fx:id="dateText" layoutX="21.0" layoutY="40" text="January 2022" textAlignment="CENTER" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="AppleGothic Regular" size="20.0" />
@@ -72,7 +70,6 @@
       </AnchorPane>
    </top>
    <center>
-      <!-- 自动填充剩余空间的中心区域 -->
       <AnchorPane fx:id="centerPane" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

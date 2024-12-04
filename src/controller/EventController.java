@@ -11,7 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Event;
 
-import java.time.LocalDate;
 
 public class EventController {
 

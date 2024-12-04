@@ -5,7 +5,6 @@ import controller.TaskController;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Achievements {
@@ -38,7 +37,6 @@ public class Achievements {
     }
     // 2. Count all finished events in the last 7 days
     public int countFinishedEventsInLast7Days() {
-        LocalDate today = LocalDate.now();
         return (int) eventController.getAllEvents().stream()
                 .filter(event -> event.isFinished() && isInLastNDays(event.getDate(), 7))
                 .count();
@@ -46,7 +44,6 @@ public class Achievements {
 
     // 3. Count all finished events in the last 30 days
     public int countFinishedEventsInLast30Days() {
-        LocalDate today = LocalDate.now();
         return (int) eventController.getAllEvents().stream()
                 .filter(event -> event.isFinished() && isInLastNDays(event.getDate(), 30))
                 .count();
@@ -130,7 +127,6 @@ public class Achievements {
 
 	
 	public int getTotalMeditationMinutesInLast30Days() {
-		// TODO Auto-generated method stub
 		LocalDate today = LocalDate.now();
 	    LocalDate thirtyDaysAgo = today.minusDays(30);
 	    return eventController.getAllEvents().stream()

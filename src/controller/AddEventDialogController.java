@@ -28,13 +28,7 @@ public class AddEventDialogController {
 
     private EventController eventController;
 
-//    private EventAddedCallback callback;
-//
-//    public void setCallback(EventAddedCallback callback) {
-////    	Take that lambda and create anonymous object
-//        this.callback = callback; 
-//    }
-    
+
     @FXML
     public void initialize() {
         categoryComboBox.getItems().addAll(Event.CATEGORIES);

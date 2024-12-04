@@ -35,7 +35,7 @@ public class WeeklyView extends GridPane {
         
         eventController.getAllEvents().addListener((ListChangeListener<Event>) change -> {
             while (change.next()) {
-                populateWeek(); // 刷新周视图
+                populateWeek();
             }
         });
     }
@@ -43,25 +43,25 @@ public class WeeklyView extends GridPane {
     private void setupGrid() {
         for (int i = 0; i < NUM_DAYS; i++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setPercentWidth(100.0 / NUM_DAYS); // 每列占总宽度的1/7
-            col.setMinWidth(0); // 确保最小宽度为0
-            col.setMaxWidth(Double.MAX_VALUE); // 确保可以动态扩展
+            col.setPercentWidth(100.0 / NUM_DAYS); 
+            col.setMinWidth(0); 
+            col.setMaxWidth(Double.MAX_VALUE);
             this.getColumnConstraints().add(col);
         }
 
 
         RowConstraints rowDate = new RowConstraints();
-        rowDate.setPercentHeight(20); // 日期行占20%高度
+        rowDate.setPercentHeight(20); 
         this.getRowConstraints().add(rowDate);
 
         RowConstraints rowEvents = new RowConstraints();
-        rowEvents.setPercentHeight(80); // 事件行占80%高度
+        rowEvents.setPercentHeight(80);
         this.getRowConstraints().add(rowEvents);
     }
 
     public void setDate(LocalDate newDate) {
-        this.startOfWeek = newDate.with(DayOfWeek.MONDAY); // 更新为新日期对应的周一
-        populateWeek(); // 重新填充周视图
+        this.startOfWeek = newDate.with(DayOfWeek.MONDAY); 
+        populateWeek(); 
     }
 
     
@@ -69,30 +69,25 @@ public class WeeklyView extends GridPane {
     	
     	this.getChildren().clear();
     	
-        // 遍历一周的日期
         LocalDate currentDate = startOfWeek;
 
         for (int day = 0; day < NUM_DAYS; day++) {
-            // 创建日期单元格
             StackPane dateCell = createDateCell(currentDate);
-            this.add(dateCell, day, 0); // 添加到第一行
+            this.add(dateCell, day, 0);
 
-            // 创建事件单元格
             StackPane eventCell = createEventCell(currentDate);
-            this.add(eventCell, day, 1); // 添加到第二行
+            this.add(eventCell, day, 1);
 
-            // 确保单元格的宽度和高度填充网格
             GridPane.setFillWidth(dateCell, true);
             GridPane.setFillHeight(dateCell, true);
             GridPane.setFillWidth(eventCell, true);
             GridPane.setFillHeight(eventCell, true);
 
-            // 强制单元格宽度
             dateCell.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS));
             eventCell.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS));
 
             
-            currentDate = currentDate.plusDays(1); // 移动到下一天
+            currentDate = currentDate.plusDays(1);
         }
     }
 
@@ -147,7 +142,6 @@ public class WeeklyView extends GridPane {
             }
         }
 
-        // 点击事件查看详情
         cell.setOnMouseClicked(event -> showEventDetails(date));
 
         cell.getChildren().add(content);
@@ -167,7 +161,6 @@ public class WeeklyView extends GridPane {
                    .append("\n");
         }
 
-        // 使用 Alert 显示详情
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Event Details");
         alert.setHeaderText("Details for " + date);
@@ -181,24 +174,19 @@ public class WeeklyView extends GridPane {
         eventBox.setStyle("-fx-background-color: #f9f9f9; -fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 5;");
         eventBox.setSpacing(2);
 
-        // 创建标题
         Text eventTitle = new Text(event.getTitle());
         eventTitle.setStyle("-fx-font-size: 12; -fx-fill: black;");
 
-        // 使用 TextFlow 包裹标题以支持换行
         TextFlow titleFlow = new TextFlow(eventTitle);
         titleFlow.setStyle("-fx-padding: 0;");
-        titleFlow.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(20)); // 减去边距
+        titleFlow.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(20));
 
-        // 根据事件类别设置颜色
         Text eventCategory = new Text(event.getCategory());
         eventCategory.setStyle("-fx-font-size: 10; -fx-fill: " + getCategoryColor(event.getCategory()) + ";");
 
-        // 添加到 VBox 中
         eventBox.getChildren().addAll(titleFlow, eventCategory);
 
-        // 确保 eventBox 的宽度受限
-        eventBox.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(10)); // 减去边距
+        eventBox.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(10));
         return eventBox;
     }
 

@@ -1,14 +1,12 @@
 package controller;
 
-import java.time.LocalDate;
+
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import model.Achievements;
-import model.Event;
-import model.Task;
-import model.User;
+
 
 public class AchievementController {
 

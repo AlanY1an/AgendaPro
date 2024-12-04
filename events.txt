@@ -102,15 +102,9 @@
 102|HW2|Study||2024-12-01|true
 103|Starbucks|Work||2024-11-29|true
 104|Workout Chest Day|Exercise||2024-12-02|true
-1|Meditation|Meditation|Meditation session completed|2024-12-03|0|5|true
-2|Meditation|Meditation|Meditation session completed|2024-12-03|0|5|true
 107|Task|Exercise|Focus session|2024-12-03|25|0|true
 108|12312|Work|Focus session|2024-12-03|25|0|true
 109|Task|Study|Focus session|2024-12-03|25|0|true
-1|Meditation|Meditation|Meditation session completed|2024-12-03|0|10|true
-111|Running|Work||2024-12-03|true
-1|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
-2|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
-3|Meditation|Meditation|Meditation session completed|2024-12-04|0|10|true
 115|Task|Exercise|Focus session|2024-12-04|25|0|true
 116|Walkdog|Work||2024-12-04|false
+117|Have dinner with MIa|Entertainment|Panda express|2024-12-04|false

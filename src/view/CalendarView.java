@@ -136,10 +136,10 @@ public class CalendarView {
         monthlyView.setDate(selectedDate); // 更新月视图的日期
         
         // 绑定宽高到 centerPane
-        monthlyView.prefWidthProperty().bind(centerPane.widthProperty());
-        monthlyView.prefHeightProperty().bind(centerPane.heightProperty());
-        monthlyView.maxWidthProperty().bind(centerPane.widthProperty());
-        monthlyView.maxHeightProperty().bind(centerPane.heightProperty());
+        weeklyView.prefWidthProperty().bind(centerPane.widthProperty());
+        weeklyView.prefHeightProperty().bind(centerPane.heightProperty());
+        weeklyView.maxWidthProperty().bind(centerPane.widthProperty());
+        weeklyView.maxHeightProperty().bind(centerPane.heightProperty());
 
         // 确保对齐
         AnchorPane.setTopAnchor(monthlyView, 0.0);

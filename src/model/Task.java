@@ -13,6 +13,7 @@ public class Task {
     public Task() {
         this.taskName = "New Task"; // Default
         this.finished = false; // Default to not finished
+        this.dueDate = new Date();
     }
 
     public Task(String taskName, Date dueDate) {

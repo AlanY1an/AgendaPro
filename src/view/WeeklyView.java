@@ -10,6 +10,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import model.Event;
 
 import java.time.DayOfWeek;
@@ -42,7 +43,9 @@ public class WeeklyView extends GridPane {
     private void setupGrid() {
         for (int i = 0; i < NUM_DAYS; i++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setPercentWidth(100.0 / NUM_DAYS);
+            col.setPercentWidth(100.0 / NUM_DAYS); // 每列占总宽度的1/7
+            col.setMinWidth(0); // 确保最小宽度为0
+            col.setMaxWidth(Double.MAX_VALUE); // 确保可以动态扩展
             this.getColumnConstraints().add(col);
         }
 
@@ -78,6 +81,17 @@ public class WeeklyView extends GridPane {
             StackPane eventCell = createEventCell(currentDate);
             this.add(eventCell, day, 1); // 添加到第二行
 
+            // 确保单元格的宽度和高度填充网格
+            GridPane.setFillWidth(dateCell, true);
+            GridPane.setFillHeight(dateCell, true);
+            GridPane.setFillWidth(eventCell, true);
+            GridPane.setFillHeight(eventCell, true);
+
+            // 强制单元格宽度
+            dateCell.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS));
+            eventCell.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS));
+
+            
             currentDate = currentDate.plusDays(1); // 移动到下一天
         }
     }
@@ -95,6 +109,8 @@ public class WeeklyView extends GridPane {
         if (date.equals(today)) {
         	cell.setStyle("-fx-border-color: #388E3C; -fx-border-width: 3; -fx-padding: 5; -fx-background-color: #E8F5E9;");
         }
+        
+        
 
         VBox dateBox = new VBox(dayText, dateText);
         dateBox.setAlignment(Pos.CENTER);
@@ -165,14 +181,24 @@ public class WeeklyView extends GridPane {
         eventBox.setStyle("-fx-background-color: #f9f9f9; -fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 5;");
         eventBox.setSpacing(2);
 
+        // 创建标题
         Text eventTitle = new Text(event.getTitle());
         eventTitle.setStyle("-fx-font-size: 12; -fx-fill: black;");
+
+        // 使用 TextFlow 包裹标题以支持换行
+        TextFlow titleFlow = new TextFlow(eventTitle);
+        titleFlow.setStyle("-fx-padding: 0;");
+        titleFlow.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(20)); // 减去边距
 
         // 根据事件类别设置颜色
         Text eventCategory = new Text(event.getCategory());
         eventCategory.setStyle("-fx-font-size: 10; -fx-fill: " + getCategoryColor(event.getCategory()) + ";");
 
-        eventBox.getChildren().addAll(eventTitle, eventCategory);
+        // 添加到 VBox 中
+        eventBox.getChildren().addAll(titleFlow, eventCategory);
+
+        // 确保 eventBox 的宽度受限
+        eventBox.prefWidthProperty().bind(this.widthProperty().divide(NUM_DAYS).subtract(10)); // 减去边距
         return eventBox;
     }
 

@@ -25,6 +25,8 @@ public class MeditationController {
 	    @FXML private Button tenMinButton;
 	    @FXML private Button thirtyMinButton;
 	    @FXML private Button oneHourButton;
+	    @FXML
+	    private Button resetButton;  // 添加Button的声明
 
 	    private long remainingSeconds;
 	    private int currentMeditationDuration;
@@ -103,6 +105,7 @@ public class MeditationController {
 	    	tenMinButton.setOnAction(e -> startMeditation(5.0/60.0, 10)); // 运行5秒，记录10分钟
 	    	thirtyMinButton.setOnAction(e -> startMeditation(30, 30)); // 运行30分钟，记录30分钟
 	    	oneHourButton.setOnAction(e -> startMeditation(60, 60)); // 运行60分钟，记录60分钟
+	    	resetButton.setOnAction(e -> resetMeditation());
 	    }
 
 	    private RadialGradient createGradient(Color centerColor, Color edgeColor) {
@@ -300,17 +303,21 @@ public class MeditationController {
 	        tenMinButton.setDisable(disabled);
 	        thirtyMinButton.setDisable(disabled);
 	        oneHourButton.setDisable(disabled);
+	        resetButton.setDisable(false); 
 	    }
 
 	    @FXML
 	    public void resetMeditation() {
+	        if (timeDisplay != null) {
+	            timeDisplay.stop();  // 添加这一行，停止时间显示
+	        }
 	        stopMeditation();
 	        updateFlowerPattern(1.0, 0.0);
 	        statusLabel.setText("Ready to Start");
 	        timerLabel.setText("");
 	        disableButtons(false);
 	    }
-
+	    
 	    private void updateStage(int stageIndex) {
 	        currentStage = stageIndex;
 	        statusLabel.setText(BREATH_STAGES[stageIndex]);

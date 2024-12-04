@@ -10,6 +10,7 @@ import controller.DashboardController;
 import controller.EventController;
 import controller.MeditationController;
 import controller.PomodoroController;
+import controller.TaskController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,16 +38,15 @@ public class Main extends Application {
 
     private BorderPane root; // 主布局容器
     private EventController eventController;
+    private TaskController taskController;
     private Achievements ac;
     
     @Override
     public void start(Stage primaryStage) {
         try {
-        	
         	eventController = new EventController();
-        	ac = new Achievements(eventController);
-
-//        	initiateData(ac);
+        	taskController= new TaskController();
+        	ac = new Achievements(eventController,taskController);
 
             root = new BorderPane();
 
@@ -71,27 +71,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-//	private void initiateData(Achievements ac) {
-//		// TODO Auto-generated method stub
-//		ac.getEventController().addEvent(new Event(1, "Study", LocalDate.now(), true));
-//        ac.getEventController().addEvent(new Event(2, "Work", LocalDate.now().minusDays(1), true));
-//        ac.getEventController().addEvent(new Event(3, "Exercise", LocalDate.now().minusDays(35), true));
-//
-//        // Add default tasks
-//        ac.addTask(new Task("Complete Homework", convertToDate(LocalDate.now().minusDays(1)), true));
-//        ac.addTask(new Task("Attend Meeting", convertToDate(LocalDate.now().minusDays(5)), true));
-//        ac.addTask(new Task("Go Jogging", convertToDate(LocalDate.now().minusDays(40)), true));
-//        
-//        ac.getEventController().addEvent(new Event(1, "Meditation", "Meditation", "Prepare for exams", 
-//                LocalDate.now(), 120, 25)); // 冥想时间从15增加到25
-//        //ac.getEventController().getAllEvents().get(0).setFinished(true);
-//        ac.getEventController().addEvent(new Event(2, "Meditation", "Meditation", "Complete project deliverables", 
-//                LocalDate.now().minusDays(1), 480, 10)); // 冥想时间从0增加到10
-//        //ac.getEventController().getAllEvents().get(1).setFinished(true);
-//        ac.getEventController().addEvent(new Event(3, "Meditation", "Meditation", "Morning jog", 
-//                LocalDate.now().minusDays(5), 60, 20)); // 冥想时间从10增加到20
-//	}
 
 
 	private Date convertToDate(LocalDate localDate) {
@@ -245,8 +224,9 @@ public class Main extends Application {
                 });
             }else if (fxmlPath.equals("/view/Dashboard.fxml")) {
                     loader.setControllerFactory(param -> new DashboardController(ac));
-            }
-
+            }else if (fxmlPath.equals("/view/ToToTask.fxml")) {
+                loader.setControllerFactory(param ->taskController );
+        }
             Parent content = loader.load();
             
             root.setCenter(content);

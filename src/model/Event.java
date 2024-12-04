@@ -34,6 +34,7 @@ public class Event {
         this.date = date;
         this.duration = duration;
         this.meditationMinutes = meditationMinutes;
+        this.finished=true;
     }
     
     public Event(int i, String string, LocalDate now, boolean b) {

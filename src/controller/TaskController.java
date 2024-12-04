@@ -50,6 +50,10 @@ public class TaskController {
         loadTasksFromFile(FILE_PATH);
     }
 
+    
+    public ObservableList<Task> getTasks(){
+    	return tasks;
+    }
     @FXML
     public void initialize() {
         // Bind ListView with tasks

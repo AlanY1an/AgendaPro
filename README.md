@@ -42,14 +42,25 @@ Explore AgendaPro's intuitive interface with features designed to streamline you
 
 ## How to Run
 
-1. Clone the repository from GitHub:  
+### 1. Clone the Project Repository
+Clone the repository to your local machine using your preferred method (e.g., Git CLI or Git GUI).
+
+### 2. Set Up JavaFX Libraries in Eclipse
+1. Open Eclipse and navigate to your project.
+2. Right-click on the project in the **Project Explorer** and select **Properties**.
+3. Go to **Java Build Path** and switch to the **Libraries** tab.
+4. Under **Modulepath**, click the **Add Library...** button.
+5. Select **User Library**, then choose **JavaFX**, and click **Finish**.
+6. Click **Apply** and then **Apply and Close**.
+7. At this point, all errors in your project should be resolved.
+
+### 3. Set JavaFX VM Arguments
+1. Right-click on `Main.java` and navigate to **Run As > Run Configurations**.
+2. In the **Run Configurations** dialog, select your project's main class under **Java Application**.
+3. Go to the **Arguments** tab and locate the **VM Arguments** field.
+4. Add the following line to the field:
    ```bash
-   git clone https://github.com/AlanY1an/AgendaPro
-   ```
-2. Open the project in your IDE (e.g., Eclipse).
-3. Add the JavaFX 21.0.5 jar file into the build path.
-4. Choose Java 21 to compile.
-5. Run the application by executing the `Main.java` file.  
+   --add-modules javafx.controls,javafx.fxml
 
 ---
 

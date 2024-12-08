@@ -3,18 +3,18 @@
 3|On Site Work|Work|Go to company to work!|2024-12-01|true
 4|Dinner with Maya|Entertainment|KFC|2024-12-03|true
 5|Weekly Meeting|Work|Discuss project updates and next steps.|2024-12-07|false
-6|Grocery Shopping|Work|Buy groceries for the week.|2024-12-06|false
-7|Meditation|Work|Morning meditation session for relaxation.|2024-12-04|false
+6|Grocery Shopping|Work|Buy groceries for the week.|2024-12-06|true
+7|Meditation|Work|Morning meditation session for relaxation.|2024-12-04|true
 8|Math Homework|Study|Complete problem set 8 for math class.|2024-11-30|true
-9|Yoga Class|Work|Evening yoga session at studio.|2024-12-05|false
+9|Yoga Class|Work|Evening yoga session at studio.|2024-12-05|true
 10|Movie Night|Entertainment|Watch "The Matrix" with friends.|2024-12-09|false
-11|Team Lunch|Work|Lunch at Olive Garden with teammates.|2024-12-05|false
-12|Final Presentation Prep|Study|Prepare slides and practice for final presentation.|2024-12-06|false
+11|Team Lunch|Work|Lunch at Olive Garden with teammates.|2024-12-05|true
+12|Final Presentation Prep|Study|Prepare slides and practice for final presentation.|2024-12-06|true
 13|Thanksgiving Dinner|Work|Celebrate Thanksgiving with family.|2024-11-28|true
 14|Volunteer Activity|Work|Help at the local food bank.|2024-12-02|true
 15|Fitness Training|Work|Morning workout session.|2024-12-03|true
 16|Birthday Party|Entertainment|Surprise birthday party for John.|2024-12-10|false
-17|Doctor Appointment|Work|Annual check-up with Dr. Smith.|2024-12-04|false
+17|Doctor Appointment|Work|Annual check-up with Dr. Smith.|2024-12-04|true
 18|CSYE Final Exam|Study|CSYE 6200 final exam preparation and review.|2024-12-08|false
 19|Book Reading Club|Work|Discuss "The Great Gatsby".|2024-11-30|true
 20|Photography Workshop|Work|Learn night photography techniques.|2024-12-09|false
@@ -106,7 +106,8 @@
 108|12312|Work|Focus session|2024-12-03|25|0|true
 109|Task|Study|Focus session|2024-12-03|25|0|true
 115|Task|Exercise|Focus session|2024-12-04|25|0|true
-116|Walkdog|Work||2024-12-04|false
-110|Walk the dog|Entertainment|Go to the dog park with Patrick|2024-12-04|false
-111|1|Work|1|2024-12-04|false
-112|12|Work|3|2024-12-04|false
+116|Walkdog|Work||2024-12-04|true
+110|Walk the dog|Entertainment|Go to the dog park with Patrick|2024-12-04|true
+111|1|Work|1|2024-12-04|true
+112|12|Work|3|2024-12-04|true
+113|Eat|Entertainment|Go have dinner with Mia|2024-12-07|false

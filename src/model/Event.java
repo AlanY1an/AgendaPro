@@ -52,7 +52,7 @@ public class Event {
         return false;
     }
 
-    // Getter 和 Setter
+    // Getter And Setter
     public int getId() {
         return id;
     }
